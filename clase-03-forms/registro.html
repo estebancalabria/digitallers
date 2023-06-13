@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Formulario de Registro</title>
+    <style>
+        /*input{
+            display: block;
+        }*/
+
+        header{
+            background-color: midnightblue;
+            color: white;  
+            text-align: center;
+            padding: 5px;
+            border-radius: 15px;
+        }        
+
+        form {
+            background-color: #F0F0F0;
+            width: 40%;
+            margin:auto;
+            padding: 2em;
+            margin-top: 1em;
+            border-radius: 15px;
+            box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        }
+
+        input{
+            width: 100%;
+            border-radius: 2px;
+        }
+        select{
+            width:100%;
+            border-radius: 2px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Bienvenidos Digitalles</h1>
+        <h2>Registro para crear un usuario nuevo</h2>
+    </header>
+    <main>
+        <form method="get">
+            <div>
+                <label for="txtNombre">Nombre:</label>
+                <div>
+                    <input type="text" id="txtNombre" name="nombre" required pattern="^[A-Z][a-z]*$"
+                        placeholder="Ingrese su nombre" />
+                </div>
+            </div>
+            <div>
+                <label for="txtApellido">Apellido:</label>
+                <div><input type="text" id="txtApellido" name="apellido" required minlength="3" maxlength="10"/></div>
+            </div>
+            <div>
+                <label for="txtDocumento">Documento:</label>
+                <div><input type="number" id="txtDocumento" name="documento" required min="1000000" max="60000000" />
+                </div>
+            </div>
+            <div>
+                <label for="cmbPais">Pais</label>
+                <div>
+                    <select>
+                        <option>Seleccione un pais...</option>
+                        <option>Argentina</option>
+                        <option>Uruguay</option>
+                        <option>Chile</option>
+                        <option>Brasil</option>
+                        <option>Bolivia</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label for="txtEmail">Email:</label>
+                <div><input type="email" id="txtEmail" name="email" required /></div>
+            </div>
+            <div>
+                <label for="txtFechaNacimiento">Fecha De Nacimiento</label>
+                <div><input type="date" id="txtFechaNacimiento" name="fechanacimiento" required /></div>
+            </div>
+            <div>
+                <label for="txtPassword">Password:</label>
+                <div><input type="password" id="txtPassword" name="password" required /></div>
+            </div>
+            <div>
+                <label for="txtVerificacionPassword">Verificar Password:</label>
+                <div><input type="password" id="txtVerificacionPassword" name="verficapassword" required></div>
+            </div>
+            <div>
+                <label>Acepto Terminos y condiciones </label>
+                <input type="checkbox" id="chkAceptoTerminosCondiciones" name="aceptoterminos" />
+            </div>
+
+            <button>Enviar Formulario</button>
+        </form>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>
