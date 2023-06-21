@@ -1,0 +1,42 @@
+body{
+    margin:0;
+    padding:0;
+}
+
+/*
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	border: none;
+	outline: none;
+}
+*/
+
+body>header {
+    background-color: rgb(19, 19, 19);
+    color:#EFEFEF;
+    margin-top: 0px;
+    font-family: 'Varela Round', sans-serif;
+}
+
+body>header>div{
+    display :inline-block;
+}
+
+/*header>img {
+    float: left;
+}*/
+
+aside{
+    position: absolute;
+    top:200px;
+    width: 200px;
+    right: 10px;
+    z-index: 2;
+    background-color: white;
+    border: 1px solid grey;;
+    border-radius: 15px;
+    padding: 1em;
+}
