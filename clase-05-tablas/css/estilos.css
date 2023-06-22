@@ -1,0 +1,46 @@
+
+header{
+    text-align: center;
+}
+
+table {
+    width: 80%;
+    margin:auto
+}
+
+table, td, th {
+    border : 1px solid grey;
+    border-collapse: collapse;
+}
+
+/* > son los hijitos de */
+thead > tr > th {
+    padding: 1em;
+}
+
+/* pseudoclases */
+thead > tr> th:first-child {
+    background-color: #DDD;
+}
+
+thead > tr> th {
+    background-color: #EEE;
+}
+
+table > tbody > tr:last-child > td {
+    padding: 1em;
+    text-align: center;
+    background-color: rgb(200,200,200);
+    font-size: 1.5em;
+}
+
+table > tbody > tr:first-child > td:first-child {
+    text-align: center;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}
+
+/* todos los td menos el primero*/
+td:not(:first-child) {
+    text-align: center;
+}
