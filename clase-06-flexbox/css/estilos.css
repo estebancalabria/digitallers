@@ -1,0 +1,49 @@
+
+body{
+    background-color: #CAC8C9;
+}
+
+.rojo{
+    background-color: rgb(255,0,0);
+}
+
+.verde{
+    background-color: #00FF00;
+    /*background-color: #0F0*/
+}
+
+.azul {
+   background-color: blue;
+}
+
+.caja {
+    width : 150px;
+    height: 150px;
+    /*margin:auto;*/
+}
+
+.flex-container{
+  display: flex;
+  min-height: 400px;
+}
+
+.flex-row {
+    flex-direction:row;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.justify-start{
+    justify-content: space-between;
+}
+
+.justify-end{
+    justify-content: flex-end;
+}
+

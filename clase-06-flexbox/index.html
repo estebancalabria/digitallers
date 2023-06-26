@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Revisitando Flex</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <section>
+        <h1>Direction : Row</h1>
+        <div id="divFlex" class="flex-container flex-row wrap">
+            <div class="caja rojo">1</div>
+            <div class="caja verde">2</div>
+            <div class="caja azul">3</div> 
+        </div>
+        <div>
+            Justify-Content
+            <select onchange="cambiarJustifyContent(this)">
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+                <option value="space-around">space-around</option>
+                <option value="space-between">space-between</option>
+                <option value="center">center</option>
+            </select>
+            <script>
+                function cambiarJustifyContent(cmb){
+                    document.getElementById("divFlex").style.justifyContent = cmb.value;
+                }
+            </script>
+        </div>
+
+        <div>
+            Align-items
+            <select onchange="cambiarAlignItems(this)">
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+                <option value="center">center</option>
+            </select>
+            <script>
+                function cambiarAlignItems(cmb){
+                    document.getElementById("divFlex").style.alignItems = cmb.value;
+                }
+            </script>
+        </div>
+
+    </section>
+    <section>
+        <h1>Direction : Row (Wrap)</h1>
+        <div class="flex-container flex-row wrap">
+            <div class="caja rojo">1</div>
+            <div class="caja verde">2</div>
+            <div class="caja azul">3</div>
+            <div class="caja rojo">1</div>
+            <div class="caja verde">2</div>
+            <div class="caja azul">3</div>
+            <div class="caja rojo">1</div>
+            <div class="caja verde">2</div>
+            <div class="caja azul">3</div>
+            <div class="caja rojo">1</div>
+            <div class="caja verde">2</div>
+            <div class="caja azul">3</div>
+        </div>
+    </section>
+    <section>
+        <h1>Direction : Column</h1>
+        <div class="flex-container flex-col">
+            <div class="caja rojo">1</div>
+            <div class="caja verde">2</div>
+            <div class="caja azul">3</div>
+        </div>
+    </section>
+</body>
+</html>
