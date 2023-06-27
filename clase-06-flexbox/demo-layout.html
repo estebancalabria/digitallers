@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            background-color: rgb(200,200,200);
+        }
+
+        body>div{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        body>div>div:nth-child(1){
+            background-color: red;
+            flex-grow: 1;
+        }
+
+        body>div>div:nth-child(2){
+            background-color: yellow;
+            flex-grow: 3;
+            display: flex;
+            padding: 1em;
+        }
+
+        body>div>div:nth-child(2)>div:nth-child(1){
+            background-color: orange;
+            flex-grow: 1;
+        }
+
+        body>div>div:nth-child(2)>div:nth-child(2){
+            background-color: blue;
+            flex-grow: 3;
+        }
+
+        body>div>div:nth-child(3){
+            background-color: green;
+            flex-grow: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <div></div>
+        <div>
+            <div></div>
+            <div></div>
+        </div>
+        <div></div>
+    </div>
+</body>
+</html>

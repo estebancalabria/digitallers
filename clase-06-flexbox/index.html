@@ -8,9 +8,20 @@
     <section>
         <h1>Direction : Row</h1>
         <div id="divFlex" class="flex-container flex-row wrap">
-            <div class="caja rojo">1</div>
-            <div class="caja verde">2</div>
-            <div class="caja azul">3</div> 
+            <div class="caja rojo">
+                <input type="number" value="1" onchange="cambiarFlexGrow(this)"/>
+            </div>
+            <div class="caja verde">
+               <input type="number" value="1"  onchange="cambiarFlexGrow(this)"/>
+            </div>
+            <div class="caja azul">
+                <input type="number" value="1"  onchange="cambiarFlexGrow(this)"/>
+            </div>
+            <script>
+                function cambiarFlexGrow(item){
+                    item.parentElement.style.flexGrow = item.value;
+                }
+            </script> 
         </div>
         <div>
             Justify-Content
