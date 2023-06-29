@@ -1,0 +1,88 @@
+
+body{
+    margin:0;
+    padding:0;
+}
+
+header>h1{
+    margin: 0;
+    padding:1em;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 4em;
+    text-shadow: -5px 3px 4px yellow; /* https://cssgenerator.org/text-shadow-css-generator.html*/
+    text-align: center;
+}
+
+*{
+    font-family: 'Varela Round', sans-serif; 
+}
+
+h2{
+    text-align: center;
+    margin-bottom: 2em;
+    font-size: 2em;
+}
+
+label{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+body {
+    background-image: url("../img/ver.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+header {
+    background-color:  rgb(255, 143, 0);;
+    margin: 0px;
+    display:flex;
+    justify-content: center;
+}
+
+#formWrapper{
+    display: flex;
+    /*flex-direction: column;
+    align-items: center;  /*Uso align items porque flex-direction es column*/
+    justify-content: center;
+}
+
+#formWrapper>div{
+    border: 1px solid grey; 
+    padding: 2em;
+    margin-bottom: 2em;
+    box-shadow: -21px 27px 33px -4px rgba(84,81,81,0.75);
+    border-radius: 33px 40px 0px 50px; /*TR OU BLE*/
+    width: 50%;
+    background-color: white;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+  
+    /*gap: 1em;*/
+}
+
+input {
+    margin-bottom: 1.5em;
+    font-size: 1.5em;
+    border-radius: 4px;
+}
+
+button{
+    background-color: rgb(255, 143, 0);
+    padding: 1em;
+    border-radius: 10px;
+    border: 0px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+button:hover{
+    background-color: rgb(252, 181, 87);
+    box-shadow: -6px 13px 53px -15px rgba(84,81,81,0.75);
+}
+
