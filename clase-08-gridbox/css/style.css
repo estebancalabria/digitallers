@@ -1,0 +1,154 @@
+
+.grid-container{
+    display: grid;
+    width: 600px;
+    height: 600px;
+    grid-template-columns: auto auto auto;
+    /*grid-template-columns: 1fr 2fr 1fr;*/
+    /*grid-template-columns: 1fr 2fr 50%;*/
+    /*grid-template-rows: 1fr 2fr 1fr;*/
+    grid-gap: 5px;
+}
+
+.rojo{
+    background-color: red;
+}
+
+.verde{
+    background-color: green;
+}
+
+.azul {
+    background-color: blue;
+}
+
+.amarillo {
+    background-color: yellow;
+}
+
+#caja-1{
+    /*grid-column-start: 1;
+    grid-column-end: 3; /* Sin Incluir */
+    
+    /*grid-column: 1 / 3;*/
+    
+    grid-column: 1 / span 2;
+    
+    grid-row: 1;
+}
+
+#caja-2{
+    grid-column: 3;
+    /*grid-row-start: 1;
+    grid-row-end: 4; /* Sin Incluir*/
+
+   /* grid-row: 1 / 4 */
+   grid-row: 1 / span 3;
+}
+
+#caja-3{
+    grid-column: 1;
+    grid-row-start: 2;
+    grid-row-end: 4; /* Sin Incluir*/
+}
+
+.tablero-trabado{
+    display: grid;
+    width: 400px;
+    height: 500px;
+    gap : 5px;
+    /*grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto;*/
+    grid-template-areas: 
+       'A B B C '
+       'A B B C'
+       'D E E F'
+       'D G H F'
+       'I J J K';
+}
+
+#A{
+    background-color: yellow;
+    grid-area: A;
+}
+
+#B{
+  background-color: green;
+  grid-area: B;
+}
+
+#C{
+  background-color: yellow;
+  grid-area: C;
+}
+
+#D{
+    background-color: yellow;
+    grid-area: D;
+}
+
+#E{
+    background-color: yellow;
+    grid-area: E;
+}
+
+#F{
+    background-color: yellow;
+    grid-area: F;
+}
+
+#G{
+    background-color: red;
+    grid-area: G;
+}
+
+#H{
+    background-color: red;
+    grid-area: H;
+}
+
+#I{
+    background-color: red;
+    grid-area: I;
+}
+
+#K{
+    background-color: red;
+    grid-area: K;
+}
+
+
+#layout{
+    display: grid;
+    grid-template-areas:
+    'header header header header header header'
+    'menu main main main right right'
+    'menu footer footer footer footer footer';  
+    width: 100%;
+    height: 600px;
+    gap: 3px;
+}
+
+#layout>header{
+    grid-area: header;
+}
+
+#layout>nav{
+    grid-area: menu;
+}
+
+#layout>main{
+    grid-area: main;
+}
+
+#layout>footer{
+    grid-area: footer;
+}
+
+#layout>aside{
+    grid-area: right;
+     background-color: grey;
+}
+
+
+
