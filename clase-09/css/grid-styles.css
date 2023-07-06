@@ -1,0 +1,86 @@
+
+
+body{
+    background-color: #90AFC5;
+    height: 100vh;
+    margin :0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#wsap-icon{
+    position: fixed;
+    bottom:20px;
+    right:20px;
+}
+
+#modal{
+    display: none;
+    position: fixed;
+    width: 30%;
+    height: 30%;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 3px;
+    font-size: 3em;
+    text-align: center;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    rotate: -3deg;
+    /*transform: translate(50%, 50%);*/
+}
+
+#wsap-icon:hover{
+    box-shadow: 10px 10px 50px 0px rgba(0,255,0,1);
+    border-radius: 100%;
+    border-bottom-left-radius: 0;
+}
+
+#grid{
+    background-color: #336B87;
+    display: grid;
+    grid-template-columns: 10% 10% 10%;
+    grid-template-rows: 10% 10% 10%;
+    gap:5px;
+    width: 70%;
+    height: 70%;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+}
+
+#grid>div{
+  background-color: #2A3131;   
+}
+
+/*#grid>div:last-child{
+    background-color: #763626;
+}
+
+#grid>div:first-child{
+    background-color: #763626;
+}
+
+#grid>div:nth-child(2){
+    background-color: #763626;   
+}
+
+
+#grid>div:nth-last-child(4){
+    background-color: #763626;   
+}*/
+
+#grid>div:nth-child(odd){
+    background-color: #763626;   
+}
+
+/*#grid>div:nth-child(even){
+    background-color: #763626;   
+}*/
+
