@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bienvenidos a Javscript</title>
+    <script>
+        //Este es un comentario
+
+        //Ejemplo 1
+        /*let nombre = "Esteban";
+        const nacimiento = 1980;
+        let variable;
+        console.log("Hola " + nombre + " del " + nacimiento);
+        console.log(typeof nombre);
+        console.log(typeof nacimiento);
+        console.log(typeof variable);*/
+
+        //Ejemplo 2
+        /*const numA = 20;
+        const numB = 2;
+        console.log(numA + numB);*/
+
+        //Ejemplo 3
+        //string + numero = string
+        /*const numA = "20";
+        const numB = 2;
+        console.log(numA + numB);*/
+
+        //Ejemplo 4
+        /*const numA = 20;
+        const numB = "2";
+        console.log(numA + numB);*/
+
+        //Ejemplo 5
+        //Ojo con los nombres de las variables
+        /*let a = 2023;
+        let b = 0;
+        let resultado = a / b;
+        console.log(resultado);  //<< Da Infinity
+        let c = Infinity;
+        console.log(c);
+        let d = NaN;  //Not a Number
+        console.log(d);
+        console.log(typeof d); //Number
+        let e = Math.sqrt(-1);
+        console.log(e); //NaN */
+
+        //Ejemplo 6- Alert
+        /*alert("Hola Mundo Browser");
+        alert("Hola Mundo Browser");
+        alert("Hola Mundo Browser");
+        alert("Hola Mundo Browser");
+        alert("Hola Mundo Browser");*/
+
+        //Ejemplo 7 - Propmpt
+        /*let nombre = prompt("Como te llamas?")
+        let nacimiento = prompt("Cuando naciste?")
+        alert("Hola " + nombre + " del " + nacimiento);
+        console.log(typeof nombre);
+        console.log(typeof nacimiento);*/
+
+        /*let edad = prompt("Ingrese su edad");
+        if (edad >= 18) {                             //Convierte automaticamente de un string a un int
+            alert("Usted es mayor de edad");
+        } else {
+            alert("Usted es menor de edad");
+        }*/
+
+        /*let punto = { x:10, y:20 };  //Javascript object Notation (JSON)
+        console.log(typeof punto);
+        console.log(punto);
+        console.log(punto.x);
+        console.log(punto.y);*/
+
+        //Ejemplo 8 - object
+        /*const persona = {
+            nombre : "Esteban",       //campo, propiedad, miembro, atributo  (clave:valor)
+            apellido : "Calabria",
+            edad : 42
+        };
+        console.log(persona); //[Object object]
+        console.log(JSON.stringify(persona));  //JSON.stringify
+        console.log(persona.nombre);
+        console.log(persona.edad);
+        console.log(persona["nombre"]);
+        console.error(persona.nombre + ' ' + persona.apellido);
+        console.table(persona);
+        console.log("%c " + persona.nombre, "font-size:30px; color:green; padding:1em");
+        console.log("%c " + persona.nombre, "font-size:30px; color:violet; padding:1em; border: 2px solid red;");   
+        console.log("%c " + persona.nombre, "font-size:40px; color:pink; padding:1em; background-color: black");  
+        console.log(`%c ${persona.nombre} ${persona.apellido}`, "color:purple"); //Strings interpolados con back tick `*/
+
+        //Vamos probando distintos valores
+        //let respuesta = false;
+        
+        //let respuesta = true;
+
+        let edad = 6;
+        let tienePermiso = true;
+        //let respuesta = (edad > 19); //expresion booleana
+        //let respuesta = (edad>19) && tienePermiso;  //tiene que tener mas de 19 y ademas terner permiso
+        //let respuesta = (edad>19) || tienePermiso;  //tiene que tener mas de 19 y ademas terner permiso
+
+        //let respuesta = 0; //false                            //>>> falsy
+        //let respuesta = 212  //verdadero (cualquier numero)   //>>> Thruthy
+        //let respuesta = NaN;                                  //>>> falsy  
+        //let respuesta = Infinity;                             //>>> Thruthy
+        //let respuesta = 100 / 0;                              //>>> Thruthy
+
+        //let respuesta = "Hola que tal";   //>>> Thruthy
+        //let respuesta = "   ";            //>>> Thruthy
+        //let respuesta = "";                 //>>> falsy
+
+        //let respuesta = undefined;          //>>> falsy
+        //let respuesta = null;               //>>> falsy
+        //let respuesta = {};                   //>>> Thruthy
+
+        let respuesta = confirm("Esta seguro que desea entrar a la parte prohibida del sitio?");
+        
+        console.log(typeof respuesta);
+        if (respuesta){
+            console.log("%cAcceso Concedido", "font-size:30px; color:green");
+        }else{
+            console.log("%cAcceso denegado", "font-size:30px; color:red");
+        }
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <h1>Bienvenidos a Javascript</h1>
+</body>
+
+</html>

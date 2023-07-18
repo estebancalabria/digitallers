@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bienvenidos a Javascript</title>
+
+    <script>
+        /*function escribirHolaMundo(){
+            document.write("¡Hola mundo desde funcion!");
+        }
+
+        function mostrarAlert(){
+            alert('Mensaje de prueba'); 
+        }*/
+    </script>
+</head>
+<body>
+    <section>
+        <script>
+            function generarJson(){
+                let persona = {};
+                persona.nombre = document.getElementById("txtNombre").value;
+                persona.apellido = document.getElementById("txtApellido").value;;                
+                document.getElementById("divJsonResult").innerText = JSON.stringify(persona);
+            }
+        </script>
+        <div>
+            Nombre : <input id="txtNombre" type="text" placeholder="Ingrese el nombre" />
+        </div>
+        <div>
+            Apellido : <input id="txtApellido" type="text" placeholder="Ingrese el nombre" />
+        </div>
+        <button onclick="generarJson()">Generar JSON</button>
+        <div id="divJsonResult">
+
+        </div>
+    </section>
+    <hr />
+    <section>
+        <script>
+            function agregarElemento(){
+                let listaDinamica = document.getElementById("listaDinamica");
+                let txtElemento = document.querySelector("#txtElemento");
+                if (txtElemento.value){
+                    let nuevoLi = document.createElement("li");
+                    nuevoLi.innerText = txtElemento.value;
+                    listaDinamica.appendChild(nuevoLi);
+                    txtElemento.value = "";
+                }   
+            }
+        </script>
+        <h1>Cuarto Ejemplo : Lista Dinamica</h1>
+        <ul id="listaDinamica">
+            <li>Mis elementos:</li>
+        </ul>
+        <input id="txtElemento" type="text" placeholder="Agregar un elemento" />
+        <button onclick="agregarElemento()">Agregar</button>
+    </section>
+    <hr />
+    <section>
+        <script>
+            function saludar(){
+                //alert("Hola Terricola");
+                let txtNombre = document.getElementById("txtNombre");
+                let divSaludo = document.getElementById("divSaludo");
+                //alert(txtNombre);
+                //alert(txtNombre.value);
+                let nombre = txtNombre.value;
+                //alert(`Hola ${nombre}`);
+                //divSaludo.innerText = `Hola ${nombre}`;
+                if (nombre){
+                    divSaludo.innerHTML = `<h2>Hola ${nombre}</h2>`;
+                }else{
+                    divSaludo.innerHTML = `<h2>No ha ingresado ningun nombre</h2>`;
+                }
+                txtNombre.value = "";
+            }
+        </script>
+        <h1>Primer Ejemplo Javascript : Saludo</h1>
+        Ingrese Su Nombre 
+        <input id="txtNombre" type="text" placeholder="Ingrese Su Nombre" />
+        <button onclick="saludar()">Saludar</button>
+        <div id="divSaludo">
+        </div>
+    </section>
+    <hr />
+    <section>
+        <script>
+            function sumar(){
+                let txtNumero1 = document.getElementById("txtNumero1");
+                let txtNumero2 = document.getElementById("txtNumero2");
+                let txtResultado = document.getElementById("txtResultado");
+                //txtResultado.value = txtNumero1.value + txtNumero2.value; //Error : Los concatena
+                //txtResultado.value = parseInt(txtNumero1.value) + parseInt(txtNumero2.value); //Error : Los concatena
+                //txtResultado.value = (+txtNumero1.value) + (+txtNumero2.value); //Error : Los concatena
+                txtResultado.value = txtNumero1.valueAsNumber + txtNumero2.valueAsNumber;
+                
+            }
+        </script>
+        <h1>Segundo Ejemplo Javascript : Suma</h1>
+        <div>Numero 1 : <input id="txtNumero1" type="number" value="0" /></div>
+        <div>Numero 2 : <input id="txtNumero2" type="number" value="0" /></div>
+        <div><button onclick="sumar()">+</button></div>
+        <div>Resultado: <input id="txtResultado" type="number" readonly /></div>
+    </section>
+    <hr />
+    <section>
+        <script>
+            function completarLista(){
+                let nombres = ["Matias", "Sergio", "Florencia", "Laura", "Fererico"];
+                //let lista = document.getElementById("lista");
+                let lista = document.querySelector("#lista");
+
+                lista.innerHTML = "";
+                
+                /*for (let nom of nombres){
+                    lista.innerHTML += `<li>${nom}</li>`
+                }*/
+
+                /*for (let index in nombres){
+                    lista.innerHTML += `<li>${nombres[index]}</li>`
+                }*/
+
+                for (let nombre of nombres){
+                    let li = document.createElement("li");
+                    li.innerText = nombre;
+                    lista.appendChild(li);
+                }
+
+            }
+        </script>
+        <h1>Tercer Ejemplo Javascript : Trabajamos con Arreglos</h1>
+        <ul id="lista">
+
+        </ul>
+        <button onclick="completarLista()">Completar Lista</button>
+    </section>
+    <!--<h1>
+        <script>
+           // escribirHolaMundo();
+           //mostrarAlert();
+        </script>
+    </h1>
+    <button onclick="mostrarAlert()">
+        Ejecutar Funcion
+    </button>-->
+</body>
+</html>
