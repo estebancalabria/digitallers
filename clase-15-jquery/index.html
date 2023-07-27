@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery Rules!</title>
+    <script src="js/jquery.js"></script>
+    <style>
+        /*@keyframes color-fondo-animado {
+            from{
+                background-color: red;
+            }
+            to{
+                background-color: green;                
+            }
+        }*/
+        @keyframes color-fondo-animado {
+            0%{
+                width: 30%;
+                /*background-color: red;
+                border-radius: 100%;
+                font-size: 10px;
+                /*transform: rotate(0deg);*/
+            }
+            50%{
+                width: 50%;
+                /*background-color: yellow;                
+                border-radius: 50%;
+                font-size: 20px;
+                /*transform: rotate(45deg);*/
+            }
+            100%{
+                width: 90%;
+                /*background-color: green;                
+                border-radius: 0%;
+                font-size: 30px;
+                /*transform: rotate(90deg);*/
+            }
+            
+        }
+
+        #animado{
+            /*animation: color-fondo-animado 3s alternate -2s infinite forwards;*/
+            animation-name: color-fondo-animado;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            text-align: center;
+            padding: 1em;
+        }
+
+        #textoSorpresa {
+            display: none;
+            font-size: 25px;
+            font-weight: bold;
+            background-image: linear-gradient(to left, violet, indigo, green, blue, yellow, orange, red);*/
+            padding: 1em;
+            text-align: center;
+        }
+    </style>
+    <script>
+        //Lo mismo que window.addEventListener("load", () => {alert()}
+        //Ready es lo que analogo a los eventos
+        //Callback
+        //Este seria cono el main de JQuery
+        $(document).ready(() => {
+            //Aca va todo el codigo con JQuery
+            //document.querySelector("#sorpresa").addEventListener("click", ()=>{ }) igual que
+            $("#sorpresa").click(() => {
+                //document.getElementById("textoSorpresa").style.display = "inline"; //Sin JQuery
+                //$("#textoSorpresa").show();
+                //$("#textoSorpresa").toggle();
+                //$("#textoSorpresa").fadeIn(2000);
+                //$("#textoSorpresa").fadeToggle(2000);
+                //$("#textoSorpresa").slideDown(5000);
+                $("#textoSorpresa").slideToggle(5000);
+                //$("#sorpresa").html("Oculta Sorpresa"); << Lo mismo que el innerHTML
+            })
+
+            $("#btnAgregarElemento").click(() => {
+                const nuevaTarea = $("#txtElementoLista").val();
+                nuevaTarea
+                    && $(`<li>${nuevaTarea}</li>`)
+                        .css("display", "none")
+                        .appendTo("ul")
+                        .slideDown(1000);  //Interfaces Fluidas o fluent Interfaces
+                $("#txtElementoLista").val("");
+            })
+
+            $(".btn").click((evt)=>{
+                alert($(evt.target).html())
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <h1 id="animado">Animaciones en css</h1>
+    <hr/>
+    <h1>Primer Ejemplo de JQuery</h1>
+    <button id="sorpresa"> <!--Si le pongo el onclick al boton es javascript obstrubsive (metiche)-->
+        Haceme click para tener una sorpresa
+    </button>
+    <div id="textoSorpresa">
+        Sorpresaaaaaaaaaaaaaaaaa!!
+    </div>
+    <hr />
+    <h1>Segundo Ejemplo</h1>
+    <ul>
+        <li>Mi Lista</li>
+    </ul>
+    <input id="txtElementoLista" type="text" />
+    <button id="btnAgregarElemento">Agregar Elemento</button>
+    <hr/>
+    <h1>Varios Botones</h1>
+    <button class="btn">1</button>
+    <button class="btn">2</button>
+    <button class="btn">3</button>
+    <button class="btn">4</button>
+    <button class="btn">5</button>
+</body>
+</html>
+
+</html>
