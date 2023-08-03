@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <title>Document</title>
+    <script src="./js/Carta.js"></script>
+    <script src="./js/Lista.js"></script>
+    <script src="./js/Personaje.js"></script>
+    <script>
+
+        let wrynn = new Personaje("Wrynn","./images/wrynn.png" );
+        let mario = new Personaje("Mario", "./images/mario.png");
+
+        //mario.atacar(wrynn);
+
+        //console.log(wrynn);
+        //console.log(mario);
+
+
+        window.addEventListener("load", () => {
+
+            document.getElementById("btnMarioAtacar").addEventListener("click", () => {
+                mario.atacar(wrynn)
+            });
+
+            document.getElementById("btnWrynnAtacar").addEventListener("click", () => {
+                    wrynn.atacar(mario);
+            });
+
+            //unobstrusive
+            /*document.querySelector("#btnAlert").addEventListener("click", () => {
+                //Swal.fire("Alerta", "Esta alerta esta mucho mejor", "success");
+                //document.getElementById("cartas").innerHTML += crearCarta("images/dragon.png", "titulo", "descripcin")
+
+                //let carta = new Carta("images/dragon.png", "titulo", "descripcion");
+                //document.getElementById("cartas").innerHTML += carta;
+
+                /*let lista = new Lista();
+                lista.agregarElemento("Eliseo");
+                lista.agregarElemento("Lisandro");
+                lista.agregarElemento("Matias");
+                lista.agregarElemento("Franco");
+                lista.agregarElemento("Florencia");
+                document.getElementById("cartas").innerHTML += lista;*/
+
+            /*});*/
+        })
+
+        setInterval(() => {
+            document.getElementById("mario").innerHTML = new Carta(mario.getImagen(), mario.getNombre(), mario.getVida());
+            document.getElementById("wrynn").innerHTML = new Carta(wrynn.getImagen(), wrynn.getNombre(), wrynn.getVida());
+
+        }, 100);
+    </script>
+</head>
+
+<body>
+    <section>
+        <div id="mario"></div>
+        <button id="btnMarioAtacar" class="btn btn-primary">Mario Atacar</button>
+    </section>
+    <section>
+        <div id="wrynn"></div>
+        <button id="btnWrynnAtacar" class="btn btn-primary">Wrynn Atacar</button>
+    </section>
+    <!--<button id="btnAlert" class="btn btn-primary">Mostrar Alert</button>
+    <section id="cartas" class="row">
+    </section>-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
