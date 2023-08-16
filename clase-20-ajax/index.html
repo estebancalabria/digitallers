@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortal Konbat Wiki</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script>
+        window.addEventListener("load", () => {
+            //document.getElementById("btnRecuperarPersonajes").addEventListener("click", () => {
+                fetch("api/personajes/index.html")
+                    .then((res) => {
+                        return res.json();
+                    }).then((body)=>{
+                        let tbody = document.querySelector("#tablaPersonajes>tbody");
+
+                        tbody.innerHTML = "";
+                        for (let personaje of body){
+                            tbody.innerHTML += 
+                                `<tr>
+                                    <td><img src='img/${personaje.imagen}' height="150px" width="150px"/></td>
+                                    <td>${personaje.nombre}</td>
+                                    <td>${personaje.reino}</td>
+                                    <td>${personaje.poder}</td>
+                                </tr>`;
+                        }
+                    })
+            })
+        //})
+    </script>
+</head>
+
+<body>
+    <header class="alert alert-info">
+        <h1 class="h1 text-center">Mortal Kombat Wikki</h1>
+    </header>
+    <main class="container">
+        <table class="table" id="tablaPersonajes">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nombre</th>
+                    <th>Reino</th>
+                    <th>Poder</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+       <!--<button id="btnRecuperarPersonajes">Recuperar Personajes</button>--> 
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+</html>

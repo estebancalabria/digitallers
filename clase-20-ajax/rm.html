@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Rick and Morty</title>
+    <script>
+
+        class Card {
+            imagen;
+            titulo;
+            descripcion;
+
+            setImagen(valor){
+                this.imagen = valor;
+            }
+
+            setTitulo(valor){
+                this.titulo = valor;
+            }
+
+            setDescripcion(valor){
+                this.descripcion = valor;
+            }   
+
+            toString() {
+                return `<div class="col-3 mb-2">
+                            <div class="card w-100 h-100">
+                                <img src="${this.imagen}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">${this.titulo}</h5>
+                                    <p class="card-text">${this.descripcion}</p>
+                                </div>
+                            </div>
+                        </div>`
+            }
+        }
+
+        window.addEventListener("load", () => {
+            setInterval( () => {
+                fetch("https://rickandmortyapi.com/api/character")
+                    .then((res) => {
+                        return res.json();
+                    }).then((body) => {
+                        let main = document.querySelector("main");
+
+                        main.innerHTML = "";
+                        for (let personaje of body.results ){
+                            let carta = new Card();
+                            carta.setTitulo(personaje.name);
+                            carta.setImagen(personaje.image);
+                            carta.setDescripcion(`${personaje.gender} ${personaje.species} ${personaje.status}`);
+                            main.innerHTML += carta;
+                        }
+
+                        
+                    });
+            }, 5000)
+        })
+    </script>
+</head>
+
+<body>
+    <header class="alert alert-info">
+        <h1 class="h1 text-center">Rick and Morty</h1>
+    </header>
+    <main class="mx-auto row text-center">
+        <img class="mx-auto" src="img/Loader.gif" style="width:500px"/>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

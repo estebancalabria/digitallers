@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank of Digitallers</title>
+    <style>
+
+    </style>
+    <script src="./js/banco.js"></script>
+    <script>
+        let banco = new Banco("Bank of Digitalers");
+    </script>
+
+    <script>
+        function depositar(numeroCuenta) {
+            let monto = prompt("Cuanto desea depositar?");
+            monto = parseInt(monto);
+            let cuenta = banco.getCuentaByNumero(numeroCuenta);
+            cuenta.depositar(monto);
+            mostrarCuentas();
+        }
+
+        function extraer(numeroCuenta) {
+            let monto = prompt("Cuanto desea extraer?");
+            monto = parseInt(monto);
+            let cuenta = banco.getCuentaByNumero(numeroCuenta);
+            cuenta.retirar(monto);
+            mostrarCuentas();
+        }
+
+        //Se animan a hacer el extaer?
+
+        function mostrarCuentas() {
+            let ul = document.getElementById("cuentas");
+            ul.innerHTML = "";
+            for (let cuenta of banco.getCuentas()) {
+                ul.innerHTML += `<li>
+                                    <button onclick='depositar(${cuenta.getNumero()})'>Depositar</button>
+                                    <button onclick='extraer(${cuenta.getNumero()})'>Extraer</button>
+                                    ${cuenta}
+                                </li>`
+            }
+        }
+
+        window.addEventListener("load", () => {
+            document.getElementById("btnAbrirCuenta").addEventListener("click", () => {
+                let titular = document.getElementById("txtTitularCuenta").value;
+                banco.abrirCuenta(titular)
+                document.getElementById("txtTitularCuenta").value = "";
+                mostrarCuentas();
+            })
+        }) 
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Bank of Digitallers</h1>
+    </header>
+
+    <h2>Cuentas</h2>
+    <ul id="cuentas">
+
+    </ul>
+    <div>
+        <input id="txtTitularCuenta" type="text" placeholder="titular">
+        <button id="btnAbrirCuenta">Abrir Cuenta</button>
+    </div>
+    <hr />
+</body>
+
+</html>
