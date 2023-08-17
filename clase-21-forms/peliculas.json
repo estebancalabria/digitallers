@@ -1,0 +1,39 @@
+{
+  "peliculas": [
+    {
+      "id": 2,
+      "nombre": "Repo Man",
+      "genero": "Accion",
+      "año": 2000,
+      "puntuacion": 9
+    },
+    {
+      "id": 3,
+      "nombre": "Iron Man",
+      "genero": "Accion",
+      "año": 2008,
+      "puntuacion": 10
+    },
+    {
+      "id": 4,
+      "nombre": "Terminator 2",
+      "genero": "Accion",
+      "año": 1991,
+      "puntuacion": 9
+    },
+    {
+      "id": 5,
+      "nombre": "Viernes 13",
+      "genero": "terror",
+      "año": 1989,
+      "puntuacion": 10
+    },
+    {
+      "nombre": "Barbie",
+      "genero": "Fantasia",
+      "año": 2023,
+      "puntuacion": 9,
+      "id": 6
+    }
+  ]
+}

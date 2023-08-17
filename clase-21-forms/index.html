@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Document</title>
+    <script>
+        function mostrarPeliculas() {
+            fetch("http://localhost:3000/peliculas")
+                .then((res) => { return res.json() })
+                .then((body) => {
+
+                    let peliculas = document.getElementById("peliculas");
+
+
+                    let ul = '<ul class="list-group">';
+                    ul += "<li class='list-group-item active'>Peliculas</li>";
+                    for (let pelicula of body) {
+                        ul += `<li class="list-group-item">`;
+                        ul += pelicula.nombre;
+                        ul += `</li>`;
+                    }
+                    ul.innerHTML += '</ul>';
+
+                    peliculas.innerHTML = ul;
+                });
+        }
+
+        window.addEventListener("load", () => {
+            mostrarPeliculas();
+
+            document.querySelector("form").addEventListener("submit",(evt)=>{
+                //console.log(evt);
+                
+                let pelicula = {
+                    nombre : document.getElementsByName("nombre")[0].value,
+                    genero : document.getElementsByName("genero")[0].value,
+                    año : document.getElementsByName("año")[0].valueAsNumber,
+                    puntuacion : document.getElementsByName("puntuacion")[0].valueAsNumber 
+                }
+
+                fetch("http://localhost:3000/peliculas", {
+                   method : "POST",
+                   headers : {
+                    "Content-Type" : "application/json"
+                   },
+                   body : JSON.stringify(pelicula)
+                }).then((res)=>{
+                    mostrarPeliculas();
+                });
+                
+
+                evt.preventDefault(); //<< Hace que el formulario no refresque
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1 class="text-center">La Revancha de los forms en Digitalers</h1>
+    </header>
+    <hr />
+    <main class="container row mx-auto">
+        <section id="formulario" class="col-5">
+            <h3>Formulario Peliculas</h3>
+            <form>
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    <input type="text" name="nombre" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Genero:</label>
+                    <input type="text" name="genero" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Año:</label>
+                    <input type="number" name="año" value="2023" min="1900" max="2023" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Puntuacion:</label>
+                    <input type="number" value="9" min="1" max="10" name="puntuacion" class="form-control" />
+                </div>
+                <button class="btn btn-primary w-100 mt-2">Agregar pelicula</button>
+            </form>
+        </section>
+        <section id="peliculas" class="col-6">
+
+        </section>
+    </main>
+    <!--<button onclick="mostrarPeliculas()">Mostrar</button>-->
+</body>
+
+</html>
