@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        window.addEventListener("load",()=>{
+            let xhr = new XMLHttpRequest();
+            xhr.addEventListener("readystatechange",()=>{
+               if ((xhr.readyState===4) && (xhr.status === 200)){
+                    let lstPokemones = document.getElementById("lstPokemones");
+                    let  pokes = JSON.parse(xhr.responseText);
+                    let id=1;
+                    for (let pokemon of pokes.results){
+                        lstPokemones.innerHTML += `<li class="list-group-item">
+                            <a href="pokemon.html?id=${id}">${pokemon.name}</a>
+                            </li>`;
+                        id++;
+                    }
+               }
+            });
+            xhr.open("GET","https://pokeapi.co/api/v2/pokemon/", true);
+            xhr.send();
+        })
+    </script>
+</head>
+<body>
+    <header class="bg-dark text-light text-center p-2">
+        <h1>Probando la Pokeapi</h1>
+    </header>
+    <main class="container">
+        <ul id="lstPokemones" class="list-group mt-3">
+            <li class="list-group-item active">Listado de Pokemones</li>
+        </ul>
+    </main>
+</body>
+</html>

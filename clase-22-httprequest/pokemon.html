@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="node_modules/axios/dist/axios.js"></script>
+    <script>
+        /*function toTitleCase(str){
+            return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
+        }*/
+
+        String.prototype.toTitleCase = function(){
+            return this.charAt(0).toUpperCase() + this.substr(1).toLowerCase(); 
+        }
+
+        window.addEventListener("load",()=>{
+            let params = new URLSearchParams(window.location.search);
+            let main = document.querySelector("main");
+            let id = params.get("id");
+            if (id===null){
+                main.innerHTML = `<h2>No se ha seleccionado ningun pokemon</h2>`
+            }else{
+               //main.innerHTML = `<h2>Se ha seleccionado el pokemon ${id}</h2>`
+               axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`).then((resp)=>{
+                    let pokemon = resp.data;
+                    
+                    let ulHabilidades = '<ul class="list-group w-25 mx-auto">'
+                    ulHabilidades += `<li class="list-group-item active">Habilidades</li>`
+                    /*for (let elem of pokemon.abilities){
+                        ulHabilidades += `<li class="list-group-item">${elem.ability.name}</li>`;
+                    }*/
+                    ulHabilidades += pokemon.abilities.map((elem)=>{
+                        return `<li class="list-group-item">${elem.ability.name}</li>`
+                    }).join(" ");
+                    ulHabilidades += '</ul>'
+
+                    let ulMovimientos = '<ul class="list-group w-25 mx-auto mt-3">'
+                    ulMovimientos += `<li class="list-group-item active">Movimientos</li>`
+                    for (let elem of pokemon.moves){
+                        ulMovimientos += `<li class="list-group-item">${elem.move.name}</li>`;
+                    }
+                    ulMovimientos += '</ul>'
+
+                    main.innerHTML = `<div class="text-center">
+                        <h2>${pokemon.name.toTitleCase()}</h2>
+                        <img src="${pokemon.sprites.front_default}" />
+                        <img src="${pokemon.sprites.back_default}" />
+                        ${ulHabilidades}
+                        ${ulMovimientos}
+                    </div>`
+               })
+            }
+        })
+    </script>
+</head>
+<body>
+    <header class="bg-dark text-light text-center p-2">
+        <h1>Probando la Pokeapi</h1>
+    </header>
+    <a class="float-end" href="index.html">Volver</a>
+    <main class="container mt-3">
+
+    </main>
+</body>
+</html>
