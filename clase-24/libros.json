@@ -1,0 +1,60 @@
+{
+    "libros": [
+        {
+            "id": 1,
+            "nombre": "El señor de los anillos",
+            "autor": "J.R.R.Tolkien",
+            "genero": "Fantasia",
+            "paginas": 1230,
+            "puntuacion": 10
+        },
+        {
+            "id": 2,
+            "nombre": "Game of Thrones",
+            "autor": "R.R.Martin",
+            "genero": "Fantasia",
+            "paginas": 5100,
+            "puntuacion": 7
+        },
+        {
+            "id": 3,
+            "nombre": "Harry Potter",
+            "autor": "Rowling",
+            "genero": "Fantasia",
+            "paginas": 3100,
+            "puntuacion": 9
+        },
+        {
+            "id": 4,
+            "nombre": "Enders Game",
+            "autor": "Orson Scott",
+            "genero": "Fantasia",
+            "paginas": 2100,
+            "puntuacion": 8
+        },
+        {
+            "id": 5,
+            "nombre": "Fahrenheit 451",
+            "autor": "Ray Bradbury",
+            "genero": "Sci-Fi",
+            "paginas": 220,
+            "puntuacion": 9
+        },
+        {
+            "id": 6,
+            "nombre": "Dead Sky,Black Sun",
+            "autor": "Graham McNeill ",
+            "genero": "Heavy",
+            "paginas": 2100,
+            "puntuacion": 10
+        },
+        {
+            "id": 7,
+            "nombre": "Moby Dick",
+            "autor": " Herman Melville",
+            "genero": "Novela",
+            "paginas": 823,
+            "puntuacion": 10
+        }
+    ]
+}

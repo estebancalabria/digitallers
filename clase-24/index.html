@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 24</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        let datos = [
+            { id: 1, nombre: "El señor de los anillos", autor: "J.R.R.Tolkien", genero: "Fantasia", paginas: 1230, puntuacion: 10 },
+            { id: 2, nombre: "Game of Thrones", autor: "R.R.Martin", genero: "Fantasia", paginas: 5100, puntuacion: 7 },
+            { id: 3, nombre: "Harry Potter", autor: "Rowling", genero: "Fantasia", paginas: 3100, puntuacion: 9 },
+            { id: 4, nombre: "Enders Game", autor: "Orson Scott", genero: "Fantasia", paginas: 2100, puntuacion: 8 },
+            { id: 5, nombre: "Fahrenheit 451", autor: "Ray Bradbury", genero: "Sci-Fi", paginas: 220, puntuacion: 9 },
+            {
+                id: 6,
+                nombre: "Dead Sky,Black Sun",
+                autor: "Graham McNeill ",
+                genero: "Heavy",
+                paginas: 2100,
+                puntuacion: 8,
+            },
+            { id: 7, nombre: "Moby Dick", autor: " Herman Melville", genero: "Novela", paginas: 823, puntuacion: 10 }
+        ]
+
+        function cargarIdElemento(evt){
+            console.log(evt.target.id);
+            evt.dataTransfer.setData("text", evt.target.id);cargarIdElemento
+        }
+
+        function mostrarLibros(libros) {
+            document.getElementById("libros").innerHTML =
+                libros.map((e) => (`<li class='list-group-item' draggable="true" id="libro${e.id}" ondragstart="cargarIdElemento(event)">
+                                        ${e.nombre}
+                                    </li>`)).join(" ");
+
+            document.getElementById("totalPaginas").innerHTML = libros.reduce((acumulador, libro) => { return acumulador + libro.paginas }, 0)
+
+        }
+
+        window.addEventListener("load", () => {
+            /*datos.forEach((e)=>{
+                document.getElementById("libros").innerHTML += `<li class='list-group-item'>${e.nombre}</li>`;
+            })*/
+
+            /*document.getElementById("libros").innerHTML =
+                datos.map((e) => (`<li class='list-group-item'>${e.nombre}</li>`)).join(" ");
+
+            document.getElementById("totalPaginas").innerHTML = datos.reduce((acumulador, libro) => { return acumulador + libro.paginas }, 0)*/
+            mostrarLibros(datos);
+
+            document.getElementById("txtFilter").addEventListener("keyup", (evt) => {
+                let datosFiltrados = datos.filter((p) => { return p.nombre.toLowerCase().includes(evt.target.value.toLowerCase()) });
+
+                /*document.getElementById("libros").innerHTML =
+                    datosFiltrados.map((e) => (`<li class='list-group-item'>${e.nombre}</li>`)).join(" ");
+
+                document.getElementById("totalPaginas").innerHTML = datosFiltrados.reduce((acumulador, libro) => { return acumulador + libro.paginas }, 0)*/
+                mostrarLibros(datosFiltrados);
+            })
+        });
+
+        function aceptarElemento(ev) {
+            ev.preventDefault();
+        }
+
+        function drop(evt) {
+            let idLibro = evt.dataTransfer.getData("text");
+            let li = document.getElementById(idLibro);
+            let ulSeleccionados = document.getElementById("librosSeleccionados");
+            ulSeleccionados.appendChild(li);
+        }
+
+    </script>
+</head>
+
+<body>
+    <header class="bg-info text-light text-center p-3 mb-5">
+        <h1>&#10084;Clase 24&#10084;</h1>
+    </header>
+    <main class="container row">
+        <div class="col-6">
+            <h2>Libros Disponibles</h2>
+            <input id="txtFilter" type="text" class="form-control" value="dsds" />
+            <ul id="libros" class="list-group ">
+
+            </ul>
+            <h3>Total Paginas <span id="totalPaginas"></span> </h3>
+        </div>
+        <div class="col-6">
+            <h2>Libros Seleccionados</h2>
+            <ul id="librosSeleccionados" class="list-group ">
+
+            </ul>
+            <div class="bg-secondary" ondragover="aceptarElemento(event)" ondrop="drop(event)">
+                Arrastrar libros seleccionados aqui
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
