@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promesas</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+    <header class="bg-dark text-light text-center">
+        <h1>
+            Promesas
+        </h1>
+    </header>
+    <section>
+        <h2>LLamada asincronica con API fetch</h2>
+        <button id="btn1" class="btn btn-primary">Hacer llamada Api Fech</button>
+        <div id="resultado1"></div>
+        <script>
+            document.getElementById("btn1").addEventListener("click", () => {
+                fetch("www.no-existe.blalblabla.com")
+                    .then((resp) => (resp.json()))
+                    .then((body) => {
+                        //alert(body)
+                        //Manejo el body
+                    })
+                    .catch((err) => {
+                        //alert(err);
+                        //Manejo el error
+                    })
+            })
+        </script>
+    </section>
+    <hr />
+    <section>
+        <h2>LLamada asincronica con API fetch</h2>
+        <button id="btn2" class="btn btn-primary">Hacer llamada Api Fech Async/Await</button>
+        <div id="resultado2"></div>
+        <script>
+            document.getElementById("btn2").addEventListener("click", async () => {
+                try {
+                    let resp = await fetch("www.no-existe.blalblabla.com");
+                    let body = await resp.json();
+                    alert(body);
+                } catch (err) {
+                    alert("Error " + err);
+                }
+            });
+        </script>
+    </section>
+    <hr />
+    <section>
+        <h2>Nuestra promesa sleep</h2>
+        <button id="btn3" class="btn btn-primary">Sleep</button>
+        <div id="resultado3"></div>
+        <script>
+            function sleep(milisegundos) {
+                //La promesa recibe dos metodo como parametros : accept y reject
+                //Cuando hacemos then se ejecuta el accept
+                //Cuando hacemos catch se ejecuta el reject
+                return new Promise((accept, reject) => {
+                    setTimeout(accept, milisegundos);
+                });
+            }
+
+            /*document.getElementById("btn3").addEventListener("click", async ()=>{
+                sleep(1000).then(()=>{
+                     document.getElementById("resultado3").innerHTML = "*Faltan 5 segundos";
+                     sleep(1000).then(()=>{
+                         document.getElementById("resultado3").innerHTML = "*Ahora 4";
+                         sleep(1000).then(()=>{
+                             document.getElementById("resultado3").innerHTML = "*3, estamos cerca!";
+                             sleep(1000).then(()=>{
+                                 document.getElementById("resultado3").innerHTML = "*Ya casi, 2";
+                                 sleep(1000).then(()=>{
+                                     document.getElementById("resultado3").innerHTML = "*Uffff que ansioso, 1";
+                                     sleep(1000).then(()=>{
+                                         document.getElementById("resultado3").innerHTML = "*Despegue";                        
+                                     })                    
+                                 })                
+                             })            
+                         })
+                     })
+                })
+            });*/
+
+            /*document.getElementById("btn3").addEventListener("click", async ()=>{
+                 await sleep(1000);
+                 document.getElementById("resultado3").innerHTML = "Faltan 5 segundos";
+                 await sleep(1000);
+                 document.getElementById("resultado3").innerHTML = "Ahora 4";
+                 await sleep(1000);
+                 document.getElementById("resultado3").innerHTML = "3, estamos cerca!";
+                 await sleep(1000);
+                 document.getElementById("resultado3").innerHTML = "Ya casi, 2";
+                 await sleep(1000);
+                 document.getElementById("resultado3").innerHTML = "Uffff que ansioso, 1";
+                 await sleep(1000);
+                 document.getElementById("resultado3").innerHTML = "Despegue";
+            })*/
+
+            async function fadeIn(element, milisegundos) {
+                let pasos = 20;
+                for (let i = 1; i <= pasos; i++) {
+                    element.style.opacity = i / pasos;
+                    await sleep(milisegundos / pasos)
+                }
+            }
+
+            document.getElementById("btn3").addEventListener("click", async () => {
+                let resultado3 = document.getElementById("resultado3");
+                resultado3.innerHTML = "Me muestro de a poco";
+                fadeIn(resultado3, 5000);
+            });
+        </script>
+    </section>
+    <hr />
+    <section>
+        <h2>Manejando eventos con promesas</h2>
+        <button id="btn4" class="btn btn-primary">Este boton se maneja con promesas</button>
+        <div id="resultado4"></div>
+        <script>
+            function click(selector) {
+                let elemento = document.querySelector(selector);
+                if (elemento) {
+                    return new Promise((accept, reject) => {
+                        elemento.addEventListener("click", () => { accept(elemento) })
+                    })
+                }
+                return new Promise((accept, reject) => { reject("Elemento no encontrado") });
+            }
+
+            (async () => {
+                await click("#btn4"); //Funciona si hago click una sola vez
+                document.getElementById("resultado4").innerHTML = "Hiciste click una vez";
+                await click("#btn4"); //Funciona si hago click una sola vez
+                document.getElementById("resultado4").innerHTML = "Hiciste click una vez mas";
+                await click("#btn4"); //Funciona si hago click una sola vez
+                document.getElementById("resultado4").innerHTML = "Hiciste click ooootra vez mas";
+                await click("#btn4"); //Funciona si hago click una sola vez
+                document.getElementById("resultado4").innerHTML = "La ultima, no doy mas bola";
+            })(); //Funcion anonima invocada inmediatamente
+        </script>
+    </section>
+    <hr />
+    <section>
+        <div id="tateti" class="text-center">
+            <div>
+                <button class="btn btn-primary"></button>
+                <button class="btn btn-primary"></button>
+                <button class="btn btn-primary"></button>
+            </div>
+            <div>
+                <button class="btn btn-primary"></button>
+                <button class="btn btn-primary"></button>
+                <button class="btn btn-primary"></button>
+            </div>
+            <div>
+                <button class="btn btn-primary"></button>
+                <button class="btn btn-primary"></button>
+                <button class="btn btn-primary"></button>
+            </div>
+        </div>
+        <script>
+            //jugador es "X" o "Y"
+            function clickTateti(jugador) {
+                return new Promise((accept, reject) => {
+                    document.querySelectorAll("#tateti>div>button").forEach((button) => {
+                        button.addEventListener("click", () => {
+                            button.innerHTML = jugador;
+                            button.disabled = true;
+                            accept();
+                        })
+                    })
+                })
+            }
+
+            function ganaJugador(tablero, jugador) {
+
+                if (tablero[0].includes(jugador)
+                    && tablero[1].includes(jugador)
+                    && tablero[2].includes(jugador)) {
+                    console.log("Gano " + jugador);
+                    return true;
+                }
+
+                if (tablero[3].includes(jugador)
+                    && tablero[4].includes(jugador)
+                    && tablero[5].includes(jugador)) {
+                    return true;
+                }
+
+                if (tablero[6].includes(jugador)
+                    && tablero[7].includes(jugador)
+                    && tablero[8].includes(jugador)) {
+                    return true;
+                }
+                //..Otras opciones
+                console.log("No gana nadie");
+                return false;
+            }
+
+            (async () => {
+                let jugador = "X";
+                let tablero = [...document.querySelectorAll("#tateti>div>button")].map((b)=>b.innerHTML);
+                while (!ganaJugador(tablero, "X") && !ganaJugador(tablero, "O")) {
+                    await clickTateti(jugador);
+                    jugador = jugador.includes("X") ? "O" : "X";
+                    tablero = [...document.querySelectorAll("#tateti>div>button")].map((b)=>b.innerHTML);
+                    //console.log([...document.querySelectorAll("#tateti>div>button")].map((b)=>b.innerHTML));
+                }
+
+                if (ganaJugador(tablero,"X")) {alert("FelicitacioneS X")}
+                if (ganaJugador(tablero,"O")) {alert("FelicitacioneS O")}
+            })();
+        </script>
+    </section>
+</body>
+
+</html>
