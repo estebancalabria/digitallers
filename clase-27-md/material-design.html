@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper>
+            <a href="#" class="brand-logo ">Material Design Demo</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main class="container">
+        <div class="row" style="margin-top: 2em;">
+            <div class="col s3"></div>
+            <div class="col s6 z-depth-2">
+                <form class="row">
+                    <div class="col s10 offset-s1" style="margin-top: 2em">
+                        <img class="responsive-img circle" src="https://thispersondoesnotexist.com" />
+                    </div>
+                    <div class="input-field col s10 offset-s1">
+                        <input id="first_name" type="text" class="validate">
+                        <label for="first_name">Nombre</label>
+                    </div>
+                    <div class="input-field col s10 offset-s1">
+                        <input id="last_name" type="text" class="validate">
+                        <label for="last_name">Apellido</label>
+                    </div>
+                    <div class="input-field col s10 offset-s1">
+                        <select>
+                            <option value="" disabled selected>Pais</option>
+                            <option value="1">Argentina</option>
+                            <option value="2">Brasil</option>
+                            <option value="3">Bolivia</option>
+                        </select>
+                    </div>
+
+                    <div class="col s10 offset-s1">
+                        <a class="waves-effect waves-light btn right">Submit</a>
+                    </div>
+                </form>
+            </div>
+            <div class="col s3"></div>
+
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+        });
+    </script>
+</body>
+
+</html>
