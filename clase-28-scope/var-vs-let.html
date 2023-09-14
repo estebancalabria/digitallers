@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope de Variables</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="./js/contador.js"></script>
+    <script src="./js/timer.js"></script>
+    <script>
+        //"use strict";
+        //Estoy usando una variable sin declarar
+        //a = 20;
+        //console.log("El valor de a es " + a); 
+        //Con el "use strict" no me deja usar una variable sin declarar
+
+        /*function conVar() {
+            console.log("Con Var");
+            var x = 10;
+            if (x > 5) {
+                var x = 20;  //La estoy redeclarando, pisando
+                console.log(x);
+            }
+            console.log(x);
+        }
+        //conVar();
+
+        function conLet() {
+            console.log("Con Let");
+            let x = 10;
+            if (x > 5) {
+                let x = 20;  //La estoy "ocultando", pero x sigue viva en el bloque padre
+                console.log(x);
+            }
+            console.log(x);
+        }
+        //conLet();*/
+
+        //Es una funcion pura: Depende solo de los parametros y las variables que declara dentro
+        /*function puraIncrementar(x){
+            const y = 1;
+            return x + y;
+        }
+        let x = 10;
+        x = puraIncrementar(x);
+        console.log(x);*/
+
+        //vamos a hacer una funcion impura
+        /*let num = 10;
+        function impuraIncrementar(){
+            num = num + 1;
+        }
+        impuraIncrementar();
+        console.log(num);*/
+
+        //Patron modulo
+
+
+
+        //Por naturaleza el manejo de los eventos suele ser "impuro"
+        //lo que trae incovenientes para proyectos grandes
+        window.addEventListener("load", ()=>{
+            
+            document.getElementById("add").addEventListener("click", ()=>{
+                //incrementar();
+                //mostrarContador();
+                counter.inc();
+                counter.showIn(document.getElementById("veces"));
+            })
+
+            document.getElementById("substract").addEventListener("click", ()=>{
+                //decrementar();
+                //mostrarContador();
+                counter.dec();
+                counter.showIn(document.getElementById("veces"));
+
+            });
+
+            timer.showIn(document.getElementById("segundos"));
+            document.getElementById("iniciar").addEventListener("click",()=>{
+                //iniciar();
+                timer.init();
+            })
+
+            document.getElementById("detener").addEventListener("click",()=>{
+                //detener();
+                timer.stop();
+            })
+
+        });
+
+        //Vamos a suponer que el de abjo, el timer lo programo otra persona distinta
+        //Esta persona no sabe del codigo de arriba
+
+
+    </script>
+</head>
+
+<body>
+    <section class="text-center mt-5 p-3 w-50 mx-auto border">
+        <h1>Contador : <span id="veces">0</span></h1>
+        <button id="add" class="btn btn-primary" >+</button>
+        <button id="substract" class="btn btn-danger" >-</button>
+    </section>
+
+    <section class="text-center mt-5 p-3 w-50 mx-auto border">
+        <h1>Segundos : <span id="segundos">0</span></h1>
+        <button id="iniciar" class="btn btn-primary" >+</button>
+        <button id="detener" class="btn btn-danger" >-</button>
+    </section>
+
+    <span></span>
+    <script>
+        //Es pura o impura? >> Es Impura
+        /*function cargarSpan(){
+            //Usa la variable global document por lo que no es una funcion pura
+            document.querySelector("span").innerHTML = "Hola Mundo";
+        }
+        cargarSpan();*/
+        
+        //La convierto en pura
+        /*function cargarSpan(page){
+            //Usa la variable global document por lo que no es una funcion pura
+            page.querySelector("span").innerHTML = "Hola Mundo";
+        }
+        cargarSpan(document);*/
+
+
+    </script>
+</body>
+
+</html>
