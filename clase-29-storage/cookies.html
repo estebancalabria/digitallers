@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vamos a jugar con las Cookies</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+    <script>
+
+        function guardarCookie(store, nombre, valor, duracion){
+            let fechaExpira = new Date();
+            fechaExpira.setDate(fechaExpira.getDate() + duracion);
+
+            let cookie = `${nombre}=${valor};expires=${fechaExpira.toUTCString()}`;
+            store.cookie = cookie;
+        }
+
+        function leerCookie(store, nombre){
+            let cookies = store.cookie.split(";");
+            let valorCookie = "Cookie no encontrada";
+            cookies.forEach((c)=>{
+                let [nombreCookie, valor] = c.split("=");
+                if (nombre===nombreCookie){
+                    valorCookie= valor;
+                }
+            });
+            return valorCookie;
+        }
+
+        window.addEventListener("load",()=>{
+
+            document.querySelector("#btnGuardarCookie").addEventListener("click",()=>{
+                let nombreCookie = document.getElementById("nombreCookie").value;
+                let valorCookie  = document.getElementById("valorCookie").value;
+                guardarCookie(document, nombreCookie, valorCookie, 2);
+            });
+
+            document.querySelector("#btnListarCookies").addEventListener("click",()=>{
+                //alert(document.cookie);
+                let cookies = document.cookie.split(";");
+                cookies.forEach((c)=>{alert(c)});
+            })
+
+            document.querySelector("#btnLeerCookie").addEventListener("click",()=>{
+                let nombreCookieLeer = document.getElementById("nombreCookieLeer").value;
+                let valorCookie = leerCookie(document, nombreCookieLeer);
+                document.getElementById("valorCookieLeer").value = valorCookie;         
+            });
+        })
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Vamos a jugar con las cookies</h1>
+    </header>
+    <main>
+        <form class="formulario-centrado">
+            <div>
+                <label>Nombre Cookie</label>
+                <input id="nombreCookie" type="text" class="form-input"/>
+            </div>
+            <div>
+                <label>Valor Cookie</label>
+                <input id="valorCookie" type="text" class="form-input" />
+            </div>
+            <div>
+                <button id="btnGuardarCookie" class="boton-ancho" type="button">Guardar Cookie</button>
+            </div>
+        </form>
+        <Button id="btnListarCookies"  class="boton-ancho">Listar Cookies</Button>
+        <form class="formulario-centrado">
+            <div>
+                <label>Nombre Cookie a Leer</label>
+                <input id="nombreCookieLeer" type="text" class="form-input"/>
+            </div>
+            <div>
+                <label>Valor Cookie</label>
+                <input id="valorCookieLeer" type="text" class="form-input" disabled/>
+            </div>
+            <div>
+                <button id="btnLeerCookie" class="boton-ancho" type="button">Leer Cookie</button>
+            </div>
+        </form>
+
+    </main>
+</body>
+</html>
