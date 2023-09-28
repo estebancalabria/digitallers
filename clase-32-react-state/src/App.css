@@ -1,0 +1,10 @@
+
+/*Trucazo de Responsive : Que se ajuste el tamaño del font al ancho de la pantalla*/
+/* vw es viewport widh. Va de 0 a 100. El ancho de la pantalla visible*/
+h1 {
+  font-size: 4.5vw;
+}
+
+h2{
+  font-size: 3.5vw;
+}
