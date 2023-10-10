@@ -1,0 +1,34 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Auriculares Inalámbricos",
+      "precio": 49.99,
+      "descripcion": "Auriculares inalámbricos con tecnología Bluetooth para una experiencia sin cables."
+    },
+    {
+      "id": 2,
+      "nombre": "Impresora",
+      "precio": 200,
+      "descripcion": "Impresora multifunción a color"
+    },
+    {
+      "id": 3,
+      "nombre": "Auriculares Deportivos Resistentes al Agua",
+      "precio": 79.99,
+      "descripcion": "Auriculares diseñados para deportes, resistentes al agua y con ajuste seguro para un uso cómodo durante las actividades físicas."
+    },
+    {
+      "id": 4,
+      "nombre": "Teclado",
+      "descripcion": "Teclado gamer Redragon Mitra K551 QWERTY Outemu Blue español latinoamérica color negro con luz RGB",
+      "precio": 40.699
+    },
+    {
+      "nombre": "Televisor",
+      "descripcion": "Para ver el mundial",
+      "precio": 1000,
+      "id": 5
+    }
+  ]
+}
