@@ -1,0 +1,70 @@
+{
+    "peliculas": [
+        {
+            "nombre": "Pulp Fiction",
+            "año": "1994",
+            "id": "1",
+            "genero": "Crimen"
+        },
+        {
+            "nombre": "El Padrino",
+            "año": "1972",
+            "id": "2",
+            "genero": "Drama"
+        },
+        {
+            "nombre": "El caballero oscuro",
+            "año": "2008",
+            "id": "3",
+            "genero": "Acción"
+        },
+        {
+            "nombre": "El señor de los anillos: El retorno del rey",
+            "año": "2003",
+            "id": "4",
+            "genero": "Aventura"
+        },
+        {
+            "nombre": "La lista de Schindler",
+            "año": "1993",
+            "id": "5",
+            "genero": "Biografía"
+        },
+        {
+            "nombre": "El rey león",
+            "año": "1994",
+            "id": "6",
+            "genero": "Animación"
+        },
+        {
+            "nombre": "Forrest Gump",
+            "año": "1994",
+            "id": "7",
+            "genero": "Comedia"
+        },
+        {
+            "nombre": "Origen",
+            "año": "2010",
+            "id": "8",
+            "genero": "Misterio"
+        },
+        {
+            "nombre": "El gran dictador",
+            "año": "1940",
+            "id": "9",
+            "genero": "Guerra"
+        },
+        {
+            "nombre": "Matrix",
+            "año": "1999",
+            "id": "10",
+            "genero": "Ciencia ficción"
+        },
+        {
+            "id": 11,
+            "nombre": "Duro de Matar",
+            "año": 1988,
+            "genero": "Acción"
+        }
+    ]
+}
