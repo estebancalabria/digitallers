@@ -1,0 +1,40 @@
+{
+  "ia": [
+    {
+      "id": 1,
+      "nombre": "ChatGPT",
+      "url": "https://chat.openai.com/",
+      "tematica": "ChatBot"
+    },
+    {
+      "id": 2,
+      "nombre": "Bard",
+      "url": "https://bard.google.com/",
+      "tematica": "ChatBot"
+    },
+    {
+      "id": 3,
+      "nombre": "This Person Does Not Exists",
+      "url": "https://thispersondoesnotexist.com/",
+      "tematica": "Generacion de Imagenes"
+    },
+    {
+      "id": 4,
+      "nombre": "DeepL",
+      "url": "https://www.deepl.com/es/translator",
+      "tematica": "Traductor"
+    },
+    {
+      "id": 5,
+      "nombre": "Sinthesia",
+      "url": "https://www.synthesia.io/",
+      "tematica": "Generacion de Videos"
+    },
+    {
+      "nombre": "A",
+      "url": "A",
+      "tematica": "A",
+      "id": 6
+    }
+  ]
+}
