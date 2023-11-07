@@ -6,7 +6,8 @@ const TablaLibros = () => {
     const listaLibros = useSelector(state => state.libros);
     return (<Tabla
         columnas={["nombre", "autor"]}
-        items={listaLibros} />);
+        items={listaLibros} 
+        onEditar={(libro)=>{alert("Se Edita el libro")}}/>);
 }
 
 
