@@ -1,0 +1,24 @@
+{
+  "libros": [
+    {
+      "id": 1,
+      "nombre": "The Witcher",
+      "autor": "Andrzej Sapkowski"
+    },
+    {
+      "id": 2,
+      "nombre": "Los juegos del hambre",
+      "autor": "Suzana Collins"
+    },
+    {
+      "id": 3,
+      "nombre": "Moby Dick",
+      "autor": "Herman Melville"
+    },
+    {
+      "id": 4,
+      "nombre": "El señor de los anillos",
+      "autor": "J.R.R.Tolkien"
+    }
+  ]
+}
