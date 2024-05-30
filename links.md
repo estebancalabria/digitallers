@@ -1,5 +1,10 @@
 # Links que vamos recopilando
 
+## Clase 2 - 
+
+* Nerderarla. Van a ir?
+> https://nerdear.la/es/
+
 ## Clase 1 - Digitalers IA 2024
 
 * Google Colab
