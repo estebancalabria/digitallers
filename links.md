@@ -8,6 +8,9 @@
 * Oppen Assistant
 > https://github.com/LAION-AI/Open-Assistant
 
+* Meetiups
+> https://www.meetup.com/es/sysarmy/
+
 ## Clase 1 - Digitalers IA 2024
 
 * Google Colab
