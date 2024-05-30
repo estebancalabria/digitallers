@@ -5,6 +5,9 @@
 * Nerderarla. Van a ir?
 > https://nerdear.la/es/
 
+* Oppen Assistant
+> https://github.com/LAION-AI/Open-Assistant
+
 ## Clase 1 - Digitalers IA 2024
 
 * Google Colab
