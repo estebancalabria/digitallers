@@ -8,6 +8,9 @@
 * Suno
 > https://suno.com/
 
+* There is an AI for that
+> https://theresanaiforthat.com/
+
 ## Clase 2 - 
 
 * Nerderarla. Van a ir?
