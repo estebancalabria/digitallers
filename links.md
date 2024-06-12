@@ -1,5 +1,13 @@
 # Links que vamos recopilando
 
+## Clase 5
+
+* Noisee
+> https://noisee.ai/
+
+* Suno
+> https://suno.com/
+
 ## Clase 2 - 
 
 * Nerderarla. Van a ir?
