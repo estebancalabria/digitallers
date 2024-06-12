@@ -1,5 +1,13 @@
 # Links que vamos recopilando
 
+## Clase 6
+
+* Future Tools
+> https://www.futuretools.io/
+
+*  Udio
+> https://www.udio.com/
+
 ## Clase 5
 
 * Noisee
