@@ -2,6 +2,9 @@
 
 ## Clase 6
 
+* Pixverse
+> https://pixverse.ai/
+
 * Runway ML
 > https://runwayml.com/
 
