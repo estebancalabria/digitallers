@@ -2,6 +2,9 @@
 
 ## Clase 6
 
+* Luma ai (Investigar de tarea
+> https://lumalabs.ai/dream-machine
+
 * Pixverse
 > https://pixverse.ai/
 
