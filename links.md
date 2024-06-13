@@ -2,11 +2,24 @@
 
 ## Clase 6
 
+* Runway ML
+> https://runwayml.com/
+
+* Haiper
+> https://haiper.ai/
+
+* Blue Willow
+> https://bluewillow.ai/
+
 * Future Tools
 > https://www.futuretools.io/
 
 *  Udio
 > https://www.udio.com/
+
+* Pika Labs
+> https://pika.art/
+
 
 ## Clase 5
 
