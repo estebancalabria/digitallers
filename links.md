@@ -1,5 +1,12 @@
 # Links que vamos recopilando
+## Clase 7
 
+*Hugging Face Spaces
+> https://huggingface.co/spaces
+
+*Links de lo que hicios de python
+> https://colab.research.google.com/drive/1ymOhkvMwpsYa29iMettGtm7alXmdB94b?usp=sharing
+> 
 ## Clase 6
 
 * Luma ai (Investigar de tarea
