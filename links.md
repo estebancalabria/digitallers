@@ -13,9 +13,6 @@
 
 ## Clase 7
 
-* Colab de lo que vimos de python
-> https://colab.research.google.com/drive/1ymOhkvMwpsYa29iMettGtm7alXmdB94b?usp=sharing
-
 
 *Hugging Face Spaces
 > https://huggingface.co/spaces
