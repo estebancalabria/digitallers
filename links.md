@@ -1,5 +1,21 @@
 # Links que vamos recopilando
+
+## Clase 8
+
+* Hedra para generar avatars
+> https://www.hedra.com/
+
+* Generar Bocetos de Imagenes, Fusionar Imagenes, etc
+> https://www.promeai.pro/
+
+* Colab de lo que vimos de python
+> https://colab.research.google.com/drive/1Id2CLgPnnPiQ5qiuTHxEVx7cS9MYwHza?usp=sharing
+
 ## Clase 7
+
+* Colab de lo que vimos de python
+> https://colab.research.google.com/drive/1ymOhkvMwpsYa29iMettGtm7alXmdB94b?usp=sharing
+
 
 *Hugging Face Spaces
 > https://huggingface.co/spaces
