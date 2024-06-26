@@ -1,5 +1,13 @@
 # Links que vamos recopilando
 
+## Clase 9
+
+Jasper
+> https://www.jasper.ai/
+
+Rezi
+> https://www.rezi.ai/
+
 ## Clase 8
 
 * Hedra para generar avatars
