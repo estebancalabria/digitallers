@@ -2,11 +2,14 @@
 
 ## Clase 9
 
-Jasper
+* Jasper
 > https://www.jasper.ai/
 
-Rezi
+* Rezi
 > https://www.rezi.ai/
+
+* Colab de lo que vimos en python hoy
+> https://colab.research.google.com/drive/1DHPC_ZEBJCTciWvOUtLJvcKYPq0AAkUu?usp=sharing
 
 ## Clase 8
 
