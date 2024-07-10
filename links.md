@@ -2,11 +2,18 @@
 
 ## Clase 13
 
-* Serie de Netflix par ver (Nada es Privado)
+* Serie de Netflix par ver (Nada es Privado) (Gracias Luciano)
 > https://www.netflix.com/ar/title/80117542
+
+* Otro documental de netflix (Prejuicio Cifrado) (Gracias Maira)
+> https://www.netflix.com/ar/title/81328723 
 
 * Articulo de Cambridge Analytical (Gracias Luciano)
 > https://es.wikipedia.org/wiki/Esc%C3%A1ndalo_de_datos_de_Facebook-Cambridge_Analytic
+
+* Kagle (Recurso para aprender ML)
+> https://www.kaggle.com/
+
 
 ## Clase 9
 
