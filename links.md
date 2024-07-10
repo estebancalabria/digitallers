@@ -11,6 +11,9 @@
 * Articulo de Cambridge Analytical (Gracias Luciano)
 > https://es.wikipedia.org/wiki/Esc%C3%A1ndalo_de_datos_de_Facebook-Cambridge_Analytic
 
+* ML For Sheets
+> https://simplemlforsheets.com/
+
 * Kagle (Recurso para aprender ML)
 > https://www.kaggle.com/
 
