@@ -1,5 +1,13 @@
 # Links que vamos recopilando
 
+## Clase 13
+
+* Serie de Netflix par ver (Nada es Privado)
+> https://www.netflix.com/ar/title/80117542
+
+* Articulo de Cambridge Analytical (Gracias Luciano)
+> https://es.wikipedia.org/wiki/Esc%C3%A1ndalo_de_datos_de_Facebook-Cambridge_Analytic
+
 ## Clase 9
 
 * Jasper
