@@ -1,5 +1,13 @@
 # Links que vamos recopilando
 
+## Clase 14
+
+* Pagina para instalar MySQL
+> https://dev.mysql.com/downloads/installer/
+
+* Un chatbot conversacional con voz
+> https://moshi-ai.com/es
+
 ## Clase 13
 
 * Serie de Netflix par ver (Nada es Privado) (Gracias Luciano)
