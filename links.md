@@ -5,7 +5,7 @@
 * Pagina para instalar MySQL
 > https://dev.mysql.com/downloads/installer/
 
-* Un chatbot conversacional con voz
+* Un chatbot conversacional con voz (Gracias Ezequiel)
 > https://moshi-ai.com/es
 
 ## Clase 13
