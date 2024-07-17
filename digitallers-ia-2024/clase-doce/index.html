@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deliciosas Recetas - Página de Inicio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #f4a460;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        nav {
+            background-color: #f4a460;
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        .recipe-card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Deliciosas Recetas</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Recetas</a></li>
+            <li><a href="#">Categorías</a></li>
+            <li><a href="#">Acerca de</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>Recetas Destacadas</h2>
+        <div class="recipe-card">
+            <h3>Pasta al Pesto</h3>
+            <svg width="200" height="200" viewBox="0 0 200 200">
+                <rect width="200" height="200" fill="#90EE90"/>
+                <circle cx="100" cy="100" r="80" fill="#228B22"/>
+                <path d="M60,100 Q100,40 140,100" stroke="white" stroke-width="6" fill="none"/>
+            </svg>
+            <p>Una deliciosa pasta con salsa pesto casera...</p>
+        </div>
+        <div class="recipe-card">
+            <h3>Tarta de Manzana</h3>
+            <svg width="200" height="200" viewBox="0 0 200 200">
+                <rect width="200" height="200" fill="#FFE4B5"/>
+                <circle cx="100" cy="100" r="80" fill="#D2691E"/>
+                <path d="M60,80 Q100,20 140,80 Q100,140 60,80" fill="#8B4513"/>
+            </svg>
+            <p>Una tarta de manzana clásica con un toque de canela...</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Deliciosas Recetas. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
