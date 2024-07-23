@@ -1,5 +1,10 @@
 # Links que vamos recopilando
 
+## Clase 16
+
+* Pagina para aprender SQL
+> https://www.w3schools.com/mysql/mysql_select.asp
+
 ## Clase 14
 
 * Pagina para instalar MySQL
