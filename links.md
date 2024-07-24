@@ -5,6 +5,9 @@
 * Pagina para Extraer links
 > https://www.browse.ai/
 
+* Herramienta para genercion de videos
+> https://app.pixverse.ai/login
+
 ## Clase 16
 
 * Pagina para aprender SQL
