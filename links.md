@@ -1,5 +1,13 @@
 # Links que vamos recopilando
 
+## Clase 19
+
+* Pagina para generar videos
+> https://www.domoai.app/
+
+* Pagina para generar videos
+> https://klingai.com/
+
 ## Clase 17
 
 * Pagina para Extraer links
