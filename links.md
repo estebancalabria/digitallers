@@ -1,5 +1,10 @@
 # Links que vamos recopilando
 
+## Clase 21
+
+* Repo de librerias de Python
+> https://github.com/uhub/awesome-python
+
 ## Clase 20
 
 * Host de notebooks de pyton
