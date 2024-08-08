@@ -8,6 +8,9 @@
 * CodePen
 > https://codepen.io/
 
+* Desafio de 100 dias de css
+> https://100dayscss.com/
+
 ## Clase 20
 
 * Host de notebooks de pyton
