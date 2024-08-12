@@ -2,10 +2,10 @@
 
 ## Clase 22
 
-* Herramienta vidu para generar videos
+* Herramienta vidu para generar videos (Gracia Ezequiel)
 > https://www.vidu.studio/
 
-* Herramienta para generar una web *interactiva* rapido con IA
+* Herramienta para generar una web *interactiva* rapido con IA (Gracias Ezequiel)
 > https://websim.ai/
 
 ## Clase 21
