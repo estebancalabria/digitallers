@@ -1,5 +1,13 @@
 # Links que vamos recopilando
 
+## Clase 22
+
+* Herramienta vidu para generar videos
+> https://www.vidu.studio/
+
+* Herramienta para generar una web *interactiva* rapido con IA
+> https://websim.ai/
+
 ## Clase 21
 
 * Repo de librerias de Python
