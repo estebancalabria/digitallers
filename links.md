@@ -1,5 +1,10 @@
 # Links que vamos recopilando
 
+## Clase 23
+
+* Repositorios de Api (Gracias Luciano)
+> https://github.com/marcelscruz/public-apis
+
 ## Clase 22
 
 * Herramienta vidu para generar videos (Gracia Ezequiel)
