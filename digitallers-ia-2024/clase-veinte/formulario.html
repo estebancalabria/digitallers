@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Nueva Persona</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea {
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #mensaje {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .exito {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agregar Nueva Persona</h1>
+        <form id="personaForm">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+            
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required>
+            
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" required>
+            
+            <label for="observaciones">Observaciones:</label>
+            <textarea id="observaciones" name="observaciones"></textarea>
+            
+            <button type="submit">Agregar Persona</button>
+        </form>
+        <div id="mensaje"></div>
+    </div>
+
+    <script>
+        // URL de la API
+        //const url = 'https://c3e8-34-83-253-53.ngrok-free.app"'; // Reemplazar con la URL real de la API
+        const url = prompt("Ingrese la url de la API a para hacer un POST y agregar una persona");
+
+
+        document.getElementById('personaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                nombre: document.getElementById('nombre').value,
+                apellido: document.getElementById('apellido').value,
+                direccion: document.getElementById('direccion').value,
+                telefono: document.getElementById('telefono').value,
+                observaciones: document.getElementById('observaciones').value
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                const mensajeDiv = document.getElementById('mensaje');
+                if (data.id) {
+                    mensajeDiv.innerHTML = `Persona agregada exitosamente. ID: ${data.id}`;
+                    mensajeDiv.className = 'exito';
+                    document.getElementById('personaForm').reset();
+                } else {
+                    mensajeDiv.innerHTML = `Error: ${data.error}`;
+                    mensajeDiv.className = 'error';
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                const mensajeDiv = document.getElementById('mensaje');
+                mensajeDiv.innerHTML = 'Error al conectar con el servidor.';
+                mensajeDiv.className = 'error';
+            });
+        });
+    </script>
+</body>
+</html>

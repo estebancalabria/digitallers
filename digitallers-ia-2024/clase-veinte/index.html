@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos de la API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        #datos {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Datos de la API</h1>
+    <div id="datos">
+
+    </div>
+
+    <script>
+        // URL de la API
+        //const url = 'https://c3e8-34-83-253-53.ngrok-free.app/personas'; // Reemplazar con la URL real de la API
+        const url = prompt("Ingrese la url de la API a consultar");
+
+        // Función para obtener y mostrar los datos
+        async function obtenerDatos() {
+            try {
+                const response = await fetch(url, {
+                    headers: {
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                });
+                const data = await response.json();
+                mostrarDatos(data);
+            } catch (error) {
+                console.error('Error al obtener los datos:', error);
+                document.getElementById('datos').innerHTML = `
+                    <p>Error al cargar los datos.</p>
+                    <p>${error}</p>
+                `;
+            }
+        }
+
+        // Función para mostrar los datos en una tabla
+        function mostrarDatos(data) {
+            let tabla = '<table><tr><th>ID</th><th>Nombre</th><th>Apellido</th><th>Dirección</th><th>Teléfono</th><th>Observaciones</th></tr>';
+            
+            data.forEach(persona => {
+                tabla += `<tr>
+                    <td>${persona.id}</td>
+                    <td>${persona.nombre}</td>
+                    <td>${persona.apellido}</td>
+                    <td>${persona.direccion}</td>
+                    <td>${persona.telefono}</td>
+                    <td>${persona.observaciones}</td>
+                </tr>`;
+            });
+            
+            tabla += '</table>';
+            document.getElementById('datos').innerHTML = tabla;
+        }
+
+        // Llamar a la función para obtener los datos cuando se carga la página
+        window.onload = obtenerDatos;
+    </script>
+</body>
+</html>
