@@ -1,5 +1,10 @@
 # Links que vamos recopilando
 
+## Clase 43
+
+* Generacion de imagenes con google
+> https://aitestkitchen.withgoogle.com/es/tools/image-fx
+
 ## Clase 23
 
 * Repositorios de Api (Gracias Luciano)
