@@ -1,6 +1,11 @@
 # Links que vamos recopilando
 
-## Clase 43
+## Clase 25
+
+* Generador de imagenes flux.1
+> https://www.basedlabs.ai/generate
+
+## Clase 24
 
 * Generacion de imagenes con google
 > https://aitestkitchen.withgoogle.com/es/tools/image-fx
