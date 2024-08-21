@@ -8,6 +8,9 @@
 * Pagina con varias herramientas de imagenes
 > https://www.basedlabs.ai/
 
+* Crear una persona digital
+> https://apob.ai/
+
 ## Clase 24
 
 * Generacion de imagenes con google
