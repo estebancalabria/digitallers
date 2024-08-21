@@ -2,6 +2,9 @@
 
 ## Clase 25
 
+* Mapa Musical (Gracias pedro)
+> https://m.musicmap.info/
+
 * Generador de imagenes flux.1
 > https://www.basedlabs.ai/generate
 
