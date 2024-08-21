@@ -8,10 +8,10 @@
 * Pagina con varias herramientas de imagenes
 > https://www.basedlabs.ai/
 
-* Crear una persona digital
+* Crear una persona digital (Gracias Pedro!)
 > https://apob.ai/
 
-* Llama coder
+* Llama coder (Gracias Pedro!)
 > https://llamacoder.together.ai/
 
 ## Clase 24
