@@ -11,6 +11,9 @@
 * Crear una persona digital
 > https://apob.ai/
 
+* Llama coder
+> https://llamacoder.together.ai/
+
 ## Clase 24
 
 * Generacion de imagenes con google
