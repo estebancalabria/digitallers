@@ -5,6 +5,9 @@
 * Generador de imagenes flux.1
 > https://www.basedlabs.ai/generate
 
+* Pagina con varias herramientas de imagenes
+> https://www.basedlabs.ai/
+
 ## Clase 24
 
 * Generacion de imagenes con google
