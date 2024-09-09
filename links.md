@@ -2,8 +2,11 @@
 
 ## Clase 30
 
-* Mootion
+* Mootion (Gracias Ezequiel)
 > https://mootion.com/
+
+* Custom Currsor (Aporte Lumidla)
+> https://custom-cursor.com/
 
 ## Clase 27
 
