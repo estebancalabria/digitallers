@@ -5,8 +5,11 @@
 * Mootion (Gracias Ezequiel)
 > https://mootion.com/
 
-* Currsor (Aporte Lumidla)
+* Cursor (Aporte Lumidla)
 > https://www.cursor.com/
+
+* Flex Clip
+* > https://www.flexclip.com/es
 
 ## Clase 27
 
