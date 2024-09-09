@@ -8,7 +8,7 @@
 * Cursor (Aporte Lumidla)
 > https://www.cursor.com/
 
-* Flex Clip
+* Flex Clip (Gracias Pedro)
 * > https://www.flexclip.com/es
 
 ## Clase 27
