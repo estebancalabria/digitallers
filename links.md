@@ -5,8 +5,8 @@
 * Mootion (Gracias Ezequiel)
 > https://mootion.com/
 
-* Custom Currsor (Aporte Lumidla)
-> https://custom-cursor.com/
+* Currsor (Aporte Lumidla)
+> https://www.cursor.com/
 
 ## Clase 27
 
