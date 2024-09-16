@@ -2,6 +2,9 @@
 
 ## Clase 32
 
+* Generacion de Imagenes
+> https://tensor.art/
+
 * Generacion de Video (Coincidimos con Pedro)
 > https://hailuoai.com/video
 
