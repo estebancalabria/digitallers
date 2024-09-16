@@ -1,5 +1,13 @@
 # Links que vamos recopilando
 
+## Clase 32
+
+* Generacion de Video (Coincidimos con Pedro)
+> https://hailuoai.com/video
+
+* Aplicacion para hacer tableros (Lumidla)
+> https://miro.com/es/
+
 ## Clase 30
 
 * Mootion (Gracias Ezequiel)
