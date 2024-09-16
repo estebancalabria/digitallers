@@ -11,6 +11,13 @@
 * Aplicacion para hacer tableros (Lumidla)
 > https://miro.com/es/
 
+* Generar Scripts a Estilo Hollywood
+> https://app.ltx.studio/
+
+* Otro Generador de Imagenes
+> https://civitai.com/
+
+
 ## Clase 30
 
 * Mootion (Gracias Ezequiel)
