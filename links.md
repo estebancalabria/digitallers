@@ -1,5 +1,21 @@
 # Links que vamos recopilando
 
+## Clase 35
+
+* IDE de Google
+> https://idx.google.com/
+
+## Clase 34 (A dos dias del cumple del profe 🎂)
+
+* Api de Google (Gracias Ezequiel)
+> https://aistudio.google.com/
+
+* Herramienta para Base de Daots con IA
+> https://postgres.new/
+
+* Api para subir archivos (Gracias Luciano)
+> https://gofile.io/api
+
 ## Clase 32
 
 * Generacion de Imagenes
