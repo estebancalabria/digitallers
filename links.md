@@ -11,11 +11,14 @@
 * Gamma (Para generar presentaciones)
 > https://gamma.app/
 
-* Image2Go (Gracias Kumidla)
+* Image2Go (Gracias Lumidla)
 > https://www.img2go.com/es/conversor-de-imagenes
 
 * PdfTools (Ezequiel Genio)
 > https://tools.pdf24.org/es/
+
+* ElevenLabs (Para todo lo que es Text to Speech)
+> https://elevenlabs.io/
 
 ## Clase 35
 
