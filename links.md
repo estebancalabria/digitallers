@@ -26,6 +26,9 @@
 * FreeConvert : Conversor de Archivos
 > https://www.freeconvert.com/es/wav-to-mp4/
 
+* Yapa : Computadora sin Monitor
+> https://www.youtube.com/watch?v=K1Exu6OZOt8
+
 ## Clase 35
 
 * IDE de Google
