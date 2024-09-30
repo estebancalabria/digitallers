@@ -14,6 +14,9 @@
 * Image2Go (Gracias Kumidla)
 > https://www.img2go.com/es/conversor-de-imagenes
 
+* PdfTools (Ezequiel Genio)
+> https://tools.pdf24.org/es/
+
 ## Clase 35
 
 * IDE de Google
