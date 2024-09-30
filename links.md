@@ -1,5 +1,10 @@
 # Links que vamos recopilando
 
+## Clase 36
+
+* NapkinAI
+> https://www.napkin.ai/
+
 ## Clase 35
 
 * IDE de Google
