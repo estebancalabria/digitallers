@@ -8,6 +8,9 @@
 * Notebook LM
 > https://notebooklm.google/
 
+* Gamma (Para generar presentaciones)
+> https://gamma.app/
+
 ## Clase 35
 
 * IDE de Google
