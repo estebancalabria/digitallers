@@ -2,14 +2,17 @@
 
 ## Clase 36
 
-* NapkinAI
+* NapkinAI (Gracias Ezequiel!)
 > https://www.napkin.ai/
 
-* Notebook LM
+* Notebook LM (Gracias Ezequiel!)
 > https://notebooklm.google/
 
 * Gamma (Para generar presentaciones)
 > https://gamma.app/
+
+* Image2Go (Gracias Kumidla)
+> https://www.img2go.com/es/conversor-de-imagenes
 
 ## Clase 35
 
