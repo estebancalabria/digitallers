@@ -28,6 +28,7 @@
 
 * Yapa : Computadora sin Monitor
 > https://www.youtube.com/watch?v=K1Exu6OZOt8
+> https://www.sightful.com/
 
 ## Clase 35
 
