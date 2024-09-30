@@ -11,7 +11,7 @@
 * Gamma (Para generar presentaciones)
 > https://gamma.app/
 
-* Image2Go (Gracias Lumidla)
+* Image2Go (Gracias Ludmila)
 > https://www.img2go.com/es/conversor-de-imagenes
 
 * PdfTools (Ezequiel Genio)
