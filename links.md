@@ -20,6 +20,12 @@
 * ElevenLabs (Para todo lo que es Text to Speech)
 > https://elevenlabs.io/
 
+* RaskAi (Herramienta para hacer Traducciones)
+> https://es.rask.ai/
+
+* FreeConvert : Conversor de Archivos
+> https://www.freeconvert.com/es/wav-to-mp4/
+
 ## Clase 35
 
 * IDE de Google
