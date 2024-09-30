@@ -5,6 +5,9 @@
 * NapkinAI
 > https://www.napkin.ai/
 
+* Notebook LM
+> https://notebooklm.google/
+
 ## Clase 35
 
 * IDE de Google
