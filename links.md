@@ -1,5 +1,19 @@
 # Links que vamos recopilando
 
+## Clase 37
+
+* Probamos el modelo Kolors en HF (Gracias Pedro!)
+> https://huggingface.co/spaces/Kwai-Kolors/Kolors-Virtual-Try-On
+
+* Para generar clips a partir de videos
+> https://vidyo.ai/
+
+* Cambiar Caras
+> https://www.pica-ai.com/es/face-swap/
+
+* Generar Clips para redes a partir de videos
+> https://clip.opus.pro/
+
 ## Clase 36
 
 * NapkinAI (Gracias Ezequiel!)
