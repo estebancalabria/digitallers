@@ -1,5 +1,13 @@
 # Links que vamos recopilando
 
+## Clase 38
+
+* Muchas herramientas en una
+> https://app.giz.ai/
+
+* Compilado de Herramientas
+> https://app.anakin.ai/
+
 ## Clase 37
 
 * Probamos el modelo Kolors en HF (Gracias Pedro!)
