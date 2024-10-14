@@ -1,5 +1,10 @@
 # Links que vamos recopilando
 
+## Clase 40 
+
+* Generador de videos
+> https://minimax-ai.org/
+
 ## Clase 38
 
 * Muchas herramientas en una
