@@ -5,6 +5,9 @@
 * Generador de videos
 > https://minimax-ai.org/
 
+* Cambiar un estilo de imagen a otra
+> https://www.artguru.ai/blogs-es/ai-photo-to-painting/
+
 ## Clase 38
 
 * Muchas herramientas en una
