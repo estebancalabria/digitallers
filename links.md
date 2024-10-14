@@ -8,6 +8,9 @@
 * Cambiar un estilo de imagen a otra
 > https://www.artguru.ai/blogs-es/ai-photo-to-painting/
 
+* Text Cortext : Parecido a notebooklm
+> https://textcortex.com/es
+
 ## Clase 38
 
 * Muchas herramientas en una
