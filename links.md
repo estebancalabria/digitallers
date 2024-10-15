@@ -11,6 +11,9 @@
 * Text Cortext : Parecido a notebooklm
 > https://textcortex.com/es
 
+* Ejemplos de Kernels para convoluciones
+> https://setosa.io/ev/image-kernels/
+
 ## Clase 38
 
 * Muchas herramientas en una
