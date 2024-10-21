@@ -1,8 +1,15 @@
 # Links que vamos recopilando
 
 ## Clase 42
+
 * Transcribir Video (Pago)
 > https://screenapp.io/
+
+* Flux Lora LaB
+> https://huggingface.co/spaces/multimodalart/flux-lora-lab
+
+* Para hacer Commics
+> https://gramener.com/datacomics/
 
 ## Clase 41
 
