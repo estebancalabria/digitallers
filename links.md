@@ -1,4 +1,9 @@
 # Links que vamos recopilando
+
+## Clase 42
+* Transcribir Video (Pago)
+> https://screenapp.io/
+
 ## Clase 41
 
 * Vercel Chat
