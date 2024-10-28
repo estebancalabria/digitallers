@@ -1,5 +1,13 @@
 # Links que vamos recopilando
 
+## Clase 44 (Ultima clase - Recursos para explorar)
+
+* Laboratorio de google (Aca esta el proximo producto estellla de google)
+> https://labs.google/
+
+* Ver lo de tensflow visualmente 
+> https://playground.tensorflow.org/
+
 ## Clase 42
 
 * Transcribir Video (Pago)
