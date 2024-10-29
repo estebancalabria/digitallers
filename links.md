@@ -8,6 +8,15 @@
 * Ver lo de tensflow visualmente 
 > https://playground.tensorflow.org/
 
+* Juego igual al tp que hicimos en Digitallers
+> https://play.aidungeon.com/
+
+* Para aprender a programar en Python
+> https://codecombat.com/
+> https://py.checkio.org/
+> https://www.codingame.com/start/
+> https://codechalleng.es/
+
 ## Clase 42
 
 * Transcribir Video (Pago)
