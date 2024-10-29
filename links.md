@@ -17,6 +17,9 @@
 > https://www.codingame.com/start/
 > https://codechalleng.es/
 
+* Te paga por aprender a programar
+> https://earn.stackup.dev/
+
 ## Clase 42
 
 * Transcribir Video (Pago)
