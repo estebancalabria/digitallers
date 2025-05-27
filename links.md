@@ -1,5 +1,25 @@
 # Links que vamos recopilando
 
+## Clase 44 (Ultima clase - Recursos para explorar)
+
+* Laboratorio de google (Aca esta el proximo producto estellla de google)
+> https://labs.google/
+
+* Ver lo de tensflow visualmente 
+> https://playground.tensorflow.org/
+
+* Juego igual al tp que hicimos en Digitallers
+> https://play.aidungeon.com/
+
+* Para aprender a programar en Python
+> https://codecombat.com/
+> https://py.checkio.org/
+> https://www.codingame.com/start/
+> https://codechalleng.es/
+
+* Te paga por aprender a programar
+> https://earn.stackup.dev/
+
 ## Clase 42
 
 * Transcribir Video (Pago)
