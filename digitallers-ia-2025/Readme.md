@@ -2,11 +2,11 @@
 
 ## 2025-05-27-Clase 1
 
-RECOMENDACION:
-   - Si tienen una sola cuenta de gmail CREARSE una cuenta de gmail para el curso. Vamos a probar herramientas y la gran mayoria
-     piden login con GMAIL. Despues las herramientas mandan mails. Para que no molesten eso mails... cuenta Nueva de gmail...
+### RECOMENDACIONES 
+* Si tienen una sola cuenta de gmail CREARSE una cuenta de gmail para el curso. Vamos a probar herramientas y la gran mayoria piden login con GMAIL. Despues las herramientas mandan mails. Para que no molesten eso mails... cuenta Nueva de gmail...
+* Ir Resolviendo los examenes del alumni masomenos a la par. No dejar todo al final. Consultar en clase lo que no se da y no entiende
 
-
+### Que vamos a ver en el curso
 
 Digitallers Inteligencia Artificial 
     - Herramientas e IA
@@ -22,14 +22,26 @@ Digitallers Inteligencia Artificial
     - Programar en Python
           - Va a aprender los fundamentos para poder desarrollar nosotros las herramientas que vimos en la primera parte
 
+### Links
      - Repo del Profe : https://github.com/estebancalabria/Intro-Ia/
-
-Modelos de Lenguaje
-    - Modelo de lenguajes propietarios (No son Open Source)
-     - Chat GPT (https://chatgpt.com/) : Bueno para generacion de texto creativo
-     - Grok (https://grok.com) : El que menos censura tiene. Puedo hacer imagenes de famosos
-     - Gemini (https://gemini.google.com/app) : Integracion con herramientas de google, bueno conocimiento factico
-
-
-Definciones
-     - Modelo Multimodal : Procesa tanto texto como imagenes
+     - Juego creado por Rodigo Valenzuela con ia : https://bird-psi-six.vercel.app/   
+     - Conferencia China de Robots: https://www.youtube.com/watch?v=giyl27gKvS4  
+     
+### Modelos de Lenguaje  
+    - Modelo de lenguajes propietarios (No son Open Source)  m
+        - Chat GPT (https://chatgpt.com/) : Bueno para generacion de texto creativo  
+         - Grok (https://grok.com) : El que menos censura tiene. Puedo hacer imagenes de famosos  
+         - Gemini (https://gemini.google.com/app) : 
+              -  Integracion con herramientas de google  
+              -  Conocimiento factico  
+              -  Hicimos programitas re facheros y probamos el canvas  
+              -  Nos planificamos unos viajes con google flighs y generamos eventos en google calendar  
+               - Investigaciones con google research   
+         - Mencionamos Manus :https://manus.im/  
+   - Modelos de lenguajes Open Source  
+         - Deep Seek (aka El modelo Chino) : https://www.deepseek.com/en  
+               - Destaca en tareas de razonamiento con su modo DeepThink (R1) (Chain of Thoughts)  
+               - No le preguntes sobre el regimen de china ni nada de eso que se enoja  
+     
+### Definciones  
+     - Modelo Multimodal : Procesa tanto texto como imagenes  
