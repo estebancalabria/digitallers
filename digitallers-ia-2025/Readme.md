@@ -23,11 +23,12 @@ Digitallers Inteligencia Artificial
           - Va a aprender los fundamentos para poder desarrollar nosotros las herramientas que vimos en la primera parte
 
 ### Links
-     - Repo del Profe : https://github.com/estebancalabria/Intro-Ia/
-     - Juego creado por Rodigo Valenzuela con ia : https://bird-psi-six.vercel.app/   
-     - Conferencia China de Robots: https://www.youtube.com/watch?v=giyl27gKvS4  
+* Repo del Profe : https://github.com/estebancalabria/Intro-Ia/
+* Juego creado por Rodigo Valenzuela con ia : https://bird-psi-six.vercel.app/   
+* Conferencia China de Robots: https://www.youtube.com/watch?v=giyl27gKvS4  
      
 ### Modelos de Lenguaje  
+
     - Modelo de lenguajes propietarios (No son Open Source)  m
         - Chat GPT (https://chatgpt.com/) : Bueno para generacion de texto creativo  
          - Grok (https://grok.com) : El que menos censura tiene. Puedo hacer imagenes de famosos  
@@ -43,5 +44,5 @@ Digitallers Inteligencia Artificial
                - Destaca en tareas de razonamiento con su modo DeepThink (R1) (Chain of Thoughts)  
                - No le preguntes sobre el regimen de china ni nada de eso que se enoja  
      
-### Definciones  
-     - Modelo Multimodal : Procesa tanto texto como imagenes  
+### Definciones 
+* Modelo Multimodal : Procesa tanto texto como imagenes  
