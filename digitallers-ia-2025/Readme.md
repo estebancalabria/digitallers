@@ -2,6 +2,39 @@
 
 ## 2025-05-29-Clase 2
 
+### Recomendacion
+* Abrirse una cueta de GitHub
+* Cuenta de GMAIL Alternativa
+
+### TEmario de Clases
+
+- Modelos de lenguaje Propietarios y los Modelos Open Source
+
+* Modelos de Lenguaje Propietarios
+     * Claude (La competencia mas directa de chatGPT) : https://claude.ai/new
+          * Anthropic
+          * Buenisimo para generar paginas WEB
+          * Tiene ARTEFACTOS
+          * Desventaja : Conversaciones mas corta que ChatGPT
+       
+* Modelos Opern Source
+     * DeepSeek (Modelo de razonamiento)
+     * Familia LLama
+     * Groq (https://groq.com/#)
+            * Es una pagina que hostea modelos de inteligencia artificial open source
+            * Se caracteriza por su rapida velocidad de respuesta al contar con un harware especializado llamado LPU (Language Processing Unit)
+      * Mistral (mistral.ai)
+             * Modelo Frances. Nunca va aser el primero. Kuak.
+             * Bueno para programar en python
+       * Qwnen
+             * Desarrollado por la empresa Alibaba
+
+### Actividades Propuesta 
+
+* Propuesta : Probar los distintos modelos de lenguaje que vamos a ver en clase y sacar conclusiones
+* Buscar otros LLM que no hayamos visto en clase
+
+
 ## 2025-05-27-Clase 1
 
 ### RECOMENDACIONES 
@@ -29,9 +62,10 @@
      
 ### Modelos de Lenguaje  
 
-    - Modelo de lenguajes propietarios (No son Open Source)  m
-        - Chat GPT (https://chatgpt.com/) : Bueno para generacion de texto creativo  
-         - Grok (https://grok.com) : El que menos censura tiene. Puedo hacer imagenes de famosos  
+* Modelo de lenguajes propietarios (No son Open Source)  m
+    * Chat GPT (https://chatgpt.com/) : Bueno para generacion de texto creativo
+         * Desarrollado por OpenAI 
+     * Grok (https://grok.com) : El que menos censura tiene. Puedo hacer imagenes de famosos  
          - Gemini (https://gemini.google.com/app) : 
               -  Integracion con herramientas de google  
               -  Conocimiento factico  
