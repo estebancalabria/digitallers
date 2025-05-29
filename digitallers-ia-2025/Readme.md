@@ -20,9 +20,9 @@
 * Modelos Opern Source
      * DeepSeek (Modelo de razonamiento)
      * Familia LLama
-     * Groq (https://groq.com/#)
-            * Es una pagina que hostea modelos de inteligencia artificial open source
-            * Se caracteriza por su rapida velocidad de respuesta al contar con un harware especializado llamado LPU (Language Processing Unit)
+     * Groq (https://groq.com/#)  
+            * Es una pagina que hostea modelos de inteligencia artificial open source  
+            * Se caracteriza por su rapida velocidad de respuesta al contar con un harware especializado llamado LPU (Language Processing Unit)  
       * Mistral (mistral.ai)
              * Modelo Frances. Nunca va aser el primero. Kuak.
              * Bueno para programar en python
