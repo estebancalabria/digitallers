@@ -1,26 +1,26 @@
 # Bienvenidos Digitallers 2025
 
+## 2025-05-29-Clase 2
+
 ## 2025-05-27-Clase 1
 
 ### RECOMENDACIONES 
 * Si tienen una sola cuenta de gmail CREARSE una cuenta de gmail para el curso. Vamos a probar herramientas y la gran mayoria piden login con GMAIL. Despues las herramientas mandan mails. Para que no molesten eso mails... cuenta Nueva de gmail...
 * Ir Resolviendo los examenes del alumni masomenos a la par. No dejar todo al final. Consultar en clase lo que no se da y no entiende
 
-### Que vamos a ver en el curso
+### Que vamos a ver en el curso Digitallers Inteligencia Artificial 
 
-Digitallers Inteligencia Artificial 
-    - Herramientas e IA
-          - Modelos de Inteligencia artificial
-          - Trabajar con distintas herramientas de IA del mercado para ver las cosas que se pueden hacer IA.
-          - Prompt Engineering
-               -Generar Diagramas
-          - Generar Imagenes, Generar Canciones, Generar Videos...
-          - Generar Presentaciones, Generar Investigaciones
-
-    - Machine Learning
-
-    - Programar en Python
-          - Va a aprender los fundamentos para poder desarrollar nosotros las herramientas que vimos en la primera parte
+* Herramientas e IA
+* Modelos de Inteligencia artificial
+* Trabajar con distintas herramientas de IA del mercado para ver las cosas que se pueden hacer IA.
+* Prompt Engineering
+* Generar Diagramas
+* Generar Imagenes, Generar Canciones, Generar Videos...
+* Generar Presentaciones
+* Generar Investigaciones
+* Machine Learning
+* Programar en Python
+* Va a aprender los fundamentos para poder desarrollar nosotros las herramientas que vimos en la primera parte
 
 ### Links
 * Repo del Profe : https://github.com/estebancalabria/Intro-Ia/
