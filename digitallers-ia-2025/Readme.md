@@ -1,5 +1,9 @@
 # Bienvenidos Digitallers 2025
 
+## Clase 3
+
+Vamos a ver como ejecutar un  LLM localmente....
+
 ## 2025-05-29-Clase 2
 
 ### Recomendacion
@@ -42,6 +46,7 @@
 
 * Propuesta : Probar los distintos modelos de lenguaje que vamos a ver en clase y sacar conclusiones
 * Buscar otros LLM que no hayamos visto en clase
+* Probar modelos Open Source de HugginFaces en la seccion "Spaces"
 
 
 ## 2025-05-27-Clase 1
