@@ -29,9 +29,13 @@
        * Qwnen
              * Desarrollado por la empresa Alibaba
 
-### Que modelo de lenguaje es mejor que otro?
+### Preguntas
 
-Una pagina que nos puede aproximar a la respuesta es : https://lmarena.ai/
+* Que modelo de lenguaje es mejor que otro?
+> Una pagina que nos puede aproximar a la respuesta es : https://lmarena.ai/
+
+ * De donde me descargo o consulto los modelos Open Source?
+> https://huggingface.co/
 
 
 ### Actividades Propuesta 
