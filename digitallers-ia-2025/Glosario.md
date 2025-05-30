@@ -1,5 +1,6 @@
 # Glosario de Terminos
 
+* **DataSet** : En el contexto de la IA es un conjunto de datos utilizado para entrenar un modelo de IA.
 * **Fine Tunning** : Reentrenado al modelo según mis especificaciones  
 * **LLM** : Large Language Model. Modelo de lenguaje como ChatGPT. Los Large Language Models (LLM) son sistemas de inteligencia artificial que utilizan redes neuronales para aprender
 * **Prompt** : Se refiere a una instrucción o fragmento de texto inicial que se proporciona al modelo para guiar su generación de respuesta.
