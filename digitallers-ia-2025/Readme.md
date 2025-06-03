@@ -2,11 +2,19 @@
 
 ## Clase 3
 
-Vamos a ver como ejecutar un  LLM localmente....
-Instalamos el LMStugio de esta Web : https://lmstudio.ai/
+### Recapitulando lo pendiente de la clase anterior
 
+Vamos a ver como ejecutar un  LLM localmente....  
+* Instalamos el LMStugio de esta Web : https://lmstudio.ai/
+* Otra Alternativa : https://ollama.com/
+
+Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
+
+### Actualizaciones
 
 > Ya se activaron los examenes en el Alumni. Vayan haciendo el del modulo 1.
+
+### Mas Modelos de Lenguaje
 
 Arrancamos viendo Manus : https://manus.im/
 
