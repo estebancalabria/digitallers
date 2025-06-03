@@ -16,7 +16,8 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
 
 ### Mas Modelos de Lenguaje
 
-Arrancamos viendo Manus : https://manus.im/
+* Arrancamos viendo Manus : https://manus.im/
+* Vimos como probar otros modelols de lenguaje de google : https://aistudio.google.com/
 
 ## 2025-05-29-Clase 2
 
