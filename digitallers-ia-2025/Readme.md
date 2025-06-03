@@ -3,6 +3,8 @@
 ## Clase 3
 
 Vamos a ver como ejecutar un  LLM localmente....
+Instalamos el LMStugio de esta Web : https://lmstudio.ai/
+
 
 > Ya se activaron los examenes en el Alumni. Vayan haciendo el del modulo 1.
 
