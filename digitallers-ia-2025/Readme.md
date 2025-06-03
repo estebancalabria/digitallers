@@ -4,6 +4,10 @@
 
 Vamos a ver como ejecutar un  LLM localmente....
 
+> Ya se activaron los examenes en el Alumni. Vayan haciendo el del modulo 1.
+
+Arrancamos viendo Manus : https://manus.im/
+
 ## 2025-05-29-Clase 2
 
 ### Recomendacion
