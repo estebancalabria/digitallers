@@ -2,6 +2,16 @@
 
 ## Clase 3
 
+### Prompt Engineering  
+
+**Patron Persona**  
+
+* Prompt Sin Patron : Explicame porque llueve.
+* Prompt a un Experto : Actua como un experto en Meterologia y ciencias de la atmosfera con un alto conocimiento en qimica y fisica y dame una explicacion cientifica y detallada porque llueve
+* Prompt a un experto alternativo : Actua como un shaman metafisico experto en el mundo de los espiritud y el multiverso y explicame porque llueve
+* Prompt a una celebridad : Actua como si fueras el corredor de F1 Colapinto y explicame porque llueve
+
+
 ### Recapitulando lo pendiente de la clase anterior
 
 Vamos a ver como ejecutar un  LLM localmente....  
