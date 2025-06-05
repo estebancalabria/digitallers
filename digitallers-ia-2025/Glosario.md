@@ -5,8 +5,9 @@
 * **Fine Tunning** : Reentrenado al modelo según mis especificaciones  
 * **LLM** : Large Language Model. Modelo de lenguaje como ChatGPT. Los Large Language Models (LLM) son sistemas de inteligencia artificial que utilizan redes neuronales para aprender
 * **Prompt** : Se refiere a una instrucción o fragmento de texto inicial que se proporciona al modelo para guiar su generación de respuesta.
-* **System Prompt** : es una instrucción inicial que se le da al modelo de lenguaje (como ChatGPT) para definir su comportamiento, tono y rol antes de que empiece la conversación con el usuario.
+* **Prompt Chaining** : es una técnica en modelos de lenguaje que consiste en dividir una tarea compleja en múltiples pasos, donde cada paso genera una salida que sirve como entrada para el siguiente. Básicamente, se trata de encadenar prompts para mejorar la coherencia y precisión de la respuesta final.
 * **Prompt Engineering** : La ingeniería de prompts es una estrategia utilizada en la interacción con modelos de lenguaje para diseñar y ajustar cuidadosamente las instrucciones iniciales o prompts
+* **System Prompt** : es una instrucción inicial que se le da al modelo de lenguaje (como ChatGPT) para definir su comportamiento, tono y rol antes de que empiece la conversación con el usuario.
 * **Temperature** : Parámetro de los LLM que controla el nivel de aleatoriedad o creatividad en las respuestas generadas. (0 respuestas mas predecibles, 1 respuestas mas creativas)
 * **Token** : La parte mas chica en la que se puede cortar una palabra
 * **TopP** : Parametro de los LLM decide cuántas palabras posibles se consideran al responder.Si es bajo (ej. 0.1): solo se usan las más seguras. Si es alto (ej. 0.9): se permite más variedad.
