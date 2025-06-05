@@ -12,7 +12,17 @@ Preguntandole a los LLM sobre su System Prompt me respondieron:
 * ChatGPT : https://chatgpt.com/share/68421db9-bc90-8005-bf48-2821c8ea71ff
 * Groq : https://grok.com/share/c2hhcmQtMg%3D%3D_233b02a4-295f-4d2f-bfaa-efda7e7de6e3
 
-#### Prompt Engineering : 
+#### Prompt Engineering : Contexto / Interaccion / Prompt Chainning
+
+> Cuando escribo un prompt es importante darle al modelo de lenguaje toda la informacion que pueda llegar a ser relevante para lo que estamos pidiendo sin retringirse en la longitud del prompt
+
+?Que informacion le doy?  Porque no dejamos que ChatGPT me haga preguntas : Patron Interaccion
+* Ejemplo Sin Patron Interaccion : https://chatgpt.com/share/68422217-065c-8005-ae18-d7ab84e2c867
+* Ejemplo con Petron Interaccion : https://chatgpt.com/share/6842222d-f6d0-8005-9587-4fc183a8b58f
+
+  
+
+
 
 
 ---
