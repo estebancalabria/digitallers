@@ -20,10 +20,7 @@ Preguntandole a los LLM sobre su System Prompt me respondieron:
 * Ejemplo Sin Patron Interaccion : https://chatgpt.com/share/68422217-065c-8005-ae18-d7ab84e2c867
 * Ejemplo con Petron Interaccion : https://chatgpt.com/share/6842222d-f6d0-8005-9587-4fc183a8b58f
 
-  
-
-
-
+Ejemplo *Prompt Chainning*: https://chatgpt.com/share/6842232a-f780-8005-9846-9a7d73c2ff13
 
 ---
 ## Clase 3
