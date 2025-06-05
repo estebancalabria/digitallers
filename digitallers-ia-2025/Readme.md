@@ -2,11 +2,17 @@
 ---
 ## 06-05-2025- Clase 4
 
-Prompt Engeniering : Prompting Wars...
+#### Prompt Engeniering : Prompting Wars...
 > https://forms.gle/KU9ojZtd5e4UGLgX8
 Resultado
 > https://chatgpt.com/share/68421bb3-7a2c-8005-819a-43a01def69b5
 
+#### System Prompts
+Preguntandole a los LLM sobre su System Prompt me respondieron:
+* ChatGPT : https://chatgpt.com/share/68421db9-bc90-8005-bf48-2821c8ea71ff
+* Groq : https://grok.com/share/c2hhcmQtMg%3D%3D_233b02a4-295f-4d2f-bfaa-efda7e7de6e3
+
+#### Prompt Engineering : 
 
 
 ---
