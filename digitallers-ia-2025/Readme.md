@@ -1,5 +1,15 @@
 # Bienvenidos Digitallers 2025
+---
+## 06-05-2025- Clase 4
 
+Prompt Engeniering : Prompting Wars...
+> https://forms.gle/KU9ojZtd5e4UGLgX8
+Resultado
+> https://chatgpt.com/share/68421bb3-7a2c-8005-819a-43a01def69b5
+
+
+
+---
 ## Clase 3
 
 ### Prompt Engineering  
