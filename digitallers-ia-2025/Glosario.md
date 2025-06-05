@@ -1,5 +1,6 @@
 # Glosario de Terminos
 
+* **Contexto** : El contexto en modelos de lenguaje se refiere a la información previa que el modelo utiliza para generar respuestas coherentes y relevantes. Es la clave para que una IA entienda el significado de un mensaje en relación con lo que ya se ha dicho en una conversación o con datos previos disponibles.
 * **DataSet** : En el contexto de la IA es un conjunto de datos utilizado para entrenar un modelo de IA.
 * **Fine Tunning** : Reentrenado al modelo según mis especificaciones  
 * **LLM** : Large Language Model. Modelo de lenguaje como ChatGPT. Los Large Language Models (LLM) son sistemas de inteligencia artificial que utilizan redes neuronales para aprender
