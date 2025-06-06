@@ -3,9 +3,9 @@
 ## 06-05-2025- Clase 4
 
 #### Prompt Engeniering : Prompting Wars...
-> https://forms.gle/KU9ojZtd5e4UGLgX8
-Resultado
-> https://chatgpt.com/share/68421bb3-7a2c-8005-819a-43a01def69b5
+> https://forms.gle/KU9ojZtd5e4UGLgX8  
+Resultado  
+> https://chatgpt.com/share/68421bb3-7a2c-8005-819a-43a01def69b5  
 
 #### System Prompts
 Preguntandole a los LLM sobre su System Prompt me respondieron:
@@ -25,6 +25,34 @@ Preguntandole a los LLM sobre su System Prompt me respondieron:
 * Ejemplo con Petron Interaccion : https://chatgpt.com/share/6842222d-f6d0-8005-9587-4fc183a8b58f
 
 Ejemplo *Prompt Chainning*: https://chatgpt.com/share/6842232a-f780-8005-9846-9a7d73c2ff13
+
+#### Prompt Engenieering : Patron Personalizacion de Salida
+
+Salidas Posbiles Que podemos pedir
+* Tabla
+* Json
+* XML
+* HTML (Viene con dos amigos que son CSS y el javascript)
+    * Lo puedo imprimir y generar un PDF
+* Markdown
+     * Lo podemos utilizar para escribir una plantilla exacta de como queremos la respuesta para lograr que la IA sea un poco mas "deretministica"
+ 
+Ejemplo de plantilla utilizada
+```markdown
+# [Nombre]
+**[Creador]**
+*[Fecha_Creacion]*
+*[Pais de Origen con emoji de bandera]*
+
+## [Lista de Temporadas]
+1. [Nombre Temporada 1]
+2. [Nombre Temporada 2]
+..
+
+## Synopsis
+> [Sinopsis]
+---
+```
 
 ---
 ## Clase 3
