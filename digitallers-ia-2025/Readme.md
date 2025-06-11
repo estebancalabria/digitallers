@@ -1,5 +1,16 @@
 # Bienvenidos Digitallers 2025
 ---
+## 10-05-2025- Clase 5
+
+#### Prompt Engenieering : Patron Personalizacion de Salida
+
+Salidas Posbiles Que podemos pedir
+* CSV (Comma Separated Values)
+* Mermaid (https://mermaid.live/)
+   * Claude tiene artefactos con previsualizacion de Mermaid
+* Salidas en un lenguaje de programacion
+
+---
 ## 06-05-2025- Clase 4
 
 #### Prompt Engeniering : Prompting Wars...
