@@ -14,7 +14,7 @@ Vamos a programar en python desde https://colab.google/
 
 **Operadores en python**
 * %  : Devuelve el resto de la division
-* \> : Operador mayor qye
+* \> : Operador mayor que
 * < : Operador menor que
 
 
