@@ -2,7 +2,23 @@
 ---
 ## 10-05-2025- Clase 5
 
-#### Prompt Engenieering : Patron Personalizacion de Salida
+### Programacion en Python
+
+Vamos a programar en python desde https://colab.google/
+> El datacenter que nos presta google : https://colab.google/static/images/home/data-center.jpg
+
+Funciones de Python
+* print : Se usa para mostrar algo por pantalla
+* input : Se usa para pedirle informacion al usuario
+
+Estructuras de Control en python
+* for : Para ejecutar codigo una cantidad fija de veces
+```python
+for i in range(1, 11):
+    print(i)
+```
+
+### Prompt Engenieering : Patron Personalizacion de Salida
 
 Salidas Posbiles Que podemos pedir
 * CSV (Comma Separated Values)
