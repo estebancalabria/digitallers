@@ -7,15 +7,29 @@
 Vamos a programar en python desde https://colab.google/
 > El datacenter que nos presta google : https://colab.google/static/images/home/data-center.jpg
 
-Funciones de Python
+**Funciones de Python**
 * print : Se usa para mostrar algo por pantalla
 * input : Se usa para pedirle informacion al usuario
+* * int() : Funcion que Convierte un tipo de dato string en un integer
 
-Estructuras de Control en python
+**Operadores en python**
+* %  : Devuelve el resto de la division
+* > : Operador mayor qye
+* < : Operador menor que
+
+
+***Estructuras de Control en python**
 * for : Para ejecutar codigo una cantidad fija de veces
 ```python
 for i in range(1, 11):
     print(i)
+```
+* if : Para ejecutar un codigo dada una condicion
+```python
+if numero % 2 == 0:
+    print(f"El número {numero} es PAR")
+else:
+    print(f"El número {numero} es IMPAR")
 ```
 
 ### Prompt Engenieering : Patron Personalizacion de Salida
