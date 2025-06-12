@@ -3,8 +3,11 @@
 * **Contexto** : El contexto en modelos de lenguaje se refiere a la información previa que el modelo utiliza para generar respuestas coherentes y relevantes. Es la clave para que una IA entienda el significado de un mensaje en relación con lo que ya se ha dicho en una conversación o con datos previos disponibles.
 * **DataSet** : En el contexto de la IA es un conjunto de datos utilizado para entrenar un modelo de IA.
 * **Deterministico** : Algo deterministico genera siempre la misma salida cuando recibe la misma entrada. Cuando decimos que una IA no es determinista, significa que puede dar respuestas diferentes incluso si se le hace la misma pregunta varias veces en las mismas condiciones..
-* **Fine Tunning** : Reentrenado al modelo según mis especificaciones  
+* **Fine Tunning** : Reentrenado al modelo según mis especificaciones
+  --
+  # L
 * **LLM** : Large Language Model. Modelo de lenguaje como ChatGPT. Los Large Language Models (LLM) son sistemas de inteligencia artificial que utilizan redes neuronales para aprender
+  ---
   # P
 * **Prompt** : Se refiere a una instrucción o fragmento de texto inicial que se proporciona al modelo para guiar su generación de respuesta.
 * **Prompt Chaining** : es una técnica en modelos de lenguaje que consiste en dividir una tarea compleja en múltiples pasos, donde cada paso genera una salida que sirve como entrada para el siguiente. Básicamente, se trata de encadenar prompts para mejorar la coherencia y precisión de la respuesta final.
