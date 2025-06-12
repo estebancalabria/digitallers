@@ -1,5 +1,9 @@
 # Glosario de Terminos
 
+#A
+* **Api Key** : Es una clave alfanumerica que me da el proveedor de un LLM para poder utilizarlo desde cualquier lenguaje de programacion. Código único que se utiliza para identificar y autenticar a un usuario, aplicación o sistema cuando accede a una API (Interfaz de Programación de Aplicaciones).
+---
+
 * **Contexto** : El contexto en modelos de lenguaje se refiere a la información previa que el modelo utiliza para generar respuestas coherentes y relevantes. Es la clave para que una IA entienda el significado de un mensaje en relación con lo que ya se ha dicho en una conversación o con datos previos disponibles.
 * **DataSet** : En el contexto de la IA es un conjunto de datos utilizado para entrenar un modelo de IA.
 * **Deterministico** : Algo deterministico genera siempre la misma salida cuando recibe la misma entrada. Cuando decimos que una IA no es determinista, significa que puede dar respuestas diferentes incluso si se le hace la misma pregunta varias veces en las mismas condiciones..
