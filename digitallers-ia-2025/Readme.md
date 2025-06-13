@@ -1,4 +1,81 @@
 # Bienvenidos Digitallers 2025
+
+## 12-05-2025- Clase 6
+
+### Roles De IA
+
+* Data Analyst
+  > Usan herramientas como PowerBI https://www.plainconcepts.com/what-is-power-bi/
+* Data Science
+* Deep Learning
+* Compter Vision
+* Desarrollo de Chatbots
+* Ai Tool Expert
+* Ai Developer
+* Cloud AI Engineering
+* AI Research Scientist
+
+### Herramientas de IA
+
+ Arrancamos con una Seccion de la clase : Presentar herramientas/apps de IA
+> Todas las clases, la primera parte de la clase van a traer alguna herramienta de Inteligencia Artificial
+> https://www.grammarly.com/ (Gracias Jorge)
+
+#### Catalogo de Herramientas de IA 
+* https://theresanaiforthat.com/
+* https://huggingface.co/spaces
+*
+
+### Uso de la API
+
+Todos los LLM que vimos tienen dos formas de utilizarse
+* La interfaz web
+     *  https://chatgpt.com/
+     *  https://groq.com/
+     *  https://gemini.google.com/
+* La API : Tienen una pagina del desarrador
+    * https://platform.openai.com/)
+    * https://console.groq.com/
+  
+> 👎Lo malo de openAI es que te cobra por usar sus modelos por API
+
+Pasos para usar la api de Groq
+1. Sacar una api key de groq en https://console.groq.com/keys (puede requerir loguearse)
+2. Crear un google colab con tres celdas de codigo
+3. Instalar la libreria de groq en la primer celda
+   
+```python
+!pip install groq
+```
+  
+4. Cargar la api key a una variable en la segunda celda
+```python
+    mi_api_key = input("Igrese su Api Key")
+```
+6. Invocar la llamada a groq en la tercer celda
+```python
+    from groq import Groq
+    
+    client = Groq(
+        api_key=mi_api_key,
+    )
+    
+    chat_completion = client.chat.completions.create(
+        messages=[
+            {
+                "role": "user",
+                "content": "Quien descubrio america? Contestar el nombre sin acotar nada mas.",
+            }
+        ],
+        model="llama-3.3-70b-versatile",
+        stream=False,
+    )
+    
+    print(chat_completion.choices[0].message.content)
+```
+7. ..
+8. ddd
+
 ---
 ## 10-05-2025- Clase 5
 
