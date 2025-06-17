@@ -1,5 +1,36 @@
 # Bienvenidos Digitallers 2025
 
+## 17-05-2025- Clase 7
+
+### Enunciado Actividad proximas clases
+
+> Esta clase y las siguientes vamos a crear un video musical por partes sobre una cancion tecno que muestre imagenes de paisajes paradisiacos
+
+Como ejemplo vimos algunas del canal del profe que hizo con sus alumnos
+> https://www.youtube.com/@ElectricDreams-n9c
+Si va todo bien y lo terminamos lo subimos al canal del profe
+
+#### Prompt Engineering para generacion de imagenes
+Tips:
+* Prompt en ingles
+* Utilizar ChatGPT para escribir mejores prompts
+
+#### Modelos de Generacion de Imagenes
+
+##### Modelos Propietarios
+* Phoenix
+
+##### Modelos Open Source
+* Flux
+
+#### Casos de Uso
+* Texto a Imagenes : A partir de un prompt generar una imagen (Lo hicimos con Leonardo.AI)
+* Imagen a Imagen :
+
+#### Herramientas Generacion de Imagenes
+* LeonardoAI : https://leonardo.ai/ Herramienta para generar imagenes probando varios modelos. Te da 150 creditos que se renuevan diariamente
+
+---
 ## 12-05-2025- Clase 6
 
 ### Roles De IA
