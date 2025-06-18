@@ -2,6 +2,8 @@
 
 ## 17-05-2025- Clase 7
 
+# ME FALTO VER COMO MODIFICAR UNA IMAGEN EXISTENTE
+
 ### Enunciado Actividad proximas clases
 
 > Esta clase y las siguientes vamos a crear un video musical por partes sobre una cancion tecno que muestre imagenes de paisajes paradisiacos
@@ -19,16 +21,34 @@ Tips:
 
 ##### Modelos Propietarios
 * Phoenix
+* Ideogram GenAI
 
 ##### Modelos Open Source
 * Flux
 
-#### Casos de Uso
-* Texto a Imagenes : A partir de un prompt generar una imagen (Lo hicimos con Leonardo.AI)
-* Imagen a Imagen :
-
 #### Herramientas Generacion de Imagenes
 * LeonardoAI : https://leonardo.ai/ Herramienta para generar imagenes probando varios modelos. Te da 150 creditos que se renuevan diariamente
+* Ideogram : https://ideogram.ai/. Ideal para generar imagenes con texto
+* Microsoft Designer : https://designer.microsoft.com/
+* ImageFX (De Google) (Solo Prompts en ingles) :https://labs.google/fx/tools/image-fx
+> Tambien probamos Whisk que me deja animar imagenes y hacer videos : https://labs.google/fx/es/tools/whisk
+* FreePic : https://www.freepik.es/ ( Gracias Rodrigo...se fue :( ) 
+
+
+#### Casos de Uso
+* **Texto a Imagenes** : A partir de un prompt generar una imagen (Lo hicimos con Leonardo.AI)
+
+* **Imagen a Imagen** : Utilizar una imagen de referencia y cambiarla con el prompt (Lo hicimos con Leonardo.AI)
+
+* **Imagenes con Texto** : Se puede hacer con el modelo Phenix 1.0 de Leonardo aunque es ideal para este caso de uso utlizar la herramienta IdeoGRAM
+
+* **Generacion de Imagenes Hiper Realistas** : Donde termina la realidad y empieza la ia?
+> Curiosidad Imagenes Rostros Hiper Realistas: https://thispersondoesnotexist.com/
+
+* **Upscaler (mejorar calidad de una imagen)** : Probamos el Upscaler de la herramiente FreePic
+* Generacion de imagenes para Dieño Grafico (Banners, Flyers) (Estilo Canva) :
+* **Generacion de Imagenes con Modelos Open Source** : Utilizamos freepic que me dejo utilizar el modelo Flux Fast
+
 
 ---
 ## 12-05-2025- Clase 6
