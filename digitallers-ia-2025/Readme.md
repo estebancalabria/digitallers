@@ -1,6 +1,44 @@
 # Bienvenidos Digitallers 2025
 
-## 17-05-2025- Clase 7
+## 18-05-2025- Clase 8
+
+### Enunciado Actividad proximas clases
+
+> Esta clase y las siguientes vamos a crear un video musical por partes sobre una cancion tecno que muestre imagenes de paisajes paradisiacos
+
+### IA Generativa : Imagenes
+
+Modificar Imagen Existente. Vamos a utilizar la web  
+> https://aistudio.google.com/
+Esta pagina te permite probar los modelos de IA de google y ademas vamos a usar la para editar una imagen.
+
+### IA Generativa : Generacion de Canciones
+
+Sitios Que vimos
+* Udio : https://www.udio.com/
+* Suno : https://suno.com/
+* Boomy : https://boomy.com/ (Un poquito mas avanzado para el que ya sabe musica)
+
+Vamos a Editar el Video con CapCut (Vayan descargando)
+> https://www.capcut.com/es-es
+
+### Herramientas de  Speech
+
+#### Text-to-Speech
+
+> https://www.naturalreaders.com/
+ 
+NaturalReaders no permite bajar audio en la version Gratuita. Para hacerlo vamos a ver un hack que es activando el Streo Mix (Utilizar la salida de audio como entrada)
+* Boton Derecho en el parlante en la barra de tareas y despues elegir "Sound Settings"
+* Abajo a donde dice "More Sound Settings"
+* Se te abre una ventanita nueva
+* Vas a Recording y habilitas el Streo Mix (Boton Derecho, Enable)
+
+#### Speech-To-Text
+> https://chromewebstore.google.com/detail/unlimited-summary-generat/eelolnalmpdjemddgmpnmobdhnglfpje
+
+---
+# 17-05-2025- Clase 7
 
 # ME FALTO VER COMO MODIFICAR UNA IMAGEN EXISTENTE
 # ME FALTO VER COMO GENERAR IMAGENES DESDE EL GOOGLE COLAB
