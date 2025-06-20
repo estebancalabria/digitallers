@@ -2,6 +2,8 @@
 
 ## 18-05-2025- Clase 8
 
+# LA PROXIMA CLASE VER HERRAMIENTAS PARA TRANSCRIBIR REUNIONES
+
 ### Enunciado Actividad proximas clases
 
 > Esta clase y las siguientes vamos a crear un video musical por partes sobre una cancion tecno que muestre imagenes de paisajes paradisiacos
@@ -36,6 +38,12 @@ NaturalReaders no permite bajar audio en la version Gratuita. Para hacerlo vamos
 
 #### Speech-To-Text
 > https://chromewebstore.google.com/detail/unlimited-summary-generat/eelolnalmpdjemddgmpnmobdhnglfpje
+
+### Herramientas de IA
+
+* ChatGPT con PDF : https://www.chatpdf.com/es
+* TextCortex   https://textcortex.com/es
+* TextCortex Extension : https://chromewebstore.google.com/detail/textcortex-personal-ai-as/hahkojdegblcccihngmgndhdfheheofe
 
 ---
 # 17-05-2025- Clase 7
