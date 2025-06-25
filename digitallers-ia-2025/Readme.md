@@ -12,9 +12,12 @@ por:
 Te va a redirigir a un sitio como SaveFrom.net, donde podés elegir el formato y descargar el video.
 
 
-### La Mejor herramienta para estudiar y agrupar material
+### Herramientas Para estudiar
 
+La Mejor herramienta para estudiar y agrupar material
 > https://notebooklm.google.com/
+Para Devs
+> https://roadmap.sh/
 
 ### Herramientas para reuiones online
 
