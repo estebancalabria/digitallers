@@ -1,6 +1,49 @@
 # Bienvenidos Digitallers 2025
 
-## 18-05-2025- Clase 8
+## 18-06-2025- Clase 9
+
+### Truco para descargar Videos de youtube
+
+Entra al video que querés descargar.
+En la barra de direcciones, cambiá:
+> https://www.youtube.com/watch?v=VIDEO_ID
+por:
+> https://ssyoutube.com/watch?v=VIDEO_ID
+Te va a redirigir a un sitio como SaveFrom.net, donde podés elegir el formato y descargar el video.
+
+
+### La Mejor herramienta para estudiar y agrupar material
+
+> https://notebooklm.google.com/
+
+### Herramientas para reuiones online
+
+* https://tactiq.io/es
+* https://www.read.ai/es (Lee emociones de los participantes)
+
+### Generacion de Videos
+
+#### Herramientas para Edicion de Videos
+
+> https://www.capcut.com/es-es
+
+#### Casos de Uso Generacion de Videos
+
+- Prompt a Video
+- Imagen a Video
+- Efectos Predeterminados
+- Transiciones
+
+#### Herramientas Generacion de Videos
+
+* RunwayML :  https://runwayml.com/
+* KlingAI : https://klingai.com/global/
+* Pika Labs : https://pika.art/
+* PixVerse: https://app.pixverse.ai/
+* Dream Machine : https://lumalabs.ai/dream-machine (PAGO)
+* Invideo : https://invideo.io/ (PAGO)
+
+## 18-06-2025- Clase 8
 
 # LA PROXIMA CLASE VER HERRAMIENTAS PARA TRANSCRIBIR REUNIONES
 
@@ -46,7 +89,7 @@ NaturalReaders no permite bajar audio en la version Gratuita. Para hacerlo vamos
 * TextCortex Extension : https://chromewebstore.google.com/detail/textcortex-personal-ai-as/hahkojdegblcccihngmgndhdfheheofe
 
 ---
-# 17-05-2025- Clase 7
+# 17-06-2025- Clase 7
 
 # ME FALTO VER COMO MODIFICAR UNA IMAGEN EXISTENTE
 # ME FALTO VER COMO GENERAR IMAGENES DESDE EL GOOGLE COLAB
@@ -98,7 +141,7 @@ Tips:
 
 
 ---
-## 12-05-2025- Clase 6
+## 12-06-2025- Clase 6
 
 ### Roles De IA
 
@@ -175,7 +218,7 @@ Pasos para usar la api de Groq
 8. ddd
 
 ---
-## 10-05-2025- Clase 5
+## 10-06-2025- Clase 5
 
 ### Programacion en Python
 
