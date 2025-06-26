@@ -1,6 +1,24 @@
 # Bienvenidos Digitallers 2025
 
-## 18-06-2025- Clase 9
+## 26-06-2025- Clase 10
+
+### IA Generativa para presetnaciones
+
+Para presentaciones tipo PowerPoint la mejor herramienta es :
+> https://gamma.app/signup?r=cjucljp9heegmkv
+
+### IA Generativa-Generacion de Video
+
+Herramienta para generar videos narrativos par redes sociales. 
+* Lo importante no es generar el video sino la narracion)
+* En vez de Generar la imagen con IA la saca de una base de datos de imagenes sin derecho de autor
+> InVideo : https://invideo.io/
+
+PolloAI : Herramienta que recopila varios modelos generadores de Video  
+
+> https://pollo.ai/invitation-landing?invite_code=dIOOD7
+
+## 24-06-2025- Clase 9
 
 ### Truco para descargar Videos de youtube
 
