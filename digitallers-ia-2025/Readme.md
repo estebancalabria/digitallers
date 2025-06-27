@@ -2,10 +2,30 @@
 
 ## 26-06-2025- Clase 10
 
-### IA Generativa para presetnaciones
+### Adeleanto de Python
+
+Claude saco la posibilidad de publicar los artefactos que estan copados y justo aparecio uno que es un mini tutorial de lo basico de pyton
+> https://claude.ai/artifacts/inspiration/c9e8652f-1804-4903-a1d1-111c85a054e4
+Se animan a hacerlo para la proxima clase?
+
+### IA Generativa Profesional
+
+#### IA Generativa para presentaciones
 
 Para presentaciones tipo PowerPoint la mejor herramienta es :
 > https://gamma.app/signup?r=cjucljp9heegmkv
+
+#### IA Generativa para Videos Profesionales
+
+Herramienta Sugerida para Videos de Avatars
+> HeyGen : https://www.heygen.com/
+Otra Herramienta para videos de Avatars
+> https://www.hedra.com/  (Plan Gratuito Deshabilitado por Ahora)
+
+
+
+
+
 
 ### IA Generativa-Generacion de Video
 
