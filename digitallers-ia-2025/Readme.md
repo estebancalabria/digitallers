@@ -1,5 +1,22 @@
 # Bienvenidos Digitallers 2025
 
+## 03-07-2025- Clase 12
+
+### Chatbots
+
+
+
+## 01-07-2025- Clase 11
+
+### Extensiones de IA Para Google Shets
+> https://www.sheetgpt.ai/
+Tambien lo programamos con appScripts\
+
+### Machine Learning
+* PPT Teorico : https://www.instagram.com/p/C1ntRrRswAu/?img_index=1
+* Recurso Para aprender ML :https://www.kaggle.com/
+* Extension ML para sheets : https://simplemlforsheets.com/
+
 ## 26-06-2025- Clase 10
 
 ### Adeleanto de Python
