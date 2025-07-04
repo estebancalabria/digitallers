@@ -6,6 +6,21 @@
 
 > https://botpress.com/
 
+Vamos a programar nuestro chatbot con Colab...
+
+> https://colab.research.google.com/drive/1gt6DY55GXNQ6aQcEko83gcfZYy525GIl?usp=sharing
+
+ENUNCIADO
+** Programa un chatbot donde el chatbot me muestre el comienzo de una historia y pregunte al usuario sobre como continuar. El chartbot tiene que tener 4 interacciones donde al final el usuario o muera o salga vencedor ** 
+Bien AHI!!!
+
+### Repasando los modelos chinos
+* https://www.deepseek.com/es
+* https://chat.qwen.ai/
+
+## LA pagina de OpenAI para desarrolladores
+> https://platform.openai.com/
+
 ## 01-07-2025- Clase 11
 
 ### Extensiones de IA Para Google Shets
