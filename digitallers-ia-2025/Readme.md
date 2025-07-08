@@ -1,5 +1,35 @@
 # Bienvenidos Digitallers 2025
 
+## 08-07-2025- Clase 13
+
+### Python.
+
+```python
+print("Hola Digitallers")
+```
+
+```python
+mensaje="Hola Digitallers"
+print(mensaje)
+```
+
+**Tipos de Datos Basicos**
+
+```python
+>>> entero = 10
+>>> decimal = 3.14
+>>> texto = "Hola"
+>>> es_verdad = True
+>>> print(type(entero))
+<class 'int'>
+>>> print(type(decimal))
+<class 'float'>
+>>> print(type(texto))
+<class 'str'>
+>>> print(type(es_verdad))
+<class 'bool'>
+```
+
 ## 03-07-2025- Clase 12
 
 ### Chatbots
