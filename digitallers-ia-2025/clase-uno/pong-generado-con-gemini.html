@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de la Viborita</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #1a1a2e; /* Fondo oscuro espacial */
+            color: #e0e0e0; /* Texto claro */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #gameCanvas {
+            border: 3px solid #4a4a8a; /* Borde neón */
+            background-color: #0f0f23; /* Fondo del canvas más oscuro */
+            box-shadow: 0 0 20px #4a4a8a; /* Sombra neón */
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; /* Espacio entre elementos */
+            width: 100%;
+            max-width: 600px; /* Ancho máximo del contenedor del juego */
+        }
+        .controls-touch {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-width: 300px; /* Ancho máximo para los controles */
+            margin-top: 20px;
+        }
+        .controls-touch button {
+            background-color: #3a3a7a; /* Botones con color neón */
+            color: #e0e0e0;
+            border: 2px solid #4a4a8a;
+            padding: 15px;
+            font-size: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .controls-touch button:hover {
+            background-color: #4a4a8a;
+            box-shadow: 0 0 10px #6a6aff;
+        }
+        .controls-touch .empty {
+            visibility: hidden;
+        }
+        .score-board {
+            font-size: 1.5rem; /* Tamaño de fuente más grande para el puntaje */
+            color: #ffeb3b; /* Color amarillo para el puntaje */
+            text-shadow: 0 0 5px #ffeb3b;
+        }
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(26, 26, 46, 0.9); /* Fondo semitransparente */
+            color: #e0e0e0;
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid #4a4a8a;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 0 20px #4a4a8a;
+        }
+        .message-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ff69b4; /* Rosa neón para el título */
+        }
+        .message-box button {
+            background-color: #ff69b4; /* Rosa neón */
+            color: #1a1a2e;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .message-box button:hover {
+            background-color: #ff85c1;
+            transform: scale(1.05);
+        }
+
+        /* Estilos para dispositivos móviles */
+        @media (max-width: 600px) {
+            .score-board {
+                font-size: 1.2rem;
+            }
+            .message-box {
+                padding: 20px;
+                width: 90%;
+            }
+            .message-box h2 {
+                font-size: 1.5rem;
+            }
+            .controls-touch button {
+                padding: 12px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="score-board">Puntaje: <span id="score">0</span></div>
+        <canvas id="gameCanvas"></canvas>
+        <div class="controls-touch">
+            <div class="empty"></div>
+            <button id="btnUp">▲</button>
+            <div class="empty"></div>
+            <button id="btnLeft">◄</button>
+            <button id="btnDown">▼</button>
+            <button id="btnRight">►</button>
+        </div>
+    </div>
+
+    <div id="messageBox" class="message-box" style="display: none;">
+        <h2 id="messageTitle"></h2>
+        <p id="messageText"></p>
+        <button id="messageButton">OK</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreDisplay = document.getElementById('score');
+
+        const messageBox = document.getElementById('messageBox');
+        const messageTitle = document.getElementById('messageTitle');
+        const messageText = document.getElementById('messageText');
+        const messageButton = document.getElementById('messageButton');
+
+        // --- Configuración del Juego ---
+        const gridSize = 20; // Tamaño de cada celda del tablero
+        let tileCountX; // Número de celdas horizontales
+        let tileCountY; // Número de celdas verticales
+
+        let snake = [{ x: 10, y: 10 }]; // Posición inicial de la serpiente
+        let food = { x: 15, y: 15 };   // Posición inicial de la comida
+        let dx = 0; // Desplazamiento horizontal
+        let dy = 0; // Desplazamiento vertical
+        let score = 0;
+        let gameSpeed = 150; // Milisegundos entre actualizaciones (más bajo = más rápido)
+        let gameLoopTimeout;
+        let changingDirection = false; // Para evitar giros de 180 grados instantáneos
+        let gamePaused = false;
+        let gameOver = false;
+
+        // --- Colores ---
+        const snakeColor = '#00ff00'; // Verde neón para la serpiente
+        const foodColor = '#ff00ff';  // Magenta neón para la comida
+        const headColor = '#33cc33'; // Verde más claro para la cabeza
+
+        // --- Funciones del Juego ---
+
+        function resizeCanvas() {
+            const container = document.querySelector('.game-container');
+            const maxWidth = container.offsetWidth * 0.95; // Usar 95% del ancho del contenedor
+            const maxHeight = window.innerHeight * 0.6; // Usar 60% de la altura de la ventana
+
+            // Asegurar que el canvas sea múltiplo del tamaño de la grilla
+            const newWidth = Math.floor(maxWidth / gridSize) * gridSize;
+            const newHeight = Math.floor(maxHeight / gridSize) * gridSize;
+
+            canvas.width = newWidth;
+            canvas.height = newHeight;
+
+            tileCountX = canvas.width / gridSize;
+            tileCountY = canvas.height / gridSize;
+
+            // Reposicionar comida y serpiente si están fuera de los nuevos límites
+            if (food.x >= tileCountX) food.x = tileCountX - 1;
+            if (food.y >= tileCountY) food.y = tileCountY - 1;
+            snake.forEach(segment => {
+                if (segment.x >= tileCountX) segment.x = tileCountX - 1;
+                if (segment.y >= tileCountY) segment.y = tileCountY - 1;
+            });
+
+            if (!gameOver && !gamePaused) { // Solo redibujar si el juego está activo
+                 drawGame();
+            } else if (gameOver) {
+                showGameOverMessage(); // Actualizar el mensaje de game over con el nuevo tamaño
+            }
+        }
+
+
+        function drawRect(x, y, width, height, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(x * gridSize, y * gridSize, width, height);
+            ctx.strokeStyle = '#0f0f23'; // Borde sutil para las celdas
+            ctx.strokeRect(x * gridSize, y * gridSize, width, height);
+        }
+
+        function drawSnake() {
+            snake.forEach((segment, index) => {
+                const color = index === 0 ? headColor : snakeColor;
+                drawRect(segment.x, segment.y, gridSize, gridSize, color);
+            });
+        }
+
+        function drawFood() {
+            drawRect(food.x, food.y, gridSize, gridSize, foodColor);
+        }
+
+        function moveSnake() {
+            if (dx === 0 && dy === 0 && !gameOver) return; // No mover si no hay dirección (inicio del juego)
+
+            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+            snake.unshift(head); // Añade la nueva cabeza
+
+            // Comprobar si la serpiente comió la comida
+            if (head.x === food.x && head.y === food.y) {
+                score++;
+                scoreDisplay.textContent = score;
+                generateFood();
+                // Aumentar velocidad gradualmente (opcional)
+                if (score % 5 === 0 && gameSpeed > 50) {
+                    gameSpeed -= 10;
+                }
+            } else {
+                snake.pop(); // Elimina la cola si no comió
+            }
+        }
+
+        function generateFood() {
+            food.x = Math.floor(Math.random() * tileCountX);
+            food.y = Math.floor(Math.random() * tileCountY);
+
+            // Asegurarse de que la comida no aparezca sobre la serpiente
+            while (snake.some(segment => segment.x === food.x && segment.y === food.y)) {
+                food.x = Math.floor(Math.random() * tileCountX);
+                food.y = Math.floor(Math.random() * tileCountY);
+            }
+        }
+
+        function checkCollision() {
+            const head = snake[0];
+
+            // Colisión con las paredes
+            if (head.x < 0 || head.x >= tileCountX || head.y < 0 || head.y >= tileCountY) {
+                return true;
+            }
+
+            // Colisión consigo misma
+            for (let i = 1; i < snake.length; i++) {
+                if (head.x === snake[i].x && head.y === snake[i].y) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function drawGame() {
+            if (gameOver || gamePaused) return;
+
+            // Limpiar el canvas
+            ctx.fillStyle = '#0f0f23'; // Color de fondo del canvas
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            drawFood();
+            drawSnake();
+        }
+
+        function gameLoop() {
+            if (gameOver || gamePaused) {
+                return;
+            }
+            changingDirection = false; // Permitir cambio de dirección para el siguiente frame
+
+            clearTimeout(gameLoopTimeout); // Limpiar timeout anterior
+
+            moveSnake();
+
+            if (checkCollision()) {
+                gameOver = true;
+                showGameOverMessage();
+                return;
+            }
+
+            drawGame();
+            gameLoopTimeout = setTimeout(gameLoop, gameSpeed);
+        }
+
+        function showCustomMessage(title, text, buttonText, onButtonClick) {
+            messageTitle.textContent = title;
+            messageText.textContent = text;
+            messageButton.textContent = buttonText;
+            messageBox.style.display = 'block';
+            gamePaused = true; // Pausar el juego cuando se muestra el mensaje
+
+            // Remover listener anterior para evitar múltiples ejecuciones
+            const newMessageButton = messageButton.cloneNode(true);
+            messageButton.parentNode.replaceChild(newMessageButton, messageButton);
+            // Asignar el nuevo botón a la variable global para que el listener se pueda remover
+            window.messageButton = newMessageButton;
+
+
+            window.messageButton.onclick = () => {
+                messageBox.style.display = 'none';
+                gamePaused = false; // Reanudar el juego
+                if (onButtonClick) {
+                    onButtonClick();
+                }
+                if (!gameOver) { // Solo reanudar el loop si no es game over
+                    gameLoop();
+                }
+            };
+        }
+
+        function showGameOverMessage() {
+            clearTimeout(gameLoopTimeout); // Detener el bucle del juego
+            const finalScore = score; // Guardar el puntaje antes de reiniciar
+            showCustomMessage(
+                "¡Juego Terminado!",
+                `Tu puntaje fue: ${finalScore}. ¿Quieres jugar de nuevo?`,
+                "Reiniciar",
+                resetGame
+            );
+        }
+
+
+        function resetGame() {
+            snake = [{ x: Math.floor(tileCountX / 2), y: Math.floor(tileCountY / 2) }];
+            dx = 0;
+            dy = 0;
+            score = 0;
+            scoreDisplay.textContent = score;
+            gameSpeed = 150;
+            gameOver = false;
+            gamePaused = false; // Asegurarse de que el juego no esté pausado
+            generateFood();
+            clearTimeout(gameLoopTimeout); // Limpiar cualquier timeout existente
+            showCustomMessage(
+                "¡Listo!",
+                "Presiona una tecla de flecha o un botón de dirección para comenzar.",
+                "Entendido",
+                () => {
+                    // No iniciar gameLoop aquí, esperar a la primera pulsación
+                    drawGame(); // Dibujar el estado inicial
+                }
+            );
+        }
+
+        // --- Controles ---
+        document.addEventListener('keydown', (e) => {
+            if (changingDirection) return; // Si ya se cambió la dirección en este "tick", no hacer nada
+
+            // Iniciar el juego con la primera pulsación de tecla si está en estado inicial
+            if (dx === 0 && dy === 0 && !gameOver && !gamePaused) {
+                if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+                     // Quitar el mensaje de "listo" si está visible
+                    if (messageBox.style.display === 'block' && messageTitle.textContent === "¡Listo!") {
+                        messageBox.style.display = 'none';
+                        gamePaused = false;
+                    }
+                    gameLoop(); // Iniciar el bucle del juego
+                }
+            }
+
+            changingDirection = true;
+            switch (e.key) {
+                case 'ArrowUp':
+                    if (dy === 0) { dx = 0; dy = -1; }
+                    break;
+                case 'ArrowDown':
+                    if (dy === 0) { dx = 0; dy = 1; }
+                    break;
+                case 'ArrowLeft':
+                    if (dx === 0) { dx = -1; dy = 0; }
+                    break;
+                case 'ArrowRight':
+                    if (dx === 0) { dx = 1; dy = 0; }
+                    break;
+                case ' ': // Barra espaciadora para pausar/reanudar
+                case 'p':
+                case 'P':
+                    togglePause();
+                    break;
+            }
+        });
+
+        function handleTouchControl(newDx, newDy) {
+            if (changingDirection) return;
+
+            if (dx === 0 && dy === 0 && !gameOver && !gamePaused) {
+                 if (messageBox.style.display === 'block' && messageTitle.textContent === "¡Listo!") {
+                    messageBox.style.display = 'none';
+                    gamePaused = false;
+                }
+                gameLoop();
+            }
+
+            changingDirection = true;
+            // Evitar movimiento en la dirección opuesta
+            if (newDx !== 0 && dx === -newDx) return;
+            if (newDy !== 0 && dy === -newDy) return;
+
+            dx = newDx;
+            dy = newDy;
+        }
+
+        document.getElementById('btnUp').addEventListener('click', () => handleTouchControl(0, -1));
+        document.getElementById('btnDown').addEventListener('click', () => handleTouchControl(0, 1));
+        document.getElementById('btnLeft').addEventListener('click', () => handleTouchControl(-1, 0));
+        document.getElementById('btnRight').addEventListener('click', () => handleTouchControl(1, 0));
+
+
+        function togglePause() {
+            if (gameOver) return; // No pausar si el juego terminó
+
+            gamePaused = !gamePaused;
+            if (gamePaused) {
+                clearTimeout(gameLoopTimeout);
+                showCustomMessage("Juego Pausado", "Presiona 'OK' o la barra espaciadora para continuar.", "OK", () => {
+                    // gameLoop se reanudará desde el onclick del botón del mensaje si no es game over
+                });
+            } else {
+                 // Si el mensaje de pausa está visible, ocultarlo
+                if (messageBox.style.display === 'block' && messageTitle.textContent === "Juego Pausado") {
+                    messageBox.style.display = 'none';
+                }
+                gameLoop(); // Reanudar el bucle del juego
+            }
+        }
+
+
+        // --- Inicialización ---
+        window.addEventListener('resize', () => {
+            // Solo redimensionar si no hay un mensaje activo que pause el juego,
+            // o si el mensaje es el de game over (para que se ajuste bien)
+            if (!gamePaused || (gamePaused && gameOver)) {
+                 resizeCanvas();
+            }
+        });
+
+        // Inicializar el canvas y el juego
+        resizeCanvas(); // Ajustar tamaño inicial
+        resetGame(); // Mostrar mensaje de inicio
+
+    </script>
+</body>
+</html>

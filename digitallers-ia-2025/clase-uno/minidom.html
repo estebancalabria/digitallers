@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Doom (Raycasting)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Importa la fuente Inter de Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Color de fondo oscuro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Evita barras de desplazamiento */
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #2d3748; /* Contenedor del juego */
+            padding: 1.5rem;
+            border-radius: 1rem; /* Bordes redondeados */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            color: #e2e8f0; /* Color de texto claro */
+        }
+
+        canvas {
+            background-color: #000; /* Fondo del canvas para el juego */
+            border: 2px solid #4a5568; /* Borde sutil */
+            border-radius: 0.5rem; /* Bordes redondeados para el canvas */
+            display: block; /* Elimina espacio extra debajo del canvas */
+            width: 100%; /* El canvas se ajusta al ancho del contenedor */
+            max-width: 800px; /* Ancho máximo para el canvas */
+            height: auto; /* Altura automática para mantener la proporción */
+            aspect-ratio: 4 / 3; /* Proporción 4:3 para el canvas */
+        }
+
+        .controls-info {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #a0aec0;
+            text-align: center;
+        }
+
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            text-align: center;
+        }
+
+        .message-box button {
+            background-color: #4299e1; /* Blue-500 */
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .message-box button:hover {
+            background-color: #3182ce; /* Blue-600 */
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1 class="text-3xl font-bold mb-4">Mini-Doom (Raycasting)</h1>
+        <canvas id="gameCanvas"></canvas>
+        <div class="controls-info">
+            <p>Controles: W (adelante), S (atrás), A (girar izquierda), D (girar derecha)</p>
+            <p>Haz clic para disparar!</p>
+        </div>
+    </div>
+
+    <div id="messageBox" class="message-box">
+        <p id="messageText"></p>
+        <button onclick="hideMessageBox()">OK</button>
+    </div>
+
+    <script>
+        // Obtiene el elemento canvas y su contexto de dibujo 2D
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Configuración del canvas
+        const CANVAS_WIDTH = 800;
+        const CANVAS_HEIGHT = 600;
+        canvas.width = CANVAS_WIDTH;
+        canvas.height = CANVAS_HEIGHT;
+
+        // Función para mostrar mensajes personalizados (reemplazo de alert)
+        function showMessageBox(message) {
+            const messageBox = document.getElementById('messageBox');
+            const messageText = document.getElementById('messageText');
+            messageText.textContent = message;
+            messageBox.style.display = 'block';
+        }
+
+        // Función para ocultar el cuadro de mensaje
+        function hideMessageBox() {
+            document.getElementById('messageBox').style.display = 'none';
+        }
+
+        // --- Configuración del juego ---
+        const TILE_SIZE = 64; // Tamaño de cada celda del mapa en píxeles
+        const FOV = Math.PI / 3; // Campo de visión (60 grados)
+        const HALF_FOV = FOV / 2;
+        const NUM_RAYS = CANVAS_WIDTH; // Un rayo por columna de píxeles en el canvas
+        const DELTA_ANGLE = FOV / NUM_RAYS; // Incremento de ángulo entre rayos
+
+        // Distancia al plano de proyección (para calcular la altura de las paredes)
+        const PROJECTION_PLANE_DISTANCE = (CANVAS_WIDTH / 2) / Math.tan(HALF_FOV);
+
+        // Colores
+        const WALL_COLOR = '#888888'; // Gris para las paredes
+        const FLOOR_COLOR = '#444444'; // Gris oscuro para el suelo
+        const CEILING_COLOR = '#666666'; // Gris medio para el techo
+
+        // --- Mapa del juego ---
+        // 1 representa una pared, 0 representa espacio vacío
+        const MAP = [
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1],
+            [1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1],
+            [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+            [1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1],
+            [1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        ];
+
+        // Dimensiones del mapa en celdas
+        const MAP_WIDTH = MAP[0].length;
+        const MAP_HEIGHT = MAP.length;
+
+        // --- Jugador ---
+        const player = {
+            x: TILE_SIZE * 1.5, // Posición inicial X
+            y: TILE_SIZE * 1.5, // Posición inicial Y
+            angle: Math.PI / 2, // Ángulo inicial (mirando hacia arriba)
+            speed: 3, // Velocidad de movimiento
+            rotationSpeed: 0.05 // Velocidad de rotación
+        };
+
+        // Estado de las teclas
+        const keys = {
+            w: false,
+            s: false,
+            a: false,
+            d: false
+        };
+
+        // --- Pistol ---
+        const pistolImage = new Image();
+        // Placeholder image for a simple pistol. You can replace this with your own image.
+        pistolImage.src = 'https://placehold.co/150x100/000000/FFFFFF?text=PISTOL'; 
+        let isShooting = false;
+        let shootTimer = 0;
+        const SHOOT_DURATION = 100; // milliseconds for shooting animation
+
+        // --- Event Listeners para el control del jugador ---
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'w') keys.w = true;
+            if (e.key === 's') keys.s = true;
+            if (e.key === 'a') keys.a = true;
+            if (e.key === 'd') keys.d = true;
+        });
+
+        window.addEventListener('keyup', (e) => {
+            if (e.key === 'w') keys.w = false;
+            if (e.key === 's') keys.s = false;
+            if (e.key === 'a') keys.a = false;
+            if (e.key === 'd') keys.d = false;
+        });
+
+        // Event listener para el disparo con el clic del ratón
+        canvas.addEventListener('mousedown', () => {
+            if (!isShooting) {
+                isShooting = true;
+                shootTimer = Date.now(); // Start the timer for the shooting animation
+                // Aquí podrías añadir un efecto de sonido de disparo
+                // const shootSound = new Audio('ruta/a/tu/sonido_disparo.wav');
+                // shootSound.play();
+            }
+        });
+
+        // --- Bucle principal del juego ---
+        function gameLoop() {
+            update(); // Actualiza el estado del juego
+            draw();   // Dibuja el juego
+            requestAnimationFrame(gameLoop); // Solicita el siguiente frame
+        }
+
+        // --- Función de actualización (lógica del juego) ---
+        function update() {
+            // Movimiento del jugador
+            let moveX = 0;
+            let moveY = 0;
+
+            if (keys.w) { // Adelante
+                moveX += Math.cos(player.angle) * player.speed;
+                moveY += Math.sin(player.angle) * player.speed;
+            }
+            if (keys.s) { // Atrás
+                moveX -= Math.cos(player.angle) * player.speed;
+                moveY -= Math.sin(player.angle) * player.speed;
+            }
+            if (keys.a) { // Girar izquierda
+                player.angle -= player.rotationSpeed;
+            }
+            if (keys.d) { // Girar derecha
+                player.angle += player.rotationSpeed;
+            }
+
+            // Normalizar el ángulo para mantenerlo entre 0 y 2*PI
+            player.angle = player.angle % (2 * Math.PI);
+            if (player.angle < 0) {
+                player.angle += 2 * Math.PI;
+            }
+
+            // Detección de colisiones simple (antes de mover al jugador)
+            const newPlayerX = player.x + moveX;
+            const newPlayerY = player.y + moveY;
+
+            const mapX = Math.floor(newPlayerX / TILE_SIZE);
+            const mapY = Math.floor(newPlayerY / TILE_SIZE);
+
+            // Verifica si la nueva posición está dentro de los límites del mapa
+            if (mapX >= 0 && mapX < MAP_WIDTH && mapY >= 0 && mapY < MAP_HEIGHT) {
+                // Verifica si la nueva posición es una pared
+                if (MAP[mapY][mapX] === 0) { // Si no es una pared, permite el movimiento
+                    player.x = newPlayerX;
+                    player.y = newPlayerY;
+                } else {
+                    // Si choca con una pared, no permite el movimiento en esa dirección
+                    // Podríamos añadir una lógica de deslizamiento aquí para un movimiento más suave
+                }
+            }
+
+            // Actualizar el estado de disparo
+            if (isShooting && (Date.now() - shootTimer > SHOOT_DURATION)) {
+                isShooting = false;
+            }
+        }
+
+        // --- Función de dibujo (renderizado) ---
+        function draw() {
+            // Limpiar el canvas
+            ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+            // Dibujar el techo y el suelo (pseudo-3D)
+            ctx.fillStyle = CEILING_COLOR;
+            ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT / 2);
+            ctx.fillStyle = FLOOR_COLOR;
+            ctx.fillRect(0, CANVAS_HEIGHT / 2, CANVAS_WIDTH, CANVAS_HEIGHT / 2);
+
+            // --- Raycasting ---
+            let rayAngle = player.angle - HALF_FOV; // Ángulo inicial del primer rayo
+
+            for (let rayNum = 0; rayNum < NUM_RAYS; rayNum++) {
+                // Calcular los componentes del rayo
+                const cosRayAngle = Math.cos(rayAngle);
+                const sinRayAngle = Math.sin(rayAngle);
+
+                // Variables para el algoritmo DDA (Digital Differential Analyzer)
+                let wallHit = false;
+                let distance = 0;
+                let xHit = 0;
+                let yHit = 0;
+                let textureX = 0; // Para futuras texturas
+                let side = 0; // 0 para paredes verticales, 1 para horizontales
+
+                // Calcular el paso inicial para DDA
+                const mapX = Math.floor(player.x / TILE_SIZE);
+                const mapY = Math.floor(player.y / TILE_SIZE);
+
+                let deltaDistX = Math.abs(1 / cosRayAngle);
+                let deltaDistY = Math.abs(1 / sinRayAngle);
+
+                let stepX;
+                let stepY;
+                let sideDistX;
+                let sideDistY;
+
+                // Determinar la dirección del paso y la distancia inicial al primer límite de celda
+                if (cosRayAngle < 0) {
+                    stepX = -1;
+                    sideDistX = (player.x - mapX * TILE_SIZE) / Math.abs(cosRayAngle);
+                } else {
+                    stepX = 1;
+                    sideDistX = ((mapX + 1) * TILE_SIZE - player.x) / Math.abs(cosRayAngle);
+                }
+
+                if (sinRayAngle < 0) {
+                    stepY = -1;
+                    sideDistY = (player.y - mapY * TILE_SIZE) / Math.abs(sinRayAngle);
+                } else {
+                    stepY = 1;
+                    sideDistY = ((mapY + 1) * TILE_SIZE - player.y) / Math.abs(sinRayAngle);
+                }
+
+                let currentMapX = mapX;
+                let currentMapY = mapY;
+
+                // Bucle DDA
+                while (!wallHit && distance < 1000) { // Limita la distancia para evitar bucles infinitos
+                    if (sideDistX < sideDistY) {
+                        sideDistX += deltaDistX;
+                        currentMapX += stepX;
+                        side = 0; // Hit vertical wall
+                    } else {
+                        sideDistY += deltaDistY;
+                        currentMapY += stepY;
+                        side = 1; // Hit horizontal wall
+                    }
+
+                    // Comprobar si el rayo ha golpeado una pared
+                    if (currentMapX >= 0 && currentMapX < MAP_WIDTH && currentMapY >= 0 && currentMapY < MAP_HEIGHT) {
+                        if (MAP[currentMapY][currentMapX] === 1) {
+                            wallHit = true;
+                        }
+                    } else {
+                        // Rayo fuera de los límites del mapa, detener
+                        break;
+                    }
+                }
+
+                // Calcular la distancia real a la pared
+                if (side === 0) { // Pared vertical
+                    distance = (currentMapX * TILE_SIZE - player.x + (1 - stepX) / 2 * TILE_SIZE) / cosRayAngle;
+                } else { // Pared horizontal
+                    distance = (currentMapY * TILE_SIZE - player.y + (1 - stepY) / 2 * TILE_SIZE) / sinRayAngle;
+                }
+
+                // Corrección del efecto "ojo de pez"
+                distance = distance * Math.cos(player.angle - rayAngle);
+
+                // Evitar división por cero o distancias negativas
+                if (distance < 0.0001) distance = 0.0001;
+
+                // Calcular la altura de la pared proyectada en la pantalla
+                const wallHeight = (TILE_SIZE * PROJECTION_PLANE_DISTANCE) / distance;
+
+                // Calcular la posición Y para dibujar la pared (centrada verticalmente)
+                const drawStartY = (CANVAS_HEIGHT / 2) - (wallHeight / 2);
+                const drawEndY = (CANVAS_HEIGHT / 2) + (wallHeight / 2);
+
+                // Calcular la intensidad del color (sombreado por distancia)
+                let shade = 1 - (distance / (TILE_SIZE * Math.max(MAP_WIDTH, MAP_HEIGHT) * 0.7)); // Ajusta el factor para el sombreado
+                if (shade < 0) shade = 0;
+                if (shade > 1) shade = 1;
+
+                // Si es una pared horizontal, hazla un poco más oscura para dar profundidad
+                const finalShade = side === 1 ? shade * 0.7 : shade; // Paredes horizontales más oscuras
+
+                const color = `rgb(${Math.floor(finalShade * 255)}, ${Math.floor(finalShade * 255)}, ${Math.floor(finalShade * 255)})`;
+
+                // Dibujar la franja vertical de la pared
+                ctx.fillStyle = color;
+                ctx.fillRect(rayNum, drawStartY, 1, wallHeight);
+
+                // Avanzar al siguiente rayo
+                rayAngle += DELTA_ANGLE;
+            }
+
+            // --- Dibujar la pistol ---
+            // Ajusta la posición Y de la pistol para la animación de disparo
+            let pistolYOffset = 0;
+            if (isShooting) {
+                pistolYOffset = 20; // Move the pistol up when shooting
+            }
+
+            const pistolWidth = 150;
+            const pistolHeight = 100;
+            const pistolX = (CANVAS_WIDTH / 2) - (pistolWidth / 2);
+            const pistolY = CANVAS_HEIGHT - pistolHeight - 10 + pistolYOffset; // 10px from bottom
+
+            ctx.drawImage(pistolImage, pistolX, pistolY, pistolWidth, pistolHeight);
+        }
+
+        // Iniciar el bucle del juego cuando la ventana se haya cargado completamente
+        window.onload = function () {
+            gameLoop();
+        };
+
+        // Manejar el redimensionamiento del canvas para que sea responsivo
+        window.addEventListener('resize', () => {
+            // No cambiamos el tamaño del canvas interno (CANVAS_WIDTH, CANVAS_HEIGHT)
+            // sino que el CSS se encarga de escalarlo visualmente.
+            // Si quisiéramos que el renderizado interno cambiara, ajustaríamos CANVAS_WIDTH/HEIGHT aquí.
+            // Para este ejemplo, el CSS ya maneja la responsividad visual.
+        });
+
+    </script>
+</body>
+</html>
