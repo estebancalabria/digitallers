@@ -4,17 +4,18 @@
 
 ### Python.
 
+**Salida Por Pantalla**
 ```python
 print("Hola Digitallers")
 ```
 
+**Variables**
 ```python
 mensaje="Hola Digitallers"
 print(mensaje)
 ```
 
 **Tipos de Datos Basicos**
-
 ```python
 >>> entero = 10
 >>> decimal = 3.14
@@ -28,6 +29,29 @@ print(mensaje)
 <class 'str'>
 >>> print(type(es_verdad))
 <class 'bool'>
+```
+**Que paso aca?**
+```python
+>>> #Quiero que le pregunte dos numeros al usuario y los sume
+>>> num1 = input("Ingrese un numero")
+Ingrese un numero12
+>>> num2 = input("Ingrese otro numero:")
+Ingrese otro numero:34
+>>> print(num1 + num2)
+1234
+```
+
+**Deberia haber hecho...**
+```
+print(int(num1) + int(num2))
+```
+
+**Peeeeeeeeero peeeeeeero peeeeeero si trato de convertir en int una cadena que no tiene numeros da error**
+```python
+>>> print(int(texto))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: 'Hola'
 ```
 
 ## 03-07-2025- Clase 12
