@@ -1,5 +1,28 @@
 # Bienvenidos Digitallers 2025
 
+## 10-07-2025- Clase 14
+
+Algunos metodos utiles de python:
+* min
+* max
+* len
+* string.split
+* random.randint
+* lista.count
+
+Type Hints
+``` python
+def dividir(num1: float, num2: float) -> float:
+```
+
+Compresion de listas
+``` python
+def lista_aleatoria(cantidad):
+  #sintaxis de comprensión de listas
+  return [random.randint(1,100) for _ in range(cantidad)]
+```
+
+
 ## 08-07-2025- Clase 13
 
 ### Python.
