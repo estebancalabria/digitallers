@@ -2,6 +2,25 @@
 
 ## 10-07-2025- Clase 14
 
+Librerias : Saber que librerias tengo instaladas
+```cmd
+pip list
+```
+
+Diccionarios {}
+* [] accede al un elemento de un diccionario por clave, lanza KeyError si la clave no existe. Tambien sirve para crear la clave en el diccionario
+* dicc.get  es parecido al [] pero ei el elemento no esta devueve None o el valor por defecto (segundo parametro)
+* dicc.items() convierte el diccionario en una lista de tuplas [(clave, valor)]
+* 
+
+Excepciones Comunes en python
+* TypeError (ej  "1" + 2)
+* ValueError (ej int("hola"))
+* IndexError
+* KeyError (Clave No encontrada en un diccionario)
+* AttributeError (El atributo no esta en un obeto o diccionario)
+* NameError (VariableNoDefinida(
+
 Algunos metodos utiles de python:
 * min
 * max
