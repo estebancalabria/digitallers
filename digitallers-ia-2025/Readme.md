@@ -6,11 +6,14 @@ Librerias : Saber que librerias tengo instaladas
 ```cmd
 pip list
 ```
+Librerias que todos deben conocer :) : https://www.instagram.com/p/C_VyOHHRv0N/?img_index=1
+* pygame
+* tkinter
 
 Diccionarios {}
 * [] accede al un elemento de un diccionario por clave, lanza KeyError si la clave no existe. Tambien sirve para crear la clave en el diccionario
 * dicc.get  es parecido al [] pero ei el elemento no esta devueve None o el valor por defecto (segundo parametro)
-* dicc.items() convierte el diccionario en una lista de tuplas [(clave, valor)]
+* dicc.tems() convierte el diccionario en una lista de tuplas [(clave, valor)]
 * 
 
 Excepciones Comunes en python
