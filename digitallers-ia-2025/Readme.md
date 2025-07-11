@@ -19,7 +19,8 @@ Excepciones Comunes en python
 * IndexError
 * KeyError (Clave No encontrada en un diccionario)
 * AttributeError (El atributo no esta en un obeto o diccionario)
-* NameError (VariableNoDefinida(
+* NameError (VariableNoDefinida)
+* ModuleNotFoundError
 
 Algunos metodos utiles de python:
 * min
