@@ -1,5 +1,26 @@
 # Bienvenidos Digitallers 2025
 
+## 15-07-2025- Clase 15
+
+> Vamos a hacer una sala de chat Infinita el python utilizando Gradio
+
+### Python
+
+Compresiones de Lista
+**Mostrar una lista con compresion de Lista**
+```python
+lista = [1,2,3,4,5]
+print([msg for msg in lista])
+print(lista)
+print(*[msg for msg in lista])
+```
+Salida
+```
+[1, 2, 3, 4, 5]
+[1, 2, 3, 4, 5]
+1 2 3 4 5
+```
+
 ## 10-07-2025- Clase 14
 
 Librerias : Saber que librerias tengo instaladas
