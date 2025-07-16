@@ -3,6 +3,7 @@
 ## 15-07-2025- Clase 15
 
 > Vamos a hacer una sala de chat Infinita el python utilizando Gradio
+Resultado : https://colab.research.google.com/drive/1YFeHI6REENOIP8CQNdU29sPKWR5zHJov?usp=sharing
 
 ### Python
 
