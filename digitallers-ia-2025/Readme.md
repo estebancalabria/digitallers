@@ -6,7 +6,7 @@
 
 ### Python
 
-Compresiones de Lista
+Compresiones de Lista   
 **Mostrar una lista con compresion de Lista**
 ```python
 lista = [1,2,3,4,5]
@@ -19,6 +19,38 @@ Salida
 [1, 2, 3, 4, 5]
 [1, 2, 3, 4, 5]
 1 2 3 4 5
+```
+
+**Modificar una lista con compresion de Lista**
+```python
+lista = [1,2,3,4,5,6,7,8,9,10]
+
+#Sin Compresor de Lista
+lista_pares_sin_compresor = []
+for i, msg in enumerate(lista):
+  if i % 2 == 0:
+    lista_pares_sin_compresor.append(msg)
+
+##Con compresor de Lista
+lista_pares = [msg for i, msg in enumerate(lista) if i % 2 != 0]
+
+lista_cuadrados = [num**2 for num in lista]  #1,4,9,16...
+
+print(lista)
+print(lista_pares)
+print(lista_cuadrados)
+```
+
+**USando el operador asterisco (*) para desempaquetar elementos de una lista**
+```python
+def suma(a,b): 
+  return a+b
+
+lista = [2,3]
+
+print(suma(*lista))
+#ES lo mismo que hacer
+print(suma(lista[0], lista[1]))
 ```
 
 ## 10-07-2025- Clase 14
