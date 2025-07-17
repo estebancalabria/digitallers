@@ -18,9 +18,40 @@ Formas de importar lo que tiene un modulo
 * import calculadora as calc
 * from calculadora import sumar
 * from calculadora import sumar as sum
-* from calculadora import *
+* from calculadora import *    << Desaconsejado. Mejor no usar.
+
+> USAR VARIABLES GLOBALES ES MALO!!
+en lugar de hacer esto
+```
+...
+def saludar():
+    messagebox.showinfo("Saludo", entrada.get().strip())
+   
+entrada = tk.Entry(marco, font=("Arial", 14), width=30)
+btn = tk.Button(marco, text="Saludar", command=saludar, font=("Arial", 14))
+...
+```
+hacer
+```
+from functools import partial
+...
+def saludar(lbl):
+    messagebox.showinfo("Saludo", lbl.get().strip())
+   
+entrada = tk.Entry(marco, font=("Arial", 14), width=30)
+btn = tk.Button(marco, text="Saludar", command=partial(saludar,entrada), font=("Arial", 14))
+```
 
 ### TKinter
+
+Componentes de Tkinter
+* tk.Button
+* tk.Label
+* tk.Entry
+* tk.Frame
+
+Metodos de Tkinter
+* messagebox.showinfo
 
 ## 15-07-2025- Clase 15
 
