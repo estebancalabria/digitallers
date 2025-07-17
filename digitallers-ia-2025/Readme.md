@@ -1,5 +1,27 @@
 # Bienvenidos Digitallers 2025
 
+## 17-07-2025- Clase 16
+
+Que les parece hacer la sala de chat infinito pero en versio escritorio?
+
+### NOVEDADES
+
+> Salio un nuevo modelo Open Source. Kimi K2. Dicen que es una locura
+> https://www.youtube.com/watch?v=7Li5WGlijm8&t=1s
+
+### Python
+
+> Un modulo es un archivo con extension.py que tiene funciones, variables, constantes, clases, etc para usar desde otro archivo
+
+Formas de importar lo que tiene un modulo
+* import caluladora  
+* import calculadora as calc
+* from calculadora import sumar
+* from calculadora import sumar as sum
+* from calculadora import *
+
+### TKinter
+
 ## 15-07-2025- Clase 15
 
 > Vamos a hacer una sala de chat Infinita el python utilizando Gradio
