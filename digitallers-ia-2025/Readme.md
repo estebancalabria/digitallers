@@ -4,6 +4,36 @@
 
 Que les parece hacer la sala de chat infinito pero en versio escritorio?
 
+### Github
+
+Instalar Git For Windows
+> https://gitforwindows.org/
+
+Creamos nuestro primer REPO!
+
+### Historia de la computacion
+
+Leguajes de programacion (consultar https://www.tiobe.com/tiobe-index/)
+* Javascript
+* Python
+* C
+* C++ 
+* C#
+* Java
+* Pascal
+* R
+* Ruby
+  
+
+Lenguajes para representar informacion
+* JSON
+* XML
+
+Lenguajes declarativos
+* HTML
+* CSS
+* SQL
+
 ### NOVEDADES
 
 > Salio un nuevo modelo Open Source. Kimi K2. Dicen que es una locura
