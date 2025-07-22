@@ -1,5 +1,36 @@
 # Bienvenidos Digitallers 2025
 
+## 17-22-2025- Clase 17
+
+### Github
+
+Requiero que todos los alumnos de digitalles:
+* Me pasen su direccion de Github
+* Que instalen git for windows para tener el comando git en la cosola (https://git-scm.com/downloads/win)
+
+#### LAboratorio Github
+
+Crear una web con LA IA y subirla al repositorio "expecial" de github para poder compartirla
+1. Loguearse en su cuenta de github
+2. Ir a la solapa Repositories
+3. Darle click en New Repositories
+4. Crear el respositorio "especial de github" (<nombre_usuario>.github.io)
+5. Abrir la linea de comando en una carpeta de su deseo
+6. Ejecutar en la linea de comandos:
+   
+```cmd
+git clone https://github.com/<usuario>/<usuario>.github.io.git
+```
+   
+7. Entrar al directorio del
+    
+```cmd
+cd <usuario>.github.io.git
+```
+
+8. Validar (con el explorador de archivos) la existencia de la capeta oculta .git
+9. Crear una pagina web con la IA
+
 ## 17-07-2025- Clase 16
 
 Que les parece hacer la sala de chat infinito pero en versio escritorio?
