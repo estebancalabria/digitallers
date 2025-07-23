@@ -50,6 +50,63 @@ git push
 13. Verificar que esten los archivos subidos en el repo
 14. Acceder a la url <nombreusuario>.github.io
 
+### Administradores de Paquetes
+
+Cada lenguaje de programacion tiene su administrador de paquetes
+1. Python tiene el pip
+2. Javascript tiene el npm
+3. DotNet tine el nuget
+4. Java tiene el maven
+
+#### Laboratorio : Usando el administrador de paquetes de Javascript
+
+1. Verificar en la terminal si esta instalado nodejs con
+   
+```cmd
+node --version
+```
+
+2. Si no esta instalado y dice comando no reconocido instalar nodejs (https://nodejs.org/en)
+
+3. Verificamos que este instalado nodejs con node --version en una nueva terminal
+
+4. Creamos una carpeta y agregamos el archivo server.js que editamos con vscode y generamos con la IA
+
+```javascript
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('¡Hola Mundo!');
+});
+
+app.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`);
+});
+```
+Prompt que usamos para generarlo con Claude
+> Dame un ejemplo minimalista de hola mundo en nodejs con express
+
+5. Abrimos una terminal y lo ejecutamos (Spoiler: Va a dar error)
+```cmd
+   node server
+```
+
+> Error: Cannot find module 'express'
+
+6. Vamos a instalar la depedencias de express (como haciamos en python con PIP)
+```cmd
+   npm init -y
+   npm install express
+```
+
+7. Ejecutar server.js
+```cmd
+   node server
+```
+8. Abrir el navegador en http://localhost:3000
+
 ## 17-07-2025- Clase 16
 
 Que les parece hacer la sala de chat infinito pero en versio escritorio?
