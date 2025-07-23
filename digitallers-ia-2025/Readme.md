@@ -29,7 +29,26 @@ cd <usuario>.github.io.git
 ```
 
 8. Validar (con el explorador de archivos) la existencia de la capeta oculta .git
-9. Crear una pagina web con la IA
+9. Crear una pagina web con la IA (claude, chatgpt, oo...websim https://websim.ai/)
+> Loguearse a websim y poner un prompt
+**Prompt Utilizado**
+``` prompt
+Un juego tipo el juego de aviones 1942 donde van viniendo enemigos y te moves con las teclas de cursor y disparas con la barra espaciadora
+```
+> Descargar el juego creado o utilizar uno que ya exista. Se descarga un zip
+         
+10. Copiar el zip a la carpeta del repositorio de github
+11. Descomprimir el zip (tiene que tener el archivo index.html)
+12. Subirlo a github
+    
+```cmd
+git pull
+git add *
+git commit -m "subo todo"
+git push
+```
+13. Verificar que esten los archivos subidos en el repo
+14. Acceder a la url <nombreusuario>.github.io
 
 ## 17-07-2025- Clase 16
 
