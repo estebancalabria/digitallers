@@ -39,6 +39,13 @@ try:
 except:
     print(f"Error: Te olvidaste de pasar el segundo parámetro cuando hiciste Persona(\"Ana\"):")
 ```
+El constructor de la clase se define con el metodo __init___
+>Todos los metodos o atributos que empiezan (y generalmente terminan con __ (doble guion bajo) son metodos especiales del lenguaje
+```python
+class Persona:
+    def __init__(self, nombre, apellido):
+
+```
 
 ## 22-07-2025- Clase 17
 
