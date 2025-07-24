@@ -1,6 +1,46 @@
 # Bienvenidos Digitallers 2025
 
-## 17-22-2025- Clase 17
+## 24-07-2025- Clase 18
+
+### Programacion orientada a objetos
+
+Un objeto permite agrupar atributos en una misma entidad para representar objetos del mundo real.
+Para crear un objeto necesitamos definir una clase que permite crear varios objetos del mismo tipo
+Pyton te permite definir las propiedades del objeto dinamicamente
+```python
+class Persona:
+    pass
+
+#En python las atributos de un objeto se pueden definir de forma dinámica
+persona = Persona()  # Creación de un objeto persona mediante su constructor
+persona.nombre = "Juan"
+persona.apellido = "Pérez"
+persona.edad = 30
+```
+
+Pero lo mas comun es especificar mediante el constructor cuales son las propiedades requeridas
+```python
+class Persona:
+    def __init__(self, nombre, apellido):
+        self.nombre = nombre
+        self.apellido = apellido
+
+    def presentarse(self):
+        return f"Hola, me llamo {self.nombre} {self.apellido}."
+    
+
+# Ejemplo. Con un objeto personalizado
+persona = Persona("Juan", "Pérez")  # Creación de un objeto persona mediante
+```
+El caso anterior si quisiera crear una persona sin apellido me tiraria un error
+```python
+try:
+    persona2 = Persona("Ana")  # Creación de otro objeto persona
+except:
+    print(f"Error: Te olvidaste de pasar el segundo parámetro cuando hiciste Persona(\"Ana\"):")
+```
+
+## 22-07-2025- Clase 17
 
 ### Github
 
