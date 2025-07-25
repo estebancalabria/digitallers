@@ -47,6 +47,13 @@ class Persona:
 
 ```
 
+### Clases en python (y otros lenguajes)
+
+Laas clases sirven para
+* Para crear objetos y definir su estructura
+* Para agrupar funciones o metodos estaticos (con el decorador @staticmethod)
+
+
 ## 22-07-2025- Clase 17
 
 ### Github
