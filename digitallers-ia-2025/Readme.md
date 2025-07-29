@@ -1,5 +1,14 @@
 # Bienvenidos Digitallers 2025
 
+## 29-07-2025- Clase 19
+
+### Programacion orientada a objetos
+
+Un objeto es consistente cuando el valor de sus atributos tiene sentido el mundo real
+Un objeto es inconsistente cuando el valor de sus atributos no tiene sentido ej
+El valor de los atributos posibles de un objeto lo definen las **REGLAS DE NEGOCIO** que suelen coincidir con las reglas del mundo real
+*
+
 ## 24-07-2025- Clase 18
 
 ### Programacion orientada a objetos
