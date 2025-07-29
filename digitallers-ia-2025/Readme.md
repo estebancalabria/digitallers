@@ -9,6 +9,21 @@ Un objeto es inconsistente cuando el valor de sus atributos no tiene sentido ej
 El valor de los atributos posibles de un objeto lo definen las **REGLAS DE NEGOCIO** que suelen coincidir con las reglas del mundo real
 *
 
+# Programando en .NET
+
+Bajar el .net de
+> https://dotnet.microsoft.com/es-es/download
+
+Crear una applicacion consola con el comando:
+```cmd
+dotnet new console --output .
+```
+Para ejecutarlo
+```cmd
+dotnet run 
+```
+
+
 ## 24-07-2025- Clase 18
 
 ### Programacion orientada a objetos
