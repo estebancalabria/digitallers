@@ -153,6 +153,25 @@ classDiagram
 Utilizar ChatGPT para realizar el diagrama de clases en mermaid de una clase Cuenta
 Luego utilizar la IA paraa que me genere el codigo
 
+```mermaid
+classDiagram
+    class Cuenta {
+        -String numero
+        -double saldo
+        -Object titular
+        -LocalDate fechaApertura
+
+        +Cuenta(String numero, Object titular, String moneda)
+        +depositar(double monto): void
+        +retirar(double monto): boolean
+        +transferir(double monto, Cuenta destino): boolean
+        +getSaldo(): double
+        +getNumero(): String
+        +getTitular(): Object
+        +getFechaApertura(): LocalDate
+    }
+```
+
 ## 24-07-2025- Clase 18
 
 ### Programacion orientada a objetos
