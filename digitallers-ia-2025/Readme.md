@@ -38,7 +38,24 @@ dotnet run
 
 ## 
 
+### Visualizacion de objetos en mermaid
 
+Las clases se pueden visualizar en un lenguaque que se llama UML
+
+```mermaid
+classDiagram
+    class Persona {
+        -String _nombre
+        -String _apellido
+        +Persona(String nombre, String apellido)
+        +String getNombre()
+        +String getApellido()
+
+        +void mostrarInformacion()
+        -boolean esSoloLetras(String texto)
+    }
+
+```
 
 ## 24-07-2025- Clase 18
 
