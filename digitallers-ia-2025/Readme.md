@@ -9,7 +9,7 @@ Un objeto es inconsistente cuando el valor de sus atributos no tiene sentido ej
 El valor de los atributos posibles de un objeto lo definen las **REGLAS DE NEGOCIO** que suelen coincidir con las reglas del mundo real
 *
 
-# Programando en .NET
+### Programando en .NET
 
 Bajar el .net de
 > https://dotnet.microsoft.com/es-es/download
@@ -23,6 +23,19 @@ Para ejecutarlo
 dotnet run 
 ```
 
+### Comparativa entre los distintos lenguajes
+
+## 
+
+|  | Python | C\# | Java | Javascript |
+| :---- | :---- | :---- | :---- | :---- |
+| **Constructores** | **def \_\_init\_\_(self** | **Igual nombre que la clase** | **Igual nombre que la clase** |  **constructor** |
+| **Niveles de Visibilidad private para que no se pueda acceder a los atributos de fuera de la clase** | **No tiene, por convencion: \_\_atributo Si empieza con \_\_ es privado** | **Con palabra reservada:   private \_nombre Se pone private antes del atributo** | **Con palabra reservada:   private \_nombre Se pone private antes del atributo** | **Los atributos privados se definen con \# \#nombre Y no se pueden acceder desde fuera** |
+| **Getter** | **get\_atributo(Self)** | **En este lenguaje se pueden definir propiedades public Att {   get {     return this.\_att;   } }** | **Por convencion de nombres public getAtributo(){    return \_atributo; }** | **Palabra reservada get get atributo(){    return \#atributo; }** |
+| **Lanza Excepciones** | **raise** | **throw** | **throw** | **throw** |
+| **Referencia al propio objeto** | **self** | **this** | **this** | **this** |
+
+## 
 
 ## 24-07-2025- Clase 18
 
