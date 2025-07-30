@@ -34,8 +34,11 @@ dotnet run
 | **Getter** | **get\_atributo(Self)** | **En este lenguaje se pueden definir propiedades public Att {   get {     return this.\_att;   } }** | **Por convencion de nombres public getAtributo(){    return \_atributo; }** | **Palabra reservada get get atributo(){    return \#atributo; }** |
 | **Lanza Excepciones** | **raise** | **throw** | **throw** | **throw** |
 | **Referencia al propio objeto** | **self** | **this** | **this** | **this** |
+| **Creacion de un objeto** | **p \= Persona(...)** | **Persona p \= new Persona(...)** | **Persona p \= new Persona(...)** | **let p \= new Persona(...)** |
 
 ## 
+
+
 
 ## 24-07-2025- Clase 18
 
