@@ -42,6 +42,8 @@ dotnet run
 
 Las clases se pueden visualizar en un lenguaque que se llama UML
 
+> https://mermaid.live/
+
 ```mermaid
 classDiagram
     class Persona {
@@ -56,6 +58,100 @@ classDiagram
     }
 
 ```
+
+### Ejercicio
+
+Utilizar CharGPT para que me genere un diagrama mermaid de el sistema de un banco.
+Luego visualizar el diagrama en la plataforma mermaid.live
+Luego pedirle a ChatGPT que me traduzca el diagrama en python (O el lenguaje de su eleccion)
+
+Solucion (genio Dario)
+```mermaid
+classDiagram
+    class Banco {
+        -String nombre
+        -List~Cliente~ clientes
+        -List~Cuenta~ cuentas
+        +agregarCliente(Cliente cliente)
+        +abrirCuenta(Cuenta cuenta)
+        +buscarCuenta(String numeroCuenta): Cuenta
+        +procesarTransaccion(Transaccion t)
+    }
+
+    class Cliente {
+        -String nombre
+        -String dni
+        -String direccion
+        -List~Cuenta~ cuentas
+        +agregarCuenta(Cuenta cuenta)
+        +getNombre(): String
+        +getCuentas(): List~Cuenta~
+    }
+
+    class Cuenta {
+        -String numero
+        -double saldo
+        -Cliente titular
+        +depositar(double monto)
+        +retirar(double monto)
+        +transferir(double monto, Cuenta destino)
+        +getSaldo(): double
+    }
+
+    class CuentaCorriente {
+        -double limiteDescubierto
+        +usarDescubierto(double monto)
+    }
+
+    class CajaAhorro {
+        +calcularInteres(): double
+    }
+
+    class Transaccion {
+        -Date fecha
+        -double monto
+        -Cuenta origen
+        -Cuenta destino
+        +ejecutar()
+        +getDetalle(): String
+    }
+
+    class Tarjeta {
+        -String numero
+        -Date vencimiento
+        -Cliente titular
+        +usar(double monto)
+        +pagar(double monto)
+    }
+
+    class Prestamo {
+        -double monto
+        -int cuotas
+        -double interes
+        -Cliente solicitante
+        +calcularCuotaMensual(): double
+        +pagarCuota()
+    }
+
+    %% Relaciones
+    Cliente --> "1..*" Cuenta : posee >
+    Cuenta --> "1" Cliente : titular >
+    Banco --> "1..*" Cliente : gestiona >
+    Banco --> "1..*" Cuenta : administra >
+    Transaccion --> "1" Cuenta : origen >
+    Transaccion --> "0..1" Cuenta : destino >
+    Cliente --> "0..*" Tarjeta : tiene >
+    Cliente --> "0..*" Prestamo : solicita >
+    Cuenta <|-- CuentaCorriente
+    Cuenta <|-- CajaAhorro
+
+```
+
+
+### Ejercicio
+
+Utilizar ChatGPT para realizar el diagrama de clases en mermaid de una clase Cuenta
+Luego utilizar la IA paraa que me genere el codigo
 
 ## 24-07-2025- Clase 18
 
