@@ -172,6 +172,47 @@ classDiagram
     }
 ```
 
+Codigo fuente en python
+
+```python
+from datetime import date
+
+class Cuenta:
+    def __init__(self, numero: str, titular: object):
+        self.__numero = numero
+        self.__saldo = 0.0
+        self.__titular = titular
+        self.__fecha_apertura = date.today()
+
+    def depositar(self, monto: float) -> None:
+        if monto > 0:
+            self.__saldo += monto
+
+    def retirar(self, monto: float) -> bool:
+        if 0 < monto <= self.__saldo:
+            self.__saldo -= monto
+            return True
+        return False
+
+    def transferir(self, monto: float, destino: 'Cuenta') -> bool:
+        if self.retirar(monto):
+            destino.depositar(monto)
+            return True
+        return False
+
+    def get_saldo(self) -> float:
+        return self.__saldo
+
+    def get_numero(self) -> str:
+        return self.__numero
+
+    def get_titular(self) -> object:
+        return self.__titular
+
+    def get_fecha_apertura(self) -> date:
+        return self.__fecha_apertura
+```
+
 ## 24-07-2025- Clase 18
 
 ### Programacion orientada a objetos
