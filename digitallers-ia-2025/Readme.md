@@ -1,5 +1,47 @@
 # Bienvenidos Digitallers 2025
 
+## 31-07-2025- Clase 20
+
+- ### HTML
+
+Decimos html peeeero... las paginas web tienen todas html+css+javascript
+
+Herramientas de un desarrollador:
+* F12 : Chrome Develepoer Tools
+* Ctrl+u : Para ver el codigo fuente de la pagina
+* La extension Live Server para levandar un servidor de HTTP local
+* Visual Studio Code
+
+Nuestro "Hola Mundo" en html
+
+```html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .titulo {
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="titulo">Hola, este es un documento HTML de ejemplo.</h1>
+    </body>
+    </html>
+```
+
+- ### HTTP
+LAs paginas html se sirven utilizando el protocollo http
+> https://www.instagram.com/p/DMMcfavuN58/?img_index=1
+
 ## 29-07-2025- Clase 19
 
 ### Programacion orientada a objetos
