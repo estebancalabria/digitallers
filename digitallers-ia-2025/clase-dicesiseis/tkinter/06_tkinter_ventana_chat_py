@@ -1,0 +1,43 @@
+import tkinter as tk
+from functools import partial
+
+
+def send_message(chat, entry, _evt=None):
+    texto = entry.get().strip()
+    if not texto:
+        return
+    chat.config(state="normal")
+    chat.insert("end", texto + "\n")
+    chat.config(state="disabled")
+    chat.see("end")
+    entry.delete(0, tk.END)
+
+
+root = tk.Tk()
+root.title("Chat")
+root.geometry("800x600")
+root.resizable(False, False)
+
+# Área de chat
+chat_area = tk.Text(root, state="disabled", wrap="word")
+chat_area.pack(side="top", fill="both", expand=True, padx=5, pady=5)
+
+# Marco inferior
+bottom = tk.Frame(root)
+bottom.pack(side="bottom", fill="x", padx=5, pady=5)
+
+# Campo de entrada
+entry = tk.Entry(bottom)
+entry.pack(side="left", fill="x", expand=True)
+
+# Botón enviar
+send_btn = tk.Button(bottom, text="Enviar")
+send_btn.pack(side="left", padx=5)
+
+# Comandos
+send_action = partial(send_message, chat_area, entry)
+send_btn.config(command=send_action)
+root.bind("<Return>", send_action)
+
+entry.focus()
+root.mainloop()

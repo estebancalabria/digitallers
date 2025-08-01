@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0e6ff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .login-container {
+            background-color: #fff5f5;
+            padding: 40px;
+            border: 3px solid #d4a4ff;
+            border-radius: 15px;
+            width: 300px;
+            box-shadow: 0 4px 15px rgba(212, 164, 255, 0.3);
+        }
+        
+        .login-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: left;
+            color: #8b5fbf;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #7a5085;
+        }
+        
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #c8a8e9;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: #fef9ff;
+        }
+        
+        input[type="text"]:focus, input[type="password"]:focus {
+            outline: none;
+            border-color: #b388d6;
+            background-color: white;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #e8d5ff;
+            border: 2px solid #c8a8e9;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            color: #7a5085;
+            transition: all 0.3s ease;
+        }
+        
+        .login-button:hover {
+            background-color: #d4a4ff;
+            border-color: #b388d6;
+            color: #5a3c63;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-title">Login</div>
+        
+        <form>
+            <div class="form-group">
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario" name="usuario">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+            </div>
+            
+            <button type="submit" class="login-button">Login</button>
+        </form>
+    </div>
+</body>
+</html>
