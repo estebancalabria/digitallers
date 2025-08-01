@@ -11,6 +11,7 @@ Herramientas de un desarrollador:
 * Ctrl+u : Para ver el codigo fuente de la pagina
 * La extension Live Server para levandar un servidor de HTTP local
 * Visual Studio Code
+* Usar el port forwarding desde la parte de la terminal para poder compartir un puerto y que se pueda acceders desde Internet
 
 Nuestro "Hola Mundo" en html
 
@@ -37,6 +38,8 @@ Nuestro "Hola Mundo" en html
     </body>
     </html>
 ```
+
+HTML TIP : USAR LA IA PARA GENERAR HTML
 
 - ### HTTP
 LAs paginas html se sirven utilizando el protocollo http
