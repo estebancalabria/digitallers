@@ -1,5 +1,29 @@
 # Bienvenidos Digitallers 2025
 
+## 05-08-2025- Clase 21
+
+- ### Javascript
+
+#### DOM (Document Objet Model)
+
+Libreria de javascript que me permite interactuar con la pagina actual
+
+Objetos y metodos:
+     
+* document : Representa el documento o pagina actual
+      * getDocumentById(id) : Devuelve como objeto de javascript un elemento de la pagina especificado como ID
+      * createElement : Para crear un elemento html en memoria
+      * appendChild(elemento) para agregar ese elemento a un padre
+* HtmlElement
+        *  addEventListener : Vincular una funcion que se ejecuta ante un evento
+        *  textContent : Setear por javascript el contenido de texto de un elemento
+        *  innertHTML :  Setear por javascript el contenido html de un elemento
+
+Funciones Estandar Javascript
+* alert es un metodo que muestra un mensaje por pantalla
+* parseInt :  Lo convierte de un string a un entero
+* parseFloat : Lo convierte de un string a un numero con coma
+  
 ## 31-07-2025- Clase 20
 
 - ### HTML
@@ -1162,3 +1186,4 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
