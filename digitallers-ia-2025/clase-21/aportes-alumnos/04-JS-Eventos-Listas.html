@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Dinámica</title>
+</head>
+<body>
+    <input type="text" id="itemInput" placeholder="Escribe un elemento">
+    <button id="addBtn">Añadir</button>
+    <ul id="itemList"></ul>
+
+    <script>
+        const addBtn = document.getElementById('addBtn');
+        const itemInput = document.getElementById('itemInput');
+        const itemList = document.getElementById('itemList');
+
+        addBtn.addEventListener('click', () => {
+            const value = itemInput.value.trim();
+            if (value !== '') {
+                const li = document.createElement('li');
+                li.textContent = value;
+                itemList.appendChild(li);
+                itemInput.value = '';
+                itemInput.focus();
+            }
+        });
+    </script>
+</body>
+</html>

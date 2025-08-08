@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Objeto Cuenta</title>
+    <script>
+        //Crear la clase cuenta en JavaScript 
+        //numero, saldo, depositar, extraer
+        //Que tenga encapsulamiento
+        class Cuenta {
+            #numero;
+            #saldo;
+
+            constructor(numero, saldoInicial = 0) {
+                if (typeof numero !== 'string' || numero.trim() === '') {
+                    throw new Error('El número de cuenta debe ser una cadena no vacía');
+                }
+                if (typeof saldoInicial !== 'number' || saldoInicial < 0) {
+                    throw new Error('El saldo inicial debe ser un número no negativo');
+                }
+                this.#numero = numero;
+                this.#saldo = saldoInicial;
+            }
+
+            get numero() {
+                return this.#numero;
+            }
+
+            get saldo() {
+                return this.#saldo;
+            }
+
+            depositar(cantidad) {
+                if (typeof cantidad !== 'number' || cantidad <= 0) {
+                    throw new Error('La cantidad a depositar debe ser un número positivo');
+                }
+                this.#saldo += cantidad;
+                return this.#saldo;
+            }
+
+            extraer(cantidad) {
+                if (typeof cantidad !== 'number' || cantidad <= 0) {
+                    throw new Error('La cantidad a extraer debe ser un número positivo');
+                }
+                if (cantidad > this.#saldo) {
+                    throw new Error('Saldo insuficiente');
+                }
+                this.#saldo -= cantidad;
+                return this.#saldo;
+            }
+        }
+    </script>
+
+    <script>
+        //Creo una objeto cuenta que va ser de mi pagina
+        const miCuenta = new Cuenta("001", 500);
+    </script>
+
+    <!--importo el archivo de estilos-->
+    <link rel="stylesheet" href="01-JS-Objetos-Cuenta.css">
+
+</head>
+
+<body>
+    <!--Crear un div para completar y mostrar los datos de la cuenta-->
+    <!--Tiene que tener un input y un boton para depositar y otro para extraer-->
+    <div>
+        <div id="cuenta">
+            <h2>Datos de la Cuenta</h2>
+            <p><strong>Número:</strong> <span id="numeroCuenta"></span></p>
+            <p><strong>Saldo:</strong> <span id="saldoCuenta"></span></p>
+
+            <input type="number" id="monto" placeholder="Ingrese monto">
+            <button id="btnDepositar">Depositar</button>
+            <button id="btnExtraer">Extraer</button>
+        </div>
+    </div>
+
+    <script>
+        //Crear una funcion que reciba una cuenta y la muestre en el div
+        function mostrarCuenta(cuenta) {
+            document.getElementById('numeroCuenta').textContent = cuenta.numero;
+            document.getElementById('saldoCuenta').textContent = cuenta.saldo.toFixed(2);
+        }
+
+        //mostrar la cuenta y luego agregar los eventos a los botones
+        // Mostrar la cuenta
+        mostrarCuenta(miCuenta);
+
+        // Agregar eventos a los botones
+        document.getElementById("btnDepositar").addEventListener("click", () => {
+            try {
+                const monto = parseFloat(document.getElementById("monto").value);
+                miCuenta.depositar(monto);
+                mostrarCuenta(miCuenta);
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+        document.getElementById("btnExtraer").addEventListener("click", () => {
+            try {
+                const monto = parseFloat(document.getElementById("monto").value);
+                miCuenta.extraer(monto);
+                mostrarCuenta(miCuenta);
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

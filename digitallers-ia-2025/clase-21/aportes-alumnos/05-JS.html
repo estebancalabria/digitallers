@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simple</title>
+</head>
+<body>
+    <h1>Calculadora Simple</h1>
+    
+    <input type="number" id="numero1" placeholder="Primer número">
+    <input type="number" id="numero2" placeholder="Segundo número">
+    <button onclick="sumar()">Sumar</button>
+    
+    <p>Resultado: <span id="resultado">0</span></p>
+
+    <script>
+        function sumar() {
+            // Obtener los valores de los inputs
+            const num1 = parseFloat(document.getElementById('numero1').value);
+            const num2 = parseFloat(document.getElementById('numero2').value);
+            
+            // Verificar que sean números válidos
+            if (!isNaN(num1) && !isNaN(num2)) {
+                const suma = num1 + num2;
+                document.getElementById('resultado').textContent = suma;
+            } else {
+                document.getElementById('resultado').textContent = 'Ingresa números válidos';
+            }
+        }
+    </script>
+</body>
+</html>

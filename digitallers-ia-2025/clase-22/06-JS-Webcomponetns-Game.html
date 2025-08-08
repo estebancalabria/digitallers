@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura Épica - Estilo Zelda</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #2d5016;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+        }
+        
+        #gameContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(45deg, #2d5016, #4a7c59);
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(120, 200, 80, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(100, 180, 60, 0.2) 0%, transparent 50%);
+        }
+
+        .ui-panel {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #ffd700;
+            min-width: 200px;
+            z-index: 1000;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #ffd700;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <div class="ui-panel">
+            <h3>🛡️ Estado del Héroe</h3>
+            <div id="heroStats"></div>
+        </div>
+        
+        <div class="controls">
+            <strong>Controles:</strong><br>
+            🔄 Flechas: Mover<br>
+            ⚔️ Barra espaciadora: Atacar
+        </div>
+    </div>
+
+    <script>
+        // Variable global para manejar enemigos
+        window.gameState = {
+            enemies: [],
+            hero: null
+        };
+
+        // Componente Enemigo (definir antes del héroe)
+        class GameEnemy extends HTMLElement {
+            constructor() {
+                super();
+                this.attachShadow({ mode: 'open' });
+                this.vida = 50;
+                this.x = 0;
+                this.y = 0;
+                this.velocidad = 1.5;
+                this.direccion = 'down';
+                this.destroyed = false;
+                
+                this.spawnEnPosicionAleatoria();
+                this.render();
+                this.startGameLoop();
+            }
+
+            spawnEnPosicionAleatoria() {
+                const margin = 100;
+                this.x = margin + Math.random() * (window.innerWidth - 2 * margin);
+                this.y = margin + Math.random() * (window.innerHeight - 2 * margin);
+                
+                // Asegurar que no aparezca muy cerca del héroe
+                if (window.gameState.hero) {
+                    const dx = this.x - window.gameState.hero.x;
+                    const dy = this.y - window.gameState.hero.y;
+                    const distancia = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distancia < 150) {
+                        this.spawnEnPosicionAleatoria();
+                        return;
+                    }
+                }
+            }
+
+            startGameLoop() {
+                const loop = () => {
+                    if (this.destroyed || this.vida <= 0) return;
+                    
+                    this.perseguirHero();
+                    this.actualizarPosicion();
+                    requestAnimationFrame(loop);
+                };
+                requestAnimationFrame(loop);
+            }
+
+            perseguirHero() {
+                if (!window.gameState.hero) return;
+                
+                const dx = window.gameState.hero.x - this.x;
+                const dy = window.gameState.hero.y - this.y;
+                const distancia = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distancia > 5) {
+                    this.x += (dx / distancia) * this.velocidad;
+                    this.y += (dy / distancia) * this.velocidad;
+                    
+                    // Actualizar dirección para sprite
+                    if (Math.abs(dx) > Math.abs(dy)) {
+                        this.direccion = dx > 0 ? 'right' : 'left';
+                    } else {
+                        this.direccion = dy > 0 ? 'down' : 'up';
+                    }
+                }
+            }
+
+            recibirDanio(cantidad) {
+                if (this.destroyed) return;
+                
+                this.vida -= cantidad;
+                
+                // Efecto visual de daño
+                this.style.filter = 'hue-rotate(180deg) brightness(1.5)';
+                setTimeout(() => {
+                    if (!this.destroyed) {
+                        this.style.filter = 'none';
+                    }
+                }, 200);
+                
+                if (this.vida <= 0) {
+                    this.destruir();
+                }
+            }
+
+            destruir() {
+                if (this.destroyed) return;
+                
+                this.destroyed = true;
+                
+                // Remover de la lista de enemigos
+                const index = window.gameState.enemies.indexOf(this);
+                if (index > -1) {
+                    window.gameState.enemies.splice(index, 1);
+                }
+                
+                // Efecto de muerte
+                this.style.transform = 'scale(0) rotate(180deg)';
+                this.style.transition = 'transform 0.3s ease-in';
+                
+                setTimeout(() => {
+                    if (this.parentElement) {
+                        this.parentElement.removeChild(this);
+                    }
+                }, 300);
+            }
+
+            actualizarPosicion() {
+                this.style.left = this.x + 'px';
+                this.style.top = this.y + 'px';
+            }
+
+            render() {
+                this.shadowRoot.innerHTML = `
+                    <style>
+                        :host {
+                            position: absolute;
+                            display: block;
+                            z-index: 50;
+                        }
+                        .enemy {
+                            font-size: 25px;
+                            text-align: center;
+                            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.7));
+                            transition: transform 0.1s;
+                        }
+                        .enemy:hover {
+                            transform: scale(1.1);
+                        }
+                    </style>
+                    <div class="enemy">👹</div>
+                `;
+            }
+
+            connectedCallback() {
+                this.render();
+                this.actualizarPosicion();
+            }
+        }
+
+        // Componente Héroe
+        class GameHero extends HTMLElement {
+            constructor() {
+                super();
+                this.attachShadow({ mode: 'open' });
+                this.nombre = "Link";
+                this.vida = 100;
+                this.vidaMaxima = 100;
+                this.x = 400;
+                this.y = 300;
+                this.direccion = 'down';
+                this.velocidad = 4;
+                this.atacando = false;
+                this.inmune = false;
+                this.keysPressed = {};
+                
+                // Registrar en el estado global
+                window.gameState.hero = this;
+                
+                this.setupKeyboardControls();
+                this.render();
+                this.startGameLoop();
+                this.startEnemySpawner();
+            }
+
+            setupKeyboardControls() {
+                const keyDown = (e) => {
+                    this.keysPressed[e.code] = true;
+                    
+                    if (e.code === 'Space') {
+                        e.preventDefault();
+                        this.atacar();
+                    }
+                };
+
+                const keyUp = (e) => {
+                    this.keysPressed[e.code] = false;
+                };
+
+                document.addEventListener('keydown', keyDown);
+                document.addEventListener('keyup', keyUp);
+            }
+
+            startGameLoop() {
+                const loop = () => {
+                    this.moverConTeclas();
+                    this.actualizarPosicion();
+                    this.checkColisionesEnemigos();
+                    this.actualizarUI();
+                    requestAnimationFrame(loop);
+                };
+                requestAnimationFrame(loop);
+            }
+
+            startEnemySpawner() {
+                const spawn = () => {
+                    if (window.gameState.enemies.length < 5 && this.vida > 0) {
+                        this.crearEnemigo();
+                    }
+                    
+                    setTimeout(spawn, 3000);
+                };
+                
+                // Crear el primer enemigo después de 1 segundo
+                setTimeout(spawn, 1000);
+            }
+
+            crearEnemigo() {
+                try {
+                    const enemigo = new GameEnemy();
+                    const container = document.getElementById('gameContainer');
+                    if (container) {
+                        container.appendChild(enemigo);
+                        window.gameState.enemies.push(enemigo);
+                        console.log(`Enemigo creado. Total: ${window.gameState.enemies.length}`);
+                    }
+                } catch (error) {
+                    console.error('Error creando enemigo:', error);
+                }
+            }
+
+            moverConTeclas() {
+                let newX = this.x;
+                let newY = this.y;
+
+                if (this.keysPressed['ArrowUp']) {
+                    newY -= this.velocidad;
+                    this.direccion = 'up';
+                }
+                if (this.keysPressed['ArrowDown']) {
+                    newY += this.velocidad;
+                    this.direccion = 'down';
+                }
+                if (this.keysPressed['ArrowLeft']) {
+                    newX -= this.velocidad;
+                    this.direccion = 'left';
+                }
+                if (this.keysPressed['ArrowRight']) {
+                    newX += this.velocidad;
+                    this.direccion = 'right';
+                }
+
+                // Límites de pantalla
+                newX = Math.max(25, Math.min(window.innerWidth - 25, newX));
+                newY = Math.max(25, Math.min(window.innerHeight - 25, newY));
+
+                this.x = newX;
+                this.y = newY;
+            }
+
+            atacar() {
+                if (this.atacando) return;
+                
+                this.atacando = true;
+                this.render();
+
+                // Buscar enemigos en rango de ataque
+                window.gameState.enemies.forEach(enemigo => {
+                    if (!enemigo.destroyed) {
+                        const distancia = this.calcularDistancia(
+                            this.x, this.y, 
+                            enemigo.x, enemigo.y
+                        );
+                        
+                        if (distancia < 60) {
+                            enemigo.recibirDanio(25);
+                            console.log('¡Enemigo atacado!');
+                        }
+                    }
+                });
+
+                setTimeout(() => {
+                    this.atacando = false;
+                    this.render();
+                }, 300);
+            }
+
+            recibirDanio(cantidad) {
+                if (this.inmune) return;
+                
+                this.vida = Math.max(0, this.vida - cantidad);
+                this.inmune = true;
+                
+                // Efecto de parpadeo al recibir daño
+                let parpadeos = 0;
+                const intervalo = setInterval(() => {
+                    this.style.opacity = this.style.opacity === '0.3' ? '1' : '0.3';
+                    parpadeos++;
+                    
+                    if (parpadeos >= 6) {
+                        clearInterval(intervalo);
+                        this.style.opacity = '1';
+                        this.inmune = false;
+                    }
+                }, 200);
+
+                if (this.vida <= 0) {
+                    this.gameOver();
+                }
+            }
+
+            gameOver() {
+                alert('¡Game Over! El héroe ha caído en batalla.');
+                location.reload();
+            }
+
+            calcularDistancia(x1, y1, x2, y2) {
+                return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+            }
+
+            checkColisionesEnemigos() {
+                window.gameState.enemies.forEach(enemigo => {
+                    if (!enemigo.destroyed) {
+                        const distancia = this.calcularDistancia(
+                            this.x, this.y,
+                            enemigo.x, enemigo.y
+                        );
+                        
+                        if (distancia < 35 && !this.inmune) {
+                            this.recibirDanio(10);
+                        }
+                    }
+                });
+            }
+
+            actualizarUI() {
+                const statsDiv = document.getElementById('heroStats');
+                if (statsDiv) {
+                    const vidaPorcentaje = (this.vida / this.vidaMaxima) * 100;
+                    const colorVida = vidaPorcentaje > 60 ? '#4caf50' : vidaPorcentaje > 30 ? '#ff9800' : '#f44336';
+                    
+                    statsDiv.innerHTML = `
+                        <div style="margin-bottom: 10px;">
+                            <div style="background: #333; border-radius: 10px; overflow: hidden; height: 20px;">
+                                <div style="height: 100%; width: ${vidaPorcentaje}%; background: ${colorVida}; transition: width 0.3s;"></div>
+                            </div>
+                            <p style="margin: 5px 0; color: ${colorVida};">❤️ Vida: ${this.vida}/${this.vidaMaxima}</p>
+                        </div>
+                        <p style="margin: 5px 0;">🏹 Enemigos: ${window.gameState.enemies.length}</p>
+                    `;
+                }
+            }
+
+            actualizarPosicion() {
+                this.style.left = this.x + 'px';
+                this.style.top = this.y + 'px';
+            }
+
+            render() {
+                const spriteChar = this.getSpriteChar();
+                const attackEffect = this.atacando ? this.getAttackEffect() : '';
+                
+                this.shadowRoot.innerHTML = `
+                    <style>
+                        :host {
+                            position: absolute;
+                            display: block;
+                            z-index: 100;
+                        }
+                        .hero {
+                            font-size: 30px;
+                            text-align: center;
+                            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+                            transition: transform 0.1s;
+                        }
+                        .attacking {
+                            transform: scale(1.2);
+                        }
+                        .attack-effect {
+                            position: absolute;
+                            font-size: 40px;
+                            color: #ffff00;
+                            animation: attackFlash 0.3s ease-out;
+                            pointer-events: none;
+                        }
+                        @keyframes attackFlash {
+                            0% { opacity: 1; transform: scale(0.5); }
+                            100% { opacity: 0; transform: scale(2); }
+                        }
+                    </style>
+                    <div class="hero ${this.atacando ? 'attacking' : ''}">${spriteChar}</div>
+                    ${attackEffect}
+                `;
+            }
+
+            getSpriteChar() {
+                const sprites = {
+                    'up': '🧝‍♂️',
+                    'down': '🧝‍♂️', 
+                    'left': '🧝‍♂️',
+                    'right': '🧝‍♂️'
+                };
+                return sprites[this.direccion];
+            }
+
+            getAttackEffect() {
+                const effects = {
+                    'up': '<div class="attack-effect" style="top: -20px; left: 50%; transform: translateX(-50%);">⚔️</div>',
+                    'down': '<div class="attack-effect" style="bottom: -20px; left: 50%; transform: translateX(-50%);">⚔️</div>',
+                    'left': '<div class="attack-effect" style="left: -20px; top: 50%; transform: translateY(-50%);">⚔️</div>',
+                    'right': '<div class="attack-effect" style="right: -20px; top: 50%; transform: translateY(-50%);">⚔️</div>'
+                };
+                return effects[this.direccion];
+            }
+
+            connectedCallback() {
+                this.render();
+                this.actualizarPosicion();
+            }
+        }
+
+        // Registrar componentes
+        customElements.define('game-enemy', GameEnemy);
+        customElements.define('game-hero', GameHero);
+
+        // Iniciar el juego cuando la página esté cargada
+        document.addEventListener('DOMContentLoaded', () => {
+            const hero = document.createElement('game-hero');
+            hero.id = 'hero';
+            document.getElementById('gameContainer').appendChild(hero);
+        });
+    </script>
+</body>
+</html>

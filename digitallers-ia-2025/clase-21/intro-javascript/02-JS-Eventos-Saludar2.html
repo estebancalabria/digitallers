@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Saludar con Nombre</title>
+</head>
+<body>
+    <input type="text" id="nombre" placeholder="Escribe tu nombre" value="otto">
+    <button id="saludarBtn">Saludar</button>
+
+    <script>
+        document.getElementById('saludarBtn').addEventListener('click', function() {
+            const nombre = document.getElementById('nombre').value;
+            const mensaje = nombre ? `¡Hola, ${nombre}!` : 'Por favor, ingresa tu nombre.';
+            alert(mensaje);
+        });
+    </script>
+</body>
+</html>

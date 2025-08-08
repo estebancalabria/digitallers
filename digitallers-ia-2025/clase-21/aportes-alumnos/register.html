@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Usuario</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h1 {
+            color: #333;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #2a5298;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .form-group input:hover {
+            border-color: #2a5298;
+            background: white;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <h1>👤 Registro de Usuario</h1>
+            <p>Completa todos los campos para continuar</p>
+        </div>
+
+        <form id="userForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre <span class="required">*</span></label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="apellido">Apellido <span class="required">*</span></label>
+                    <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="documento">Documento <span class="required">*</span></label>
+                <input type="text" id="documento" name="documento" placeholder="Ej: 12345678" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha de Nacimiento <span class="required">*</span></label>
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" placeholder="usuario@ejemplo.com" required>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="mostrarDatos()">
+                ✅ Ingresar Usuario
+            </button>
+        </form>
+    </div>
+
+    <script>
+        function mostrarDatos() {
+            // Obtener los valores de los campos
+            const nombre = document.getElementById('nombre').value.trim();
+            const apellido = document.getElementById('apellido').value.trim();
+            const documento = document.getElementById('documento').value.trim();
+            const fechaNacimiento = document.getElementById('fechaNacimiento').value;
+            const email = document.getElementById('email').value.trim();
+
+            // Validar que todos los campos estén completos
+            if (!nombre || !apellido || !documento || !fechaNacimiento || !email) {
+                alert('❌ Por favor, completa todos los campos obligatorios.');
+                return;
+            }
+
+            // Validar formato de email básico
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('❌ Por favor, ingresa un email válido.');
+                return;
+            }
+
+            // Crear objeto usuario
+            const usuario = {
+                nombre: nombre,
+                apellido: apellido,
+                documento: documento,
+                fechaNacimiento: fechaNacimiento,
+                email: email
+            };
+
+            // Mostrar datos en formato JSON con alert
+            const jsonUsuario = JSON.stringify(usuario, null, 2);
+            alert('📋 Datos del Usuario:\n\n' + jsonUsuario);
+        }
+
+        // Permitir envío con Enter (solo si todos los campos están completos)
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                mostrarDatos();
+            }
+        });
+
+        // Auto-focus en el primer campo
+        window.onload = function() {
+            document.getElementById('nombre').focus();
+        };
+    </script>
+</body>
+</html>

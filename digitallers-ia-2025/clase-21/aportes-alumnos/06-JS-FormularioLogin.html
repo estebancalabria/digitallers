@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Fachero</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border-radius: 20px;
+            padding: 40px 30px;
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.18);
+        }
+        .login-container h2 {
+            color: #fff;
+            margin-bottom: 30px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px #0005;
+        }
+        .input-group {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            display: block;
+            font-weight: 500;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: background 0.2s;
+        }
+        .input-group input:focus {
+            background: rgba(255,255,255,0.25);
+        }
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #ff512f 0%, #dd2476 100%);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #dd247655;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .login-btn:hover {
+            background: linear-gradient(90deg, #dd2476 0%, #ff512f 100%);
+            transform: scale(1.04);
+        }
+        .message {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1rem;
+            text-align: center;
+            width: 100%;
+            display: none;
+        }
+        .message.success {
+            background: rgba(76, 175, 80, 0.15);
+            color: #4caf50;
+            border: 1px solid #4caf50;
+        }
+        .message.error {
+            background: rgba(244, 67, 54, 0.15);
+            color: #f44336;
+            border: 1px solid #f44336;
+        }
+    </style>
+</head>
+<body>
+    <form class="login-container" id="loginForm" autocomplete="off">
+        <h2>Login Fachero</h2>
+        <div class="input-group">
+            <label for="username">Usuario</label>
+            <input type="text" id="username" name="username" placeholder="Ingresa tu usuario" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+        </div>
+        <button type="submit" class="login-btn">Ingresar</button>
+        <div class="message" id="message"></div>
+    </form>
+    <script>
+        const form = document.getElementById('loginForm');
+        const messageDiv = document.getElementById('message');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = form.username.value.trim();
+            const password = form.password.value.trim();
+
+            if (username === 'root' && password === 'root') {
+                messageDiv.textContent = `¡Bienvenido, ${username}! Tu contraseña es: ${password}`;
+                messageDiv.className = 'message success';
+                messageDiv.style.display = 'block';
+            } else {
+                messageDiv.textContent = 'Usuario o contraseña incorrectos. Intenta de nuevo.';
+                messageDiv.className = 'message error';
+                messageDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saludo Dinámico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #eef;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #saludo {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Escribe tu nombre</h1>
+    <input type="text" id="nombreInput" placeholder="Tu nombre">
+    <br>
+    <button id="saludarBtn">Saludar</button>
+    <div id="saludo"></div> <!-- Aquí se mostrará el saludo -->
+
+    <script>
+        const button = document.getElementById('saludarBtn');
+        const input = document.getElementById('nombreInput');
+        const saludoDiv = document.getElementById('saludo');
+
+        button.addEventListener('click', () => {
+            const nombre = input.value.trim();
+            saludoDiv.textContent = nombre 
+                ? `¡Hola, ${nombre}! ¿Cómo estás?` 
+                : 'Por favor, escribe tu nombre.';
+        });
+    </script>
+</body>
+</html>

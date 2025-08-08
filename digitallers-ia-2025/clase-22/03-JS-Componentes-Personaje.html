@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //Crear una clase personaje con encapsulamiento que tenga
+        //nombre, vida, atacar, recibirDanio, estaVivo
+        class Personaje {
+            #nombre;
+            #vida;
+            #parent; //Como este es un componente, puedo agregarle un parent para saber donde se va a renderizar
+
+            constructor(parent, nombre, vidaInicial = 100) {
+                this.#parent = parent;
+                this.#nombre = nombre;
+                this.#vida = Math.max(0, vidaInicial);
+            }
+
+            atacar(objetivo, danio = 10) {
+                if (!(objetivo instanceof Personaje)) return;
+                if (!this.estaVivo() || !objetivo.estaVivo()) return;
+                objetivo.recibirDanio(danio);
+            }
+
+            recibirDanio(cantidad) {
+                if (!this.estaVivo()) return;
+                this.#vida = Math.max(0, this.#vida - cantidad);
+            }
+
+            estaVivo() {
+                return this.#vida > 0;
+            }
+
+            get nombre() { return this.#nombre; }
+            get vida() { return this.#vida; }
+
+            render() {
+                if (!this.#parent) return;
+
+                const vidaMax = 100;
+                const vidaPorcentaje = Math.max(0, (this.#vida / vidaMax) * 100);
+                const colorVida = vidaPorcentaje > 60 ? '#4caf50' : vidaPorcentaje > 30 ? '#ff9800' : '#f44336';
+
+                this.#parent.innerHTML = `
+                    <div style="
+                        border: 2px solid #333;
+                        border-radius: 12px;
+                        padding: 16px;
+                        max-width: 250px;
+                        background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
+                        color: white;
+                        font-family: Arial, sans-serif;
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+                        transition: transform 0.3s;
+                    " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <h3 style="margin: 0 0 8px; text-align: center; font-size: 1.4em; color: #ffcc00;">
+                            ${this.#nombre}
+                        </h3>
+                        <div style="
+                            background-color: #444;
+                            border-radius: 8px;
+                            overflow: hidden;
+                            height: 20px;
+                            margin-bottom: 8px;
+                        ">
+                            <div style="
+                                height: 100%;
+                                width: ${vidaPorcentaje}%;
+                                background-color: ${colorVida};
+                                transition: width 0.4s ease-in-out, background-color 0.3s;
+                            "></div>
+                        </div>
+                        <p style="margin: 4px 0;">❤️ Vida: ${this.#vida}</p>
+                        <p style="margin: 4px 0; font-weight: bold; color: ${this.estaVivo() ? '#4caf50' : '#f44336'};">
+                            ${this.estaVivo() ? '🟢 Vivo' : '💀 Muerto'}
+                        </p>
+                    </div>
+                `;
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="personaje1"></div>
+    <div id="personaje2"></div>
+
+    <script>
+        //Crear dos personajes y mostrarlos en la pagina
+        const contenedor1 = document.getElementById('personaje1');
+        const contenedor2 = document.getElementById('personaje2');
+
+        const heroe = new Personaje(contenedor1, 'Héroe', 100);
+        const villano = new Personaje(contenedor2, 'Villano', 80);
+
+        heroe.render();
+        villano.render();
+    </script>
+
+    <button id="btnAtacar">Atacar</button>
+    <script>
+        //Que el heroe ataque al villano o el villano al heroe al azar al hacer click en el boton
+        //Luego volver a renderizar los personajes
+        document.getElementById('btnAtacar').addEventListener('click', () => {
+            heroe.atacar(villano);
+            villano.atacar(heroe);
+            heroe.render();
+            villano.render();
+        });
+    </script>
+
+</body>
+
+</html>

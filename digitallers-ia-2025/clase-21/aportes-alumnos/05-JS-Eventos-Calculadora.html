@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora Fachera</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculadora {
+            background: #fff;
+            padding: 2rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(58, 87, 135, 0.37);
+            text-align: center;
+        }
+        .calculadora h2 {
+            color: #2575fc;
+            margin-bottom: 1.5rem;
+        }
+        .calculadora input[type="number"] {
+            width: 80px;
+            padding: 0.5rem;
+            margin: 0.5rem;
+            border: 2px solid #6a11cb;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .calculadora input[type="number"]:focus {
+            border-color: #2575fc;
+        }
+        .calculadora button {
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            box-shadow: 0 2px 8px rgba(58, 87, 135, 0.15);
+            transition: background 0.2s;
+        }
+        .calculadora button:hover {
+            background: linear-gradient(90deg, #2575fc 0%, #6a11cb 100%);
+        }
+        .resultado {
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            color: #6a11cb;
+            font-weight: bold;
+            min-height: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <h2>Calculadora Fachera</h2>
+        <input type="number" id="num1" placeholder="Número 1">
+        <span style="font-size:1.5rem; color:#2575fc;">+</span>
+        <input type="number" id="num2" placeholder="Número 2">
+        <br>
+        <button onclick="sumar()">Sumar</button>
+        <div class="resultado" id="resultado"></div>
+    </div>
+    <script>
+        function sumar() {
+            const n1 = parseFloat(document.getElementById('num1').value) || 0;
+            const n2 = parseFloat(document.getElementById('num2').value) || 0;
+            document.getElementById('resultado').textContent = `Resultado: ${n1 + n2}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+//Un ejempo como  el anterio pero que al saludar muestre tu nombre que lo saca de un input 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saludo Personalizado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f9f9f9;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Escribe tu nombre</h1>
+    <input type="text" id="nombreInput" placeholder="Tu nombre">
+    <br>
+    <button id="saludarBtn">Saludar</button>
+
+    <script>
+        const button = document.getElementById('saludarBtn');
+        const input = document.getElementById('nombreInput');
+
+        button.addEventListener('click', () => {
+            const nombre = input.value.trim();
+            if (nombre) {
+                alert(`¡Hola, ${nombre}! ¿Cómo estás?`);
+            } else {
+                alert('Por favor, escribe tu nombre primero.');
+            }
+        });
+    </script>
+</body>
+</html>

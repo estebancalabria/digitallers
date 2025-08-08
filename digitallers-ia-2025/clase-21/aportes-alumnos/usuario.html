@@ -1,0 +1,104 @@
+<!-- archivo: formulario-estetico.js.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Usuario</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-box {
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+
+    .form-box h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 10px;
+      background-color: #4a90e2;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #357ABD;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Formulario de Usuario</h2>
+    <form id="formulario" onsubmit="mostrarDatos(event)">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" required>
+
+      <label for="apellido">Apellido</label>
+      <input type="text" id="apellido" required>
+
+      <label for="documento">Documento</label>
+      <input type="text" id="documento" required>
+
+      <label for="fechaNacimiento">Fecha de Nacimiento</label>
+      <input type="date" id="fechaNacimiento" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+
+      <button type="submit">Ingresar</button>
+    </form>
+  </div>
+
+  <script>
+    function mostrarDatos(event) {
+      event.preventDefault();
+
+      const datos = {
+        nombre: document.getElementById("nombre").value,
+        apellido: document.getElementById("apellido").value,
+        documento: document.getElementById("documento").value,
+        fechaNacimiento: document.getElementById("fechaNacimiento").value,
+        email: document.getElementById("email").value
+      };
+
+      alert(JSON.stringify(datos, null, 2));
+    }
+  </script>
+</body>
+</html>

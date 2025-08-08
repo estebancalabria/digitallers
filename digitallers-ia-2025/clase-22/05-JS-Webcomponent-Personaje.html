@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego con Web Components</title>
+    <script>
+        class GamePersonaje extends HTMLElement {
+            #nombre;
+            #vida;
+
+            static get observedAttributes() {
+                return ['nombre', 'vida'];
+            }
+
+            constructor() {
+                super();
+                this.attachShadow({ mode: 'open' });
+                this.#nombre = this.getAttribute('nombre') || 'Sin nombre';
+                this.#vida = parseInt(this.getAttribute('vida')) || 100;
+            }
+
+            attributeChangedCallback(name, oldValue, newValue) {
+                if (name === 'nombre') this.#nombre = newValue;
+                if (name === 'vida') this.#vida = Math.max(0, parseInt(newValue));
+                this.render();
+            }
+
+            atacar(objetivo, danio = 10) {
+                if (!(objetivo instanceof GamePersonaje)) return;
+                if (!this.estaVivo() || !objetivo.estaVivo()) return;
+                objetivo.recibirDanio(danio);
+            }
+
+            recibirDanio(cantidad) {
+                if (!this.estaVivo()) return;
+                this.#vida = Math.max(0, this.#vida - cantidad);
+                this.setAttribute('vida', this.#vida);
+            }
+
+            estaVivo() {
+                return this.#vida > 0;
+            }
+
+            render() {
+                const vidaMax = 100;
+                const vidaPorcentaje = Math.max(0, (this.#vida / vidaMax) * 100);
+                const colorVida = vidaPorcentaje > 60 ? '#4caf50' : vidaPorcentaje > 30 ? '#ff9800' : '#f44336';
+
+                this.shadowRoot.innerHTML = `
+                    <style>
+                        .card {
+                            border: 2px solid #333;
+                            border-radius: 12px;
+                            padding: 16px;
+                            max-width: 250px;
+                            background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
+                            color: white;
+                            font-family: Arial, sans-serif;
+                            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+                            transition: transform 0.3s;
+                        }
+                        .card:hover { transform: scale(1.05); }
+                        .vida-bar {
+                            background-color: #444;
+                            border-radius: 8px;
+                            overflow: hidden;
+                            height: 20px;
+                            margin-bottom: 8px;
+                        }
+                        .vida-fill {
+                            height: 100%;
+                            width: ${vidaPorcentaje}%;
+                            background-color: ${colorVida};
+                            transition: width 0.4s ease-in-out, background-color 0.3s;
+                        }
+                        h3 {
+                            margin: 0 0 8px;
+                            text-align: center;
+                            font-size: 1.4em;
+                            color: #ffcc00;
+                        }
+                        p { margin: 4px 0; }
+                    </style>
+                    <div class="card">
+                        <h3>${this.#nombre}</h3>
+                        <div class="vida-bar">
+                            <div class="vida-fill"></div>
+                        </div>
+                        <p>❤️ Vida: ${this.#vida}</p>
+                        <p style="font-weight: bold; color: ${this.estaVivo() ? '#4caf50' : '#f44336'};">
+                            ${this.estaVivo() ? '🟢 Vivo' : '💀 Muerto'}
+                        </p>
+                    </div>
+                `;
+            }
+
+            connectedCallback() {
+                this.render();
+            }
+        }
+
+        customElements.define('game-personaje', GamePersonaje);
+    </script>
+</head>
+
+<body style="background-color: #121212; color: white; font-family: Arial; text-align: center; padding: 20px;">
+
+    <h1>⚔️ Batalla Épica</h1>
+
+    <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 20px;">
+        <game-personaje id="heroe" nombre="Héroe" vida="100"></game-personaje>
+        <game-personaje id="villano" nombre="Villano" vida="80"></game-personaje>
+    </div>
+
+    <button id="btnAtacar" style="
+        background-color: #ff5722;
+        color: white;
+        padding: 12px 24px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    ">⚔️ Atacar</button>
+
+    <script>
+        const heroe = document.getElementById('heroe');
+        const villano = document.getElementById('villano');
+
+        document.getElementById('btnAtacar').addEventListener('click', () => {
+            // Ataque aleatorio
+            if (Math.random() > 0.5) {
+                heroe.atacar(villano);
+            } else {
+                villano.atacar(heroe);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

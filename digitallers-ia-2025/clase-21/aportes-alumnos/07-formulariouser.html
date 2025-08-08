@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Usuario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        form {
+            max-width: 400px;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Formulario de Usuario</h2>
+
+    <form id="formularioUsuario" onsubmit="mostrarDatos(event)">
+        <input type="text" id="nombre" placeholder="Nombre" required>
+        <input type="text" id="apellido" placeholder="Apellido" required>
+        <input type="text" id="documento" placeholder="Documento" required>
+        <input type="date" id="fechaNacimiento" required>
+        <input type="email" id="email" placeholder="Correo electrónico" required>
+
+        <button type="submit">Ingresar</button>
+    </form>
+
+    <script>
+        function mostrarDatos(event) {
+            event.preventDefault(); // Evita que el formulario recargue la página
+
+            const usuario = {
+                nombre: document.getElementById("nombre").value.trim(),
+                apellido: document.getElementById("apellido").value.trim(),
+                documento: document.getElementById("documento").value.trim(),
+                fechaNacimiento: document.getElementById("fechaNacimiento").value,
+                email: document.getElementById("email").value.trim()
+            };
+
+            alert(JSON.stringify(usuario, null, 2)); // Muestra el objeto JSON formateado
+        }
+    </script>
+
+</body>
+
+</html>

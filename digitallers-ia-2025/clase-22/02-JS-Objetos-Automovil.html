@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Objeto Automóvil</title>
+    <link rel="stylesheet" href="02-JS-Objetos-Automovil.css">
+
+    <script>
+        //Crear una clase automovil con encapsulamiento que tenga
+        //velocidad, distanciaRecorrida, acelerar, frenar, actualizarDistancia (que recibe un tiempo)
+
+        class Automovil {
+            #velocidad;
+            #distanciaRecorrida;
+            constructor() {
+                this.#velocidad = 0;
+                this.#distanciaRecorrida = 0;
+            }
+            acelerar(valor) {
+                if (valor > 0) {
+                    this.#velocidad += valor;
+                }
+            }
+            frenar(valor) {
+                if (valor > 0) {
+                    this.#velocidad = Math.max(0, this.#velocidad - valor);
+                }
+            }
+            actualizarDistancia(tiempo) {
+                if (tiempo > 0) {
+                    this.#distanciaRecorrida += this.#velocidad * tiempo;
+                }
+            }
+
+            get velocidad() {
+                return this.#velocidad;
+            }
+
+            get distanciaRecorrida() {
+                return this.#distanciaRecorrida;
+            }
+        }
+    </script>
+
+    <script>
+        //Crear un objeto automovil que va a ser de mi pagina
+        const miAutomovil = new Automovil();
+    </script>
+</head>
+
+<body>
+    <!--Mostrar los datos del automovil-->
+    <!--Agregar un boton para acelerar y otro para frenar-->
+    <div id="auto">
+        <h2>Datos del Automóvil</h2>
+        <p><strong>Velocidad:</strong> <span id="velocidadAuto">0</span> km/h</p>
+        <p><strong>Distancia recorrida:</strong> <span id="distanciaAuto">0</span> km</p>
+
+        <button id="btnAcelerar">Acelerar</button>
+        <button id="btnFrenar">Frenar</button>
+    </div>
+
+    <script>
+        //La funcion que muestre los datos del automovil en el div   
+        function mostrarAuto(auto) {
+            document.getElementById('velocidadAuto').textContent = auto.velocidad;
+            document.getElementById('distanciaAuto').textContent = auto.distanciaRecorrida.toFixed(2);
+        }
+
+        //Vincular los botones con las acciones del automovil
+        document.getElementById('btnAcelerar').addEventListener('click', () => {
+            miAutomovil.acelerar(10); // Acelera en 10 km/h
+            mostrarAuto(miAutomovil);
+        });
+
+        document.getElementById('btnFrenar').addEventListener('click', () => {
+            miAutomovil.frenar(10); // Frena en 10 km/h
+            mostrarAuto(miAutomovil);
+        });
+
+        //Crear un intervalo para actualizar la distancia por el automovil cada segundo
+        setInterval(function () {
+            miAutomovil.actualizarDistancia(1 / 3600); // actualiza distancia por 1 segundo (1/3600 horas)
+            mostrarAuto(miAutomovil);
+        }, 1000);
+    </script>
+
+</body>
+
+</html>

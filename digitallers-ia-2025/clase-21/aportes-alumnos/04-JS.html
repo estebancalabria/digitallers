@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Dinámica</title>
+    <style></style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mi Lista Dinámica</h1>
+        
+        <div class="input-section">
+            <input type="text" id="textoInput" placeholder="Escribe algo para agregar a la lista...">
+            <button onclick="agregarElemento()">Agregar</button>
+        </div>
+        
+        <ul id="miLista">
+        </ul>
+        
+        <div id="mensajeVacio" class="empty-message">
+            La lista está vacía. ¡Agrega algunos elementos!
+        </div>
+    </div>
+
+    <script>
+        function agregarElemento() {
+            const input = document.getElementById('textoInput');
+            const texto = input.value.trim(); 
+            
+            if (texto !== '') {
+                const lista = document.getElementById('miLista');
+                
+                const nuevoElemento = document.createElement('li');
+                nuevoElemento.textContent = texto;
+                
+                lista.appendChild(nuevoElemento);
+                
+                input.value = '';
+                
+                document.getElementById('mensajeVacio').style.display = 'none';
+                
+                input.focus();
+            }
+        }
+        
+        document.getElementById('textoInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                agregarElemento();
+            }
+        });
+        
+        function actualizarMensajeVacio() {
+            const lista = document.getElementById('miLista');
+            const mensaje = document.getElementById('mensajeVacio');
+            
+            if (lista.children.length === 0) {
+                mensaje.style.display = 'block';
+            } else {
+                mensaje.style.display = 'none';
+            }
+        }
+        
+        actualizarMensajeVacio();
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>`
+    <script>
+        //Quiero genernerar una clase javascript que represente un Personaje de un videojuego
+        //Tiene nombre, puntos vida, fuerza
+        //Tambien tiene un metodo que se llama recibirDanio que resta a los puntos de vida
+        //Agregarle encapsulamiento a los atriibutos y ponerle getters 
+        class Personaje {
+            #nombre;
+            #puntosVida;
+            #fuerza;
+
+            constructor(nombre, puntosVida, fuerza) {
+                this.#nombre = nombre;
+                this.#puntosVida = puntosVida;
+                this.#fuerza = fuerza;
+            }
+
+            get nombre() {
+                return this.#nombre;
+            }
+
+            get puntosVida() {
+                return this.#puntosVida;
+            }
+
+            get fuerza() {
+                return this.#fuerza;
+            }
+
+            recibirDanio(danio) {
+                this.#puntosVida -= danio;
+                if (this.#puntosVida < 0) {
+                    this.#puntosVida = 0; // Evitar puntos de vida negativos
+                }
+            }
+        }
+
+        //Creamos un personaje
+        const capitanAmerica = new Personaje("Capitán América", 150, 40);
+
+    </script>
+</head>
+
+<body>
+    <!--Quiero un div para mostrar la informacion del personaje-->
+    <!--Despues lo llenamos con javascript que este vacio-->
+    <div id="personajeInfo">
+        ` <h2>Los datos del personaje son</h2>
+        <p><strong>Nombre:</strong> <span id="nombre"></span></p>
+        <p><strong>Puntos de vida:</strong> <span id="puntosVida"></span></p>
+        <p><strong>Fuerza:</strong> <span id="fuerza"></span></p>
+    </div>
+
+    <script>
+        //Quiero una funcion que reciba un peronaje y muestre sus datos en el div
+        function mostrarDatosPersonaje(personaje) {
+            document.getElementById("nombre").textContent = personaje.nombre;
+            document.getElementById("puntosVida").textContent = personaje.puntosVida;
+            document.getElementById("fuerza").textContent = personaje.fuerza;
+        }
+        //Invocamos la funcion para mostrar los datos del personaje
+        mostrarDatosPersonaje(capitanAmerica);
+
+    </script>
+
+    <!--Agregar un boton para atacar al personaje-->
+    <button id="atacarBtn">Atacar al personaje</button>
+
+    <!--Agregar un evento al boton que ataque un valor al azar de danio al personaje y muestre los datos actualizados-->
+    <!--con el addEventListener-->
+    <script>
+        let boton = document.getElementById("atacarBtn");
+        boton.addEventListener("click", function() {
+            //Generar un daño aleatorio entre 10 y 30
+            const danio = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
+            capitanAmerica.recibirDanio(danio);
+            //Mostrar los datos actualizados del personaje
+            mostrarDatosPersonaje(capitanAmerica);
+        });
+
+    </script>
+
+</body>
+
+</html>

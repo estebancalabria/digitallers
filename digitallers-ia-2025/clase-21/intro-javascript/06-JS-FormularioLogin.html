@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Fachero</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #mensaje {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Iniciar Sesión</h2>
+        <input type="text" id="usuario" placeholder="Usuario">
+        <input type="password" id="contrasena" placeholder="Contraseña">
+        <button id="loginBtn">Ingresar</button>
+        <div id="mensaje"></div>
+    </div>
+
+    <script>
+        const loginBtn = document.getElementById('loginBtn');
+        const usuarioInput = document.getElementById('usuario');
+        const contrasenaInput = document.getElementById('contrasena');
+        const mensajeDiv = document.getElementById('mensaje');
+
+        loginBtn.addEventListener('click', () => {
+            const usuario = usuarioInput.value.trim();
+            const contrasena = contrasenaInput.value.trim();
+
+            if (usuario === 'root' && contrasena === 'root') {
+                mensajeDiv.textContent = `Bienvenido, ${usuario}. Contraseña: ${contrasena}`;
+                mensajeDiv.style.color = 'green';
+            } else {
+                mensajeDiv.textContent = 'Error: Usuario o contraseña incorrectos.';
+                mensajeDiv.style.color = 'red';
+            }
+        });
+    </script>
+
+</body>
+</html>

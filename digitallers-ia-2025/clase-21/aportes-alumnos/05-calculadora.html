@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora Suma</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 30px;
+        }
+
+        .calculadora {
+            max-width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        input,
+        button {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #resultado {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculadora">
+        <h3>Calculadora de Suma</h3>
+
+        <input type="number" id="numero1" placeholder="Número 1">
+        <input type="number" id="numero2" placeholder="Número 2">
+
+        <button onclick="sumar()">Sumar</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function sumar() {
+            const n1 = parseFloat(document.getElementById("numero1").value);
+            const n2 = parseFloat(document.getElementById("numero2").value);
+
+            // Validación simple
+            if (isNaN(n1) || isNaN(n2)) {
+                document.getElementById("resultado").textContent = "Por favor, ingresa dos números válidos.";
+                return;
+            }
+
+            const suma = n1 + n2;
+            document.getElementById("resultado").textContent = "Resultado: " + suma;
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista dinámica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        ul {
+            margin-top: 20px;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Mi lista</h2>
+
+    <input type="text" id="itemInput" placeholder="Escribe un nuevo elemento">
+    <button onclick="agregarElemento()">Agregar</button>
+
+    <ul id="lista">
+        <!-- Los elementos se agregarán aquí -->
+    </ul>
+
+    <script>
+        function agregarElemento() {
+            const input = document.getElementById("itemInput");
+            const texto = input.value.trim();
+
+            if (texto !== "") {
+                const li = document.createElement("li");
+                li.textContent = texto;
+
+                document.getElementById("lista").appendChild(li);
+                input.value = ""; // Limpiar el input
+            } else {
+                alert("El campo no puede estar vacío.");
+            }
+        }
+    </script>
+</body>
+
+</html>

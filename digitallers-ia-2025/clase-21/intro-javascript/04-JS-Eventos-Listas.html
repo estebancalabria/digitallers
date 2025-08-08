@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Dinámica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #fafafa;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        ul {
+            margin-top: 20px;
+            list-style-type: disc;
+            text-align: left;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Agregar elementos a la lista</h1>
+    <input type="text" id="itemInput" placeholder="Escribe algo">
+    <button id="agregarBtn">Agregar</button>
+
+    <ul id="lista"></ul>
+
+    <script>
+        const input = document.getElementById('itemInput');
+        const button = document.getElementById('agregarBtn');
+        const lista = document.getElementById('lista');
+
+        button.addEventListener('click', () => {
+            const texto = input.value.trim();
+            if (texto) {
+                const nuevoItem = document.createElement('li');
+                nuevoItem.textContent = texto;
+                lista.appendChild(nuevoItem);
+                input.value = '';
+                input.focus();
+            }
+        });
+
+        // También permite agregar con la tecla Enter
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                button.click();
+            }
+        });
+    </script>
+</body>
+</html>

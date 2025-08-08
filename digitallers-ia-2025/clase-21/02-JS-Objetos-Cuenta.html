@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //Ahora quiero una clase cuenta con los metodos para despositar y retirar dinero
+        class CuentaBancaria {
+            #titular
+            #saldo;
+
+            constructor(titular, saldoInicial = 0) {
+                this.#titular = titular;
+                this.#saldo = saldoInicial;
+            }
+
+            depositar(monto) {
+                if (monto > 0) {
+                    this.#saldo += monto;
+                }
+            }
+
+            retirar(monto) {
+                if (monto > 0 && monto <= this.#saldo) {
+                    this.#saldo -= monto;
+                } else {
+                    alert("Fondos insuficientes o monto inválido.");
+                }
+            }
+
+            get titular() {
+                return this.#titular;
+            }
+
+            get saldo() {
+                return this.#saldo;
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

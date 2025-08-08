@@ -1,0 +1,96 @@
+<!-- archivo: login-dark.js.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Oscuro</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-box {
+      background-color: #2a2a2a;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+      width: 320px;
+      text-align: center;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      background-color: #3a3a3a;
+      color: #ffffff;
+      font-size: 16px;
+    }
+
+    input::placeholder {
+      color: #bbbbbb;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #666;
+    }
+
+    #mensaje {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>🔐 Iniciar Sesión</h2>
+    <input type="text" id="usuario" placeholder="👤 Usuario">
+    <input type="password" id="clave" placeholder="🔑 Contraseña">
+    <button onclick="verificar()">Ingresar</button>
+    <p id="mensaje"></p>
+  </div>
+
+  <script>
+    function verificar() {
+      const user = document.getElementById("usuario").value;
+      const pass = document.getElementById("clave").value;
+      const mensaje = document.getElementById("mensaje");
+
+      if (user === "root" && pass === "root") {
+        mensaje.style.color = "#00e676"; // verde claro
+        mensaje.textContent = "✅ Bienvenido, " + user;
+      } else {
+        mensaje.style.color = "#ff5252"; // rojo claro
+        mensaje.textContent = "❌ Usuario o contraseña incorrectos.";
+      }
+    }
+  </script>
+</body>
+</html>

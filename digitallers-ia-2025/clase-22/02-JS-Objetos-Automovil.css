@@ -1,0 +1,83 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo y centrado general */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+/* Contenedor principal */
+#auto {
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 320px;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Título */
+#auto h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #0072ff;
+}
+
+/* Datos del auto */
+#auto p {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+#auto strong {
+    color: #444;
+}
+
+/* Botones */
+button {
+    padding: 12px 20px;
+    margin: 10px 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.1s ease, background-color 0.3s;
+    color: white;
+}
+
+/* Estilo para acelerar */
+#btnAcelerar {
+    background-color: #28a745;
+}
+
+#btnAcelerar:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Estilo para frenar */
+#btnFrenar {
+    background-color: #dc3545;
+}
+
+#btnFrenar:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}

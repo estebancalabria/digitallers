@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Básica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 80px;
+            background-color: #f0f8ff;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 100px;
+            margin: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+        }
+        #sumarBtn { background-color: #28a745; }
+        #restarBtn { background-color: #ffc107; }
+        #multiplicarBtn { background-color: #17a2b8; }
+        #dividirBtn { background-color: #dc3545; }
+
+        button:hover {
+            opacity: 0.9;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora Básica</h1>
+    <input type="number" id="numero1" placeholder="Número 1">
+    <input type="number" id="numero2" placeholder="Número 2">
+    <br>
+    <button id="sumarBtn">Sumar</button>
+    <button id="restarBtn">Restar</button>
+    <button id="multiplicarBtn">Multiplicar</button>
+    <button id="dividirBtn">Dividir</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        const input1 = document.getElementById('numero1');
+        const input2 = document.getElementById('numero2');
+        const resultadoDiv = document.getElementById('resultado');
+
+        function obtenerNumeros() {
+            const num1 = parseFloat(input1.value);
+            const num2 = parseFloat(input2.value);
+            return { num1, num2 };
+        }
+
+        document.getElementById('sumarBtn').addEventListener('click', () => {
+            const { num1, num2 } = obtenerNumeros();
+            resultadoDiv.textContent = !isNaN(num1) && !isNaN(num2)
+                ? `Resultado: ${num1 + num2}`
+                : 'Ingresa dos números válidos.';
+        });
+
+        document.getElementById('restarBtn').addEventListener('click', () => {
+            const { num1, num2 } = obtenerNumeros();
+            resultadoDiv.textContent = !isNaN(num1) && !isNaN(num2)
+                ? `Resultado: ${num1 - num2}`
+                : 'Ingresa dos números válidos.';
+        });
+
+        document.getElementById('multiplicarBtn').addEventListener('click', () => {
+            const { num1, num2 } = obtenerNumeros();
+            resultadoDiv.textContent = !isNaN(num1) && !isNaN(num2)
+                ? `Resultado: ${num1 * num2}`
+                : 'Ingresa dos números válidos.';
+        });
+
+        document.getElementById('dividirBtn').addEventListener('click', () => {
+            const { num1, num2 } = obtenerNumeros();
+            if (!isNaN(num1) && !isNaN(num2)) {
+                if (num2 === 0) {
+                    resultadoDiv.textContent = 'No se puede dividir por cero.';
+                } else {
+                    resultadoDiv.textContent = `Resultado: ${num1 / num2}`;
+                }
+            } else {
+                resultadoDiv.textContent = 'Ingresa dos números válidos.';
+            }
+        });
+    </script>
+</body>
+</html>

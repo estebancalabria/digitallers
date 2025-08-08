@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auto con método render</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f0f0f0;
+    }
+    .pista {
+      position: relative;
+      width: 600px;
+      height: 100px;
+      background: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: inset 0 0 10px #aaa;
+    }
+    .auto {
+      position: absolute;
+      top: 25px;
+      left: 0;
+      width: 80px;
+      height: 50px;
+      background: red;
+      border-radius: 15px 15px 10px 10px;
+      box-shadow: 0 5px 5px rgba(0,0,0,0.3);
+      transition: left 0.2s ease-out;
+    }
+    .auto::before {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 10px;
+      width: 20px;
+      height: 20px;
+      background: black;
+      border-radius: 50%;
+      box-shadow: 50px 0 0 black;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      margin-right: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: white;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #info {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simulación de Automóvil</h1>
+  <div class="pista">
+    <div class="auto" id="auto"></div>
+  </div>
+  <button id="acelerar">Acelerar +10 km/h</button>
+  <button id="frenar">Frenar -10 km/h</button>
+  <button id="avanzar">Avanzar 1 segundo</button>
+  <button id="reiniciar">Reiniciar</button>
+
+  <div id="info">
+    Velocidad: <span id="velocidad">0</span> km/h<br />
+    Distancia recorrida: <span id="distancia">0</span> m
+  </div>
+
+  <script>
+    class Automovil {
+      #velocidad;       // km/h
+      #distancia;       // metros
+      #maxDistancia;    // metros
+      #pistaPx;         // pixeles ancho pista
+      #autoDiv;         // referencia al div del auto
+
+      constructor(maxDistancia, pistaPx, autoDiv) {
+        this.#velocidad = 0;
+        this.#distancia = 0;
+        this.#maxDistancia = maxDistancia; 
+        this.#pistaPx = pistaPx;
+        this.#autoDiv = autoDiv;
+      }
+
+      acelerar(cantidad = 10) {
+        this.#velocidad += cantidad;
+        if (this.#velocidad > 200) this.#velocidad = 200;
+      }
+
+      frenar(cantidad = 10) {
+        this.#velocidad -= cantidad;
+        if (this.#velocidad < 0) this.#velocidad = 0;
+      }
+
+      avanzar(segundos = 1) {
+        const velocidadMS = this.#velocidad * 1000 / 3600;
+        this.#distancia += velocidadMS * segundos;
+        if (this.#distancia > this.#maxDistancia) {
+          this.#distancia = this.#maxDistancia;
+          this.#velocidad = 0;
+        }
+      }
+
+      reiniciar() {
+        this.#velocidad = 0;
+        this.#distancia = 0;
+      }
+
+      getVelocidad() {
+        return this.#velocidad;
+      }
+
+      getDistancia() {
+        return this.#distancia;
+      }
+
+      render(velocidadSpan, distanciaSpan) {
+        velocidadSpan.textContent = this.#velocidad;
+        distanciaSpan.textContent = this.#distancia.toFixed(1);
+
+        let leftPx = (this.#distancia / this.#maxDistancia) * this.#pistaPx;
+        if (leftPx > this.#pistaPx) leftPx = this.#pistaPx;
+        this.#autoDiv.style.left = leftPx + 'px';
+      }
+    }
+
+    const pistaPx = 600;
+    const maxDistanciaMetros = 100; 
+
+    const autoDiv = document.getElementById('auto');
+    const velocidadSpan = document.getElementById('velocidad');
+    const distanciaSpan = document.getElementById('distancia');
+    const acelerarBtn = document.getElementById('acelerar');
+    const frenarBtn = document.getElementById('frenar');
+    const avanzarBtn = document.getElementById('avanzar');
+    const reiniciarBtn = document.getElementById('reiniciar');
+
+    const auto = new Automovil(maxDistanciaMetros, pistaPx, autoDiv);
+
+    function actualizarVista() {
+      auto.render(velocidadSpan, distanciaSpan);
+    }
+
+    acelerarBtn.addEventListener('click', () => {
+      auto.acelerar();
+      actualizarVista();
+    });
+
+    frenarBtn.addEventListener('click', () => {
+      auto.frenar();
+      actualizarVista();
+    });
+
+    avanzarBtn.addEventListener('click', () => {
+      auto.avanzar(1);
+      actualizarVista();
+    });
+
+    reiniciarBtn.addEventListener('click', () => {
+      auto.reiniciar();
+      actualizarVista();
+    });
+
+    actualizarVista();
+  </script>
+</body>
+</html>

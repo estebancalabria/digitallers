@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Digitalers - Registro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .form-container h2 {
+      margin-bottom: 1.2rem;
+      font-size: 1.8rem;
+      color: #1e3c72;
+    }
+
+    .form-container .sub {
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 1.3rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.65rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus {
+      border-color: #1e3c72;
+      outline: none;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 0.9rem;
+      background: linear-gradient(90deg, #1e3c72, #2a5298);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: linear-gradient(90deg, #2a5298, #1e3c72);
+    }
+
+    #saludo {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      color: #2a5298;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Bienvenido a Digitalers</h2>
+    <div class="sub">Completá tus datos para registrarte</div>
+    <form id="usuarioForm" autocomplete="off">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" required>
+      </div>
+      <div class="form-group">
+        <label for="documento">Documento</label>
+        <input type="text" id="documento" required>
+      </div>
+      <div class="form-group">
+        <label for="fechaNacimiento">Fecha de Nacimiento</label>
+        <input type="date" id="fechaNacimiento" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Correo Electrónico</label>
+        <input type="email" id="email" required>
+      </div>
+      <button type="submit" class="btn-submit">Registrarse</button>
+    </form>
+    <div id="saludo"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('usuarioForm');
+    const saludo = document.getElementById('saludo');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const apellido = document.getElementById('apellido').value.trim();
+      
+      if(nombre && apellido){
+        saludo.textContent = `¡Hola ${nombre} ${apellido}, bienvenido/a a Digitalers! 🎉`;
+      } else {
+        saludo.textContent = 'Por favor, completá todos los campos.';
+      }
+    });
+  </script>
+</body>
+</html>
