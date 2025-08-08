@@ -1,5 +1,224 @@
 # Bienvenidos Digitallers 2025
 
+## 07-08-2025- Clase 22
+
+- ### Funcionamiento y Arquitectura Transformers para los LLM
+
+> https://bbycroft.net/llm
+
+- ### Objetos con Javascript
+
+Ejemplo Automovil
+```javascript
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Objeto Automóvil</title>
+    <link rel="stylesheet" href="02-JS-Objetos-Automovil.css">
+
+    <script>
+        //Crear una clase automovil con encapsulamiento que tenga
+        //velocidad, distanciaRecorrida, acelerar, frenar, actualizarDistancia (que recibe un tiempo)
+
+        class Automovil {
+            #velocidad;
+            #distanciaRecorrida;
+            constructor() {
+                this.#velocidad = 0;
+                this.#distanciaRecorrida = 0;
+            }
+            acelerar(valor) {
+                if (valor > 0) {
+                    this.#velocidad += valor;
+                }
+            }
+            frenar(valor) {
+                if (valor > 0) {
+                    this.#velocidad = Math.max(0, this.#velocidad - valor);
+                }
+            }
+            actualizarDistancia(tiempo) {
+                if (tiempo > 0) {
+                    this.#distanciaRecorrida += this.#velocidad * tiempo;
+                }
+            }
+
+            get velocidad() {
+                return this.#velocidad;
+            }
+
+            get distanciaRecorrida() {
+                return this.#distanciaRecorrida;
+            }
+        }
+    </script>
+
+    <script>
+        //Crear un objeto automovil que va a ser de mi pagina
+        const miAutomovil = new Automovil();
+    </script>
+</head>
+
+<body>
+    <!--Mostrar los datos del automovil-->
+    <!--Agregar un boton para acelerar y otro para frenar-->
+    <div id="auto">
+        <h2>Datos del Automóvil</h2>
+        <p><strong>Velocidad:</strong> <span id="velocidadAuto">0</span> km/h</p>
+        <p><strong>Distancia recorrida:</strong> <span id="distanciaAuto">0</span> km</p>
+
+        <button id="btnAcelerar">Acelerar</button>
+        <button id="btnFrenar">Frenar</button>
+    </div>
+
+    <script>
+        //La funcion que muestre los datos del automovil en el div   
+        function mostrarAuto(auto) {
+            document.getElementById('velocidadAuto').textContent = auto.velocidad;
+            document.getElementById('distanciaAuto').textContent = auto.distanciaRecorrida.toFixed(2);
+        }
+
+        //Vincular los botones con las acciones del automovil
+        document.getElementById('btnAcelerar').addEventListener('click', () => {
+            miAutomovil.acelerar(10); // Acelera en 10 km/h
+            mostrarAuto(miAutomovil);
+        });
+
+        document.getElementById('btnFrenar').addEventListener('click', () => {
+            miAutomovil.frenar(10); // Frena en 10 km/h
+            mostrarAuto(miAutomovil);
+        });
+
+        //Crear un intervalo para actualizar la distancia por el automovil cada segundo
+        setInterval(function () {
+            miAutomovil.actualizarDistancia(1 / 3600); // actualiza distancia por 1 segundo (1/3600 horas)
+            mostrarAuto(miAutomovil);
+        }, 1000);
+    </script>
+
+</body>
+
+</html>
+```
+
+- ### Componentes
+
+> Definicion : Un compoHnente es un objeto que tiene una representacion visual (es decir, que sabe mostrarse)
+
+Hay librerias y framework que programan web utilizando componentes:
+* React
+* Angular
+* Vue
+Y tambien estan como parte del estandar de html5
+* webcomponents
+
+- ### Webcomponents
+
+Implementacion estadar de componentes en html
+
+```javascript
+        class GamePersonaje extends HTMLElement {
+            #nombre;
+            #vida;
+
+            static get observedAttributes() {
+                return ['nombre', 'vida'];
+            }
+
+            constructor() {
+                super();
+                this.attachShadow({ mode: 'open' });
+                this.#nombre = this.getAttribute('nombre') || 'Sin nombre';
+                this.#vida = parseInt(this.getAttribute('vida')) || 100;
+            }
+
+            attributeChangedCallback(name, oldValue, newValue) {
+                if (name === 'nombre') this.#nombre = newValue;
+                if (name === 'vida') this.#vida = Math.max(0, parseInt(newValue));
+                this.render();
+            }
+
+            atacar(objetivo, danio = 10) {
+                if (!(objetivo instanceof GamePersonaje)) return;
+                if (!this.estaVivo() || !objetivo.estaVivo()) return;
+                objetivo.recibirDanio(danio);
+            }
+
+            recibirDanio(cantidad) {
+                if (!this.estaVivo()) return;
+                this.#vida = Math.max(0, this.#vida - cantidad);
+                this.setAttribute('vida', this.#vida);
+            }
+
+            estaVivo() {
+                return this.#vida > 0;
+            }
+
+            render() {
+                const vidaMax = 100;
+                const vidaPorcentaje = Math.max(0, (this.#vida / vidaMax) * 100);
+                const colorVida = vidaPorcentaje > 60 ? '#4caf50' : vidaPorcentaje > 30 ? '#ff9800' : '#f44336';
+
+                this.shadowRoot.innerHTML = `
+                    <style>
+                        .card {
+                            border: 2px solid #333;
+                            border-radius: 12px;
+                            padding: 16px;
+                            max-width: 250px;
+                            background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
+                            color: white;
+                            font-family: Arial, sans-serif;
+                            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+                            transition: transform 0.3s;
+                        }
+                        .card:hover { transform: scale(1.05); }
+                        .vida-bar {
+                            background-color: #444;
+                            border-radius: 8px;
+                            overflow: hidden;
+                            height: 20px;
+                            margin-bottom: 8px;
+                        }
+                        .vida-fill {
+                            height: 100%;
+                            width: ${vidaPorcentaje}%;
+                            background-color: ${colorVida};
+                            transition: width 0.4s ease-in-out, background-color 0.3s;
+                        }
+                        h3 {
+                            margin: 0 0 8px;
+                            text-align: center;
+                            font-size: 1.4em;
+                            color: #ffcc00;
+                        }
+                        p { margin: 4px 0; }
+                    </style>
+                    <div class="card">
+                        <h3>${this.#nombre}</h3>
+                        <div class="vida-bar">
+                            <div class="vida-fill"></div>
+                        </div>
+                        <p>❤️ Vida: ${this.#vida}</p>
+                        <p style="font-weight: bold; color: ${this.estaVivo() ? '#4caf50' : '#f44336'};">
+                            ${this.estaVivo() ? '🟢 Vivo' : '💀 Muerto'}
+                        </p>
+                    </div>
+                `;
+            }
+
+            connectedCallback() {
+                this.render();
+            }
+        }
+
+        customElements.define('game-personaje', GamePersonaje);
+```
+
+
 ## 05-08-2025- Clase 21
 
 - ### Javascript
@@ -1186,4 +1405,5 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
