@@ -12,6 +12,8 @@ Motores de Bases datos (Relacionales) Conocidos
 * Oracle (https://www.oracle.com/database/) - Se usa mucho a nivel Empresarial
 * SQL Server (https://www.microsoft.com/es-es/sql-server/sql-server-downloads) - Se usa mucho a nivel Empresarial
 
+---
+
 ### SQL (Standard Query Language)
 
 - #### SQL : DDL (Data Definition Language)
@@ -49,6 +51,8 @@ Consultar los datos de las tablas
 SELECT * FROM Personas
 ```
 
+---
+
 ### SQLite
 
 Pasos
@@ -61,9 +65,77 @@ sqlite3
 ```
     
 3. Los comandos terminan con ; (punto y coma)
-4. 
 
+#### Ejercicio SQLite
 
+> Crear una tabla alumnos con nombre y apellido, luego ingresar 3 alumnos y luego consultar la tabla
+
+```sql
+CREATE TABLE alumnos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    apellido TEXT NOT NULL
+);
+
+INSERT INTO alumnos (nombre, apellido) VALUES ('Juan', 'Pérez');
+INSERT INTO alumnos (nombre, apellido) VALUES ('María', 'García');
+INSERT INTO alumnos (nombre, apellido) VALUES ('Carlos', 'López');
+
+SELECT * FROM alumnos;
+```
+
+#### SQLITE desde python
+
+Leer base sqlite desde python
+> Tengo la base de datos alumnos.db en sqlite y quiero un programa en python que haga un select sobre la tabla alumnos y muestre todo por pantalla
+    
+```import sqlite3
+
+# Conectar a la base de datos
+conexion = sqlite3.connect('alumnos.db')
+
+# Crear un cursor para ejecutar consultas
+cursor = conexion.cursor()
+
+# Ejecutar la consulta SELECT
+cursor.execute("SELECT * FROM alumnos")
+
+# Obtener todos los resultados
+filas = cursor.fetchall()
+
+# Mostrar los resultados
+for fila in filas:
+    print(fila)
+
+# Cerrar la conexión
+conexion.close()
+
+```
+
+Para escribir datos desde python
+
+```python
+##Que me pregunte el nomre y el apellido y lo guarde en la tabla alumnos
+import sqlite3
+
+# Connect to SQLite database. It will be created if it doesn't exist.
+conn = sqlite3.connect('alumnos.db')
+
+# Ask for user input
+nombre = input("Please enter your name: ")
+apellido = input("Please enter your last name: ")
+# Save to database
+cur = conn.cursor()
+cur.execute('INSERT INTO alumnos (nombre, apellido) VALUES (?, ?)', (nombre, apellido))
+conn.commit()
+print(f"Alumno {nombre} {apellido} saved successfully.")
+
+# Close the connection
+conn.close()
+
+```
+
+----
 ## 07-08-2025- Clase 22
 
 - ### Funcionamiento y Arquitectura Transformers para los LLM
@@ -1469,6 +1541,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
