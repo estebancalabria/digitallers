@@ -1,5 +1,69 @@
 # Bienvenidos Digitallers 2025
 
+## 12-08-2025- Clase 23
+
+### Bases de Datos
+
+Motores de Bases datos (Relacionales) Conocidos
+* MySQL (https://www.mysql.com/)
+* Postgres (https://www.postgresql.org/)
+* MariaDB (https://mariadb.org/)
+* SQLite (https://sqlite.org/) <<  **Este es el que vamos a utilizar nosotros para aprender**
+* Oracle (https://www.oracle.com/database/) - Se usa mucho a nivel Empresarial
+* SQL Server (https://www.microsoft.com/es-es/sql-server/sql-server-downloads) - Se usa mucho a nivel Empresarial
+
+### SQL (Standard Query Language)
+
+- #### SQL : DDL (Data Definition Language)
+
+Creamos tabla
+
+```sql
+CREATE TABLE Personas(
+    id INTEGER PRIMARY KEY,
+    nombre TEXT NOT NULL UNIQUE
+);
+```
+    
+En SQLIte para ver las tablas de mi base de datos puedo usar el comando
+    
+```sqlite
+.tables
+```
+
+- #### SQL : DML (Data Manipulation Language)
+
+Agregar y modificar los datos de las tablas
+
+```sql
+INSERT INTO Personas (id, nombre) VALUES (1, 'Juan');
+INSERT INTO Personas (id, nombre) VALUES (2, 'Pedro');
+
+```    
+
+- #### SQL : DQL (Data Query Laguage)
+
+Consultar los datos de las tablas
+
+```sql
+SELECT * FROM Personas
+```
+
+### SQLite
+
+Pasos
+1. Descargar SQLite y tools (https://sqlite.org/download.html)
+2. En la carpeta donde descomprimimos los archivos ejecutamos
+    
+```cmd
+sqlite3
+(para salir ctrl+c)
+```
+    
+3. Los comandos terminan con ; (punto y coma)
+4. 
+
+
 ## 07-08-2025- Clase 22
 
 - ### Funcionamiento y Arquitectura Transformers para los LLM
@@ -1405,5 +1469,6 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
