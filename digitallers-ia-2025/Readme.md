@@ -65,6 +65,7 @@ sqlite3
 ```
     
 3. Los comandos terminan con ; (punto y coma)
+4. Tiene un Browser visual para windows : https://sqlitebrowser.org/
 
 #### Ejercicio SQLite
 
@@ -1541,6 +1542,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
