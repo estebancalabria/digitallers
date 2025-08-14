@@ -1,5 +1,38 @@
 # Bienvenidos Digitallers 2025
 
+## 14-08-2025- Clase 24
+
+### Recursos para Aprender SQL
+
+* https://www.db-fiddle.com/ - Para probar SQL sin instalar nada localmente
+
+### Sintaxis SQL
+
+- #### CREATE TABLE
+
+Para crear una tabla la sitazzzzzis es esta:
+```
+  CREATE TABLE <NOMBRE_TABLA>
+  (
+      <NOMBRE_CAMPO> <TIPO_DE_DATO> <MODIFICADORES>,
+      <NOMBRE_CAMPO> <TIPO_DE_DATO> <MODIFICADORES>,
+      ...
+  )
+
+<TIPO_DE DATO> : Varia segun el motor de base de datos
+<MODIFICADORES> : Algunos puden ser bastante Comunues como NOT NULL, pero cada motor puede tener sus modificadores propios
+```
+Modificadores Comunes
+* NOT NULL
+* PRIMARY KEY
+* UNIQUE
+
+ - #### Funciones de Agregacion
+
+* SUM
+* COUNT
+* AVG
+
 ## 12-08-2025- Clase 23
 
 ### Bases de Datos
@@ -1542,6 +1575,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
