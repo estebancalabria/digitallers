@@ -5,6 +5,7 @@
 ### Recursos para Aprender SQL
 
 * https://www.db-fiddle.com/ - Para probar SQL sin instalar nada localmente
+* https://mystery.knightlab.com/ - SQL Murder Mystery
 
 ### Sintaxis SQL
 
@@ -17,6 +18,9 @@ Para crear una tabla la sitazzzzzis es esta:
       <NOMBRE_CAMPO> <TIPO_DE_DATO> <MODIFICADORES>,
       <NOMBRE_CAMPO> <TIPO_DE_DATO> <MODIFICADORES>,
       ...
+      [
+         FOREIGN KEY <NOMBRE_CAMPO> REFERENCES <NOMBRE_TABLA>(<NOMBRE_CAMPO>) (ON DELETE CASCADE)
+      ]
   )
 
 <TIPO_DE DATO> : Varia segun el motor de base de datos
@@ -27,11 +31,79 @@ Modificadores Comunes
 * PRIMARY KEY
 * UNIQUE
 
- - #### Funciones de Agregacion
+ - #### SELECT
 
+**WHERE**
+```ejemplo
+SELECT documento, apellido
+FROM personas
+WHERE altura_cm > 170
+```
+
+**Funciones de Agregacion**
 * SUM
 * COUNT
 * AVG
+* MAX
+     
+**Consultas singleton**
+Devuelven un solo valor (un campo solo y un registro solo)
+```sql
+(SELECT AVG(altura_cm) FROM personas);
+```
+    
+**Subconsultas**
+```sql
+SELECT nombre, altura_cm
+FROM personas
+WHERE altura_cm > (SELECT AVG(altura_cm) FROM personas);
+```
+    
+**NOT IN**
+```sql
+/*El nombre de las personas cuyo apellido no sea 
+ni PEREZ, Ni GOMEZ, ni FERNANDEZ*/
+SELECT nombre, apellido
+FROM personas
+WHERE apellido NOT IN ('Pérez', 'Gómez', 'Fernández');
+```
+     
+**NOT EXISTS**
+SELECT nombre, apellido, altura_cm AS altura
+FROM personas p1
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM personas p2
+    WHERE p2.altura_cm > p1.altura_cm
+);
+
+**Joins**
+    
+```sql
+SELECT 
+    CONCAT(p.nombre, ' ', p.apellido) AS nombre_completo,
+    d.calle,
+    d.altura
+FROM 
+    personas p
+LEFT JOIN 
+    domicilio d ON p.id = d.persona_id;
+```
+
+Que es lo mismo que escribir
+
+```sql
+SELECT 
+    CONCAT(p.nombre, ' ', p.apellido) AS nombre_completo,
+    d.calle,
+    d.altura
+FROM 
+    personas p,
+    domicilio d
+WHERE
+    p.id = d.persona_id;
+```
+
 
 ## 12-08-2025- Clase 23
 
@@ -1575,6 +1647,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
