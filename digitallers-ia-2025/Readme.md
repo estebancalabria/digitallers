@@ -6,6 +6,7 @@
 
 * https://www.db-fiddle.com/ - Para probar SQL sin instalar nada localmente
 * https://mystery.knightlab.com/ - SQL Murder Mystery
+* https://sqlbolt.com/ - Tutorial de SQL
 
 ### Sintaxis SQL
 
@@ -104,7 +105,53 @@ WHERE
     p.id = d.persona_id;
 ```
 
+### Juego de buscar el asesino
 
+TAREA : Para la proxima clase les dejo la investigacion en sus manos y vemos quien lo resuelve
+Hasta ahora
+
+```
+Security footage shows that there were 2 witnesses. The first witness lives at the last house on "Northwestern Dr". The second witness, named Annabel, lives somewhere on "Franklin Ave".
+
+
+Hay que encontrar esos 2 testigos para luego consultar la table Interview
+
+/*Quiero las personas que viven en Northwestern Dr*/
+
+SELECT person_id, name, address_street_name, address_number
+FROM person
+WHERE address_street_name = 'Northwestern Dr'
+ORDER BY address_number DESC
+
+SELECT person_id, name, address_street_name
+FROM person
+WHERE name LIKE 'Annabel%'
+  AND address_street_name = 'Franklin Ave';
+
+
+
+14887	Morty Schapiro	Northwestern Dr	4919  (1er testigo)
+16371	Annabel Miller	Franklin Ave
+
+---
+SELECT *
+FROM interview
+WHERE person_id IN (14887, 16371);
+
+-----
+person_id	transcript
+14887	I heard a gunshot and then saw a man run out. He had a "Get Fit Now Gym" bag. The membership number on the bag started with "48Z". Only gold members have those bags. The man got into a car with a plate that included "H42W".
+16371	I saw the murder happen, and I recognized the killer from my gym when I was working out last week on January the 9th.
+
+Ahora hay que ir a la tabla get_fit_now_member
+```
+
+### ChatGPT para aprender Base de Datos
+Prompt 
+> Quiero que actúes como un terminal SQL frente a una base de datos de ejemplo. La base de datos contiene tablas llamadas "Products", "Users", "Orders" y "Suppliers". Escribiré consultas y tú responderás con lo que el terminal mostraría. Quiero que respondas con una tabla de resultados de la consulta en un solo bloque de código, y nada más. No escribas explicaciones. No escribas comandos a menos que te lo indique. Cuando necesite decirte algo en inglés, lo haré entre llaves {así}.
+
+---
+---
 ## 12-08-2025- Clase 23
 
 ### Bases de Datos
@@ -1647,6 +1694,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
