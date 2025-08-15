@@ -105,6 +105,22 @@ WHERE
     p.id = d.persona_id;
 ```
 
+- #### UPDATE
+
+```sql
+UPDATE Products SET Price = 1500.00 WHERE ProductName = 'Laptop';
+```
+o
+```sql
+UPDATE Products SET Price = Price * 1.10;
+```
+
+- #### DELETE
+
+DELETE FROM Users WHERE ID = 5;
+
+Que pasa si pongo DELETE FROM TABLA SIN UN WHERE>>>> BORRA TODA LA TABLA
+
 ### Juego de buscar el asesino
 
 TAREA : Para la proxima clase les dejo la investigacion en sus manos y vemos quien lo resuelve
@@ -1694,6 +1710,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
