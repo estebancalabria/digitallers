@@ -1,5 +1,12 @@
 # Bienvenidos Digitallers 2025
 
+## 19-08-2025- Clase 25
+
+### SQL Interactivo con Gradio
+
+Colab : https://colab.research.google.com/drive/1so1DyznL9gsnqEvNWQcC3wtcRH7RfWQP?usp=sharing
+Chat con ChatGPT  : https://chatgpt.com/share/68a4fe7c-3b00-8005-8420-e471432c7146
+
 ## 14-08-2025- Clase 24
 
 ### Recursos para Aprender SQL
@@ -1710,6 +1717,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
