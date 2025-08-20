@@ -7,6 +7,193 @@
 Colab : https://colab.research.google.com/drive/1so1DyznL9gsnqEvNWQcC3wtcRH7RfWQP?usp=sharing
 Chat con ChatGPT  : https://chatgpt.com/share/68a4fe7c-3b00-8005-8420-e471432c7146
 
+- #### Base de datos usada y Datos usados
+
+```python
+sql_creacion_base = """
+    -- Crear tabla Categorías
+    CREATE TABLE Categorias (
+        id_categoria INTEGER PRIMARY KEY AUTOINCREMENT,
+        nombre TEXT NOT NULL,
+        descripcion TEXT
+    );
+
+    -- Crear tabla Productos
+    CREATE TABLE Productos (
+        id_producto INTEGER PRIMARY KEY AUTOINCREMENT,
+        nombre TEXT NOT NULL,
+        precio REAL NOT NULL,
+        stock INTEGER NOT NULL,
+        id_categoria INTEGER,
+        FOREIGN KEY (id_categoria) REFERENCES Categorias(id_categoria)
+    );
+
+    -- Crear tabla Clientes
+    CREATE TABLE Clientes (
+        id_cliente INTEGER PRIMARY KEY AUTOINCREMENT,
+        nombre TEXT NOT NULL,
+        email TEXT UNIQUE,
+        telefono TEXT
+    );
+
+    -- Crear tabla Ventas
+    CREATE TABLE Ventas (
+        id_venta INTEGER PRIMARY KEY AUTOINCREMENT,
+        id_cliente INTEGER,
+        fecha TEXT NOT NULL,
+        total REAL NOT NULL,
+        FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
+    );
+
+    -- Crear tabla DetalleVenta
+    CREATE TABLE DetalleVenta (
+        id_detalle INTEGER PRIMARY KEY AUTOINCREMENT,
+        id_venta INTEGER NOT NULL,
+        id_producto INTEGER NOT NULL,
+        cantidad INTEGER NOT NULL,
+        subtotal REAL NOT NULL,
+        FOREIGN KEY (id_venta) REFERENCES Ventas(id_venta),
+        FOREIGN KEY (id_producto) REFERENCES Productos(id_producto)
+    );
+"""
+```
+
+datos
+
+```python
+sql_datos_base = """
+  -- Insertar categorías
+  INSERT INTO Categorias (nombre, descripcion) VALUES
+  ('Bebidas', 'Bebidas alcohólicas y no alcohólicas'),
+  ('Lácteos', 'Leche, queso, yogur y derivados'),
+  ('Frutas y Verduras', 'Productos frescos'),
+  ('Panadería', 'Pan, facturas y repostería'),
+  ('Limpieza', 'Productos de limpieza y hogar');
+
+  -- Insertar productos
+  INSERT INTO Productos (nombre, precio, stock, id_categoria) VALUES
+  ('Coca Cola 500ml', 120.5, 50, 1),
+  ('Leche Entera 1L', 150.0, 30, 2),
+  ('Queso Mozzarella 200g', 200.0, 20, 2),
+  ('Manzana Roja', 80.0, 100, 3),
+  ('Pan Integral', 50.0, 40, 4),
+  ('Detergente Líquido 1L', 250.0, 25, 5);
+
+  -- Insertar clientes
+  INSERT INTO Clientes (nombre, email, telefono) VALUES
+  ('Juan Pérez', 'juan.perez@email.com', '123456789'),
+  ('María Gómez', 'maria.gomez@email.com', '987654321'),
+  ('Carlos López', 'carlos.lopez@email.com', '555666777');
+
+  -- Insertar ventas
+  INSERT INTO Ventas (id_cliente, fecha, total) VALUES
+  (1, '2025-08-19', 370.5),
+  (2, '2025-08-18', 430.0);
+
+  -- Insertar detalles de venta
+  INSERT INTO DetalleVenta (id_venta, id_producto, cantidad, subtotal) VALUES
+  (1, 1, 2, 241.0),
+  (1, 5, 1, 50.0),
+  (1, 4, 1, 79.5),
+  (2, 2, 2, 300.0),
+  (2, 3, 1, 200.0),
+  (2, 6, 1, 250.0);
+
+"""
+```
+
+- #### Relaciones Maestro detalles en SQL
+
+```sql
+SELECT 
+    v.id_venta AS NroFactura,
+    v.fecha,
+    c.nombre AS Cliente,
+    p.nombre AS Producto,
+    dv.cantidad,
+    dv.subtotal,
+    v.total AS TotalFactura
+FROM Ventas v
+JOIN Clientes c ON v.id_cliente = c.id_cliente
+JOIN DetalleVenta dv ON v.id_venta = dv.id_venta
+JOIN Productos p ON dv.id_producto = p.id_producto
+ORDER BY v.id_venta;
+```
+
+- #### Repasando funciones de Agregacion
+
+Eran:
+* COUNT()
+* MAX()
+* MIN()
+* SUM()
+* AVG()
+
+Ejemplos:
+
+Quiero el total de las ventas:
+```sql
+SELECT SUM(total) AS TotalVentas FROM Ventas;
+```
+
+Quiero el promedio de las ventas
+```sql
+SELECT
+    AVG(total) AS PromedioVentas
+FROM Ventas;
+```
+
+Quiero el total de las ventas por cliente (agrupadas por cliente):
+```sql
+SELECT
+    c.nombre AS Cliente,
+    SUM(v.total) AS TotalVentas
+FROM Ventas v
+JOIN Clientes c ON v.id_cliente = c.id_cliente
+GROUP BY c.nombre;
+```
+
+Quiero el total de las ventas por cliente que gastaron mas de 400 (agrupadas por cliente):
+```sql
+SELECT
+    c.nombre AS Cliente,
+    SUM(v.total) AS TotalVentas
+FROM Ventas v
+JOIN Clientes c ON v.id_cliente = c.id_cliente
+GROUP BY c.nombre
+HAVING SUM(v.total) > 400;
+```
+
+Quiero el total de ventas por producto
+```sql
+SELECT
+    p.nombre AS Producto,
+    SUM(dv.subtotal) AS TotalVentas
+FROM DetalleVenta dv
+JOIN Productos p ON dv.id_producto = p.id_producto
+GROUP BY p.nombre
+ORDER BY TotalVentas DESC;
+```
+
+Aparte : Los productos que no se vendieron
+```sql
+SELECT p.id_producto, p.nombre
+FROM Productos p
+LEFT JOIN DetalleVenta dv ON p.id_producto = dv.id_producto
+WHERE dv.id_producto IS NULL;
+```
+Con un not exits y subconsulta
+```sql
+SELECT
+    p.nombre AS ProductoNoVendido
+FROM Productos p
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM DetalleVenta dv
+    WHERE dv.id_producto = p.id_producto
+);
+```
+
 ## 14-08-2025- Clase 24
 
 ### Recursos para Aprender SQL
@@ -1717,6 +1904,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
