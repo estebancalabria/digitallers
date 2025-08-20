@@ -194,6 +194,47 @@ WHERE NOT EXISTS (
 );
 ```
 
+Los Clientes que no realizaron ninguna compra
+```sql
+SELECT
+    id_cliente,
+    nombre,
+FROM Clientes c
+WHERE NOT EXISTS (
+    SELECT "Resultado"
+    FROM Ventas v
+    WHERE v.id_cliente = c.id_cliente
+);
+```
+
+- #### Ejemplo de LEFT JOIN
+
+```sql
+SELECT
+    *
+FROM Clientes c
+LEFT JOIN Ventas v ON c.id_cliente = v.id_cliente
+```
+
+Da como resultado por ejemplo     
+
+id_cliente	nombre	email	telefono	id_venta	id_cliente	fecha	total
+1	Juan Pérez	juan.perez@email.com	123456789	1	1	2025-08-19	370.5
+2	María Gómez	maria.gomez@email.com	987654321	2	2	2025-08-18	430.0
+3	Carlos López	carlos.lopez@email.com	555666777	None	None	None	None
+
+
+- #### Manejo de Nulos
+
+* SELECT 1=1 >>> Da Verdadero
+* SELECT 1=2 >>> Da Falso
+* SELECT NULL=NULL >> Da Falso / Error / None (NO SE PUEDEN COMPARAR NULOS ENTRE SI)
+* SELECT NULL IS NULL >>> Ahora si True
+
+TIP
+* Tratar que los campos de la base de datos no admitan nulos como buena practica
+* Las comparaciones de nulos son anti intuitivas
+
 ## 14-08-2025- Clase 24
 
 ### Recursos para Aprender SQL
@@ -1904,6 +1945,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
