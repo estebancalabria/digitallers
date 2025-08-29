@@ -62,6 +62,39 @@ Pensemos en Datos, bases de datos, campos... no tanto en imagenes, ni en texto..
 * Fraude con tarjetas de credigo
 * Detectar valores fuera de rango en sensores
 * Deteccion de intrusiones en la red
+
+- #### Machine Learning en Python
+
+Librerias que debemos conocer : https://www.instagram.com/p/C_VyOHHRv0N/?img_index=1
+
+**Numpy**
+Para manejo de listas (arrays) de forma mas eficiente que python nativo
+```python
+#Ejemplo numpy
+import numpy as np
+
+X = np.array([[1, 2, 3], [4, 5, 6]])
+print(X)
+
+#En vez de hacer
+X = [[1, 2, 3], [4, 5, 6]]
+print(X)
+```
+
+**Pandas**
+Libreria para analisis de datos. Permite creaar DataFrames que lo podes pensar como una tabla de una base datos en memoria
+```python
+import pandas as pd
+
+df = pd.DataFrame({
+    'nombre': ['Juan', 'María', 'Pedro', 'Ana', 'Luis'],
+    'edad': [25, 30, 35, 40, 45], 
+})
+
+print(df)
+```
+
+
 ---
 
 ## 26-08-2025 - Clase 27
@@ -2015,6 +2048,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
