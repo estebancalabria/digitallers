@@ -63,6 +63,10 @@ Pensemos en Datos, bases de datos, campos... no tanto en imagenes, ni en texto..
 * Detectar valores fuera de rango en sensores
 * Deteccion de intrusiones en la red
 
+- #### Algoritmos de Machine Learning
+
+* **Regresion Lineal** : algoritmo de machine learning supervisado que aprende a predecir un valor numérico continuo a partir de una o más variables independientes, ajustando una línea (o plano) que minimiza la diferencia entre las predicciones y los valores reales.
+
 - #### Machine Learning en Python
 
 Librerias que debemos conocer : https://www.instagram.com/p/C_VyOHHRv0N/?img_index=1
@@ -93,24 +97,6 @@ df = pd.DataFrame({
 
 print(df)
 ```
-
-**Streamlit** para aplicaciones visuales y visualizacion de graficos (en mi pc)
-Primero instalarla
-```
-pip install streamlit
-```
-```
-import streamlit as st
-import pandas as pd
-
-df = pd.DataFrame({
-    "mes" : ["Enero", "Febrero", "Marzo", "Abril"],
-    "ventas" : [100, 200, 300, 400]
-});
-
-st.line_chart(df.set_index("mes"))
-```
-
 **MatplotLib**para aplicaciones visuales y visualizacion de graficos en colab
 ```python
 import matplotlib.pyplot as plt 
@@ -124,6 +110,43 @@ df = pd.DataFrame({
 df.plot(x="mes", y="ventas", kind="bar")
 plt.show()
 ```
+**Scikit learn** Que es na libreria para aprender Machine Learning pero que es tan buena que no solo se usa para aprender sino que tambien se termino usando para entrenar modelos productivos de machine learning
+```python
+from sklearn.linear_model import LinearRegression
+
+X = [[1],[2],[3]]   #Features o caracteristicas O entrada o variables independientes
+y = [2,4,6]         #Labels o etiqutas o salidas o variables dependientes
+
+model = LinearRegression()
+model.fit(X,y)      
+
+print(model.predict([[4]]))
+```
+
+**Streamlit (BONUS)** para aplicaciones visuales y visualizacion de graficos (en mi pc) (Esta no funciona en colab, es mas para ejecutarlo en mi pc). Es una mezcla de matplotlib y gracio
+Primero instalarla
+```
+pip install streamlit
+```
+Luego el codigo
+```
+import streamlit as st
+import pandas as pd
+
+df = pd.DataFrame({
+    "mes" : ["Enero", "Febrero", "Marzo", "Abril"],
+    "ventas" : [100, 200, 300, 400]
+});
+
+st.line_chart(df.set_index("mes"))
+```
+luego lo ejecutamos desde la terminal con
+```
+streamlit run streamlit-demo.py
+```
+
+
+
 ---
 
 ## 26-08-2025 - Clase 27
@@ -2077,6 +2100,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
