@@ -94,7 +94,36 @@ df = pd.DataFrame({
 print(df)
 ```
 
+**Streamlit** para aplicaciones visuales y visualizacion de graficos (en mi pc)
+Primero instalarla
+```
+pip install streamlit
+```
+```
+import streamlit as st
+import pandas as pd
 
+df = pd.DataFrame({
+    "mes" : ["Enero", "Febrero", "Marzo", "Abril"],
+    "ventas" : [100, 200, 300, 400]
+});
+
+st.line_chart(df.set_index("mes"))
+```
+
+**MatplotLib**para aplicaciones visuales y visualizacion de graficos en colab
+```python
+import matplotlib.pyplot as plt 
+import pandas as pd
+
+df = pd.DataFrame({
+    "mes" : ["Enero", "Febrero", "Marzo", "Abril"],
+    "ventas" : [100, 200, 300, 400]
+});
+
+df.plot(x="mes", y="ventas", kind="bar")
+plt.show()
+```
 ---
 
 ## 26-08-2025 - Clase 27
@@ -2048,6 +2077,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
