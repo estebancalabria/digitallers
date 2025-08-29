@@ -1,5 +1,75 @@
 # Bienvenidos Digitallers 2025
 
+## 28-08-2025 - Clase 28
+
+### Novedades de IA
+
+- #### Modelo Nano Banana
+  
+Vamos a probar el modelo de generacion de imagenes de google "Nano Banana"
+Simplemente vamos a gemini
+> https://gemini.google.com/app
+> https://aistudio.google.com/
+Ver review en:
+> https://www.youtube.com/watch?v=-gPL9EA2pP8
+
+- #### Vamos a Generar desde python
+
+1. Sacar una api key de google de aca : https://aistudio.google.com/apikey
+2. Documentacion para generar Imagenes con Gemini : https://ai.google.dev/gemini-api/docs/image-generation?utm_source=AISgaias&utm_medium=email&utm_campaign=nano&utm_content=hero_start_building&hl=es-419
+3. GRRRRRR no salio del todo
+
+### Machine Learning
+
+Ver Introduccion en : https://www.instagram.com/p/C1ntRrRswAu/?img_index=1
+
+Empecemos por unos juegos
+```
+Juego
+X = [[1],[2],[3]]
+y=[2,4,6]
+Si me dan el 4 se que la salida es 8....
+```
+
+```
+Juego
+X=[[1],[2],[3]]
+y=[7,9,11] 
+Si medan el 4 la salida es...13
+```
+
+- #### Ejemplos de aplicacion de Machine Learning
+
+Pensemos en Datos, bases de datos, campos... no tanto en imagenes, ni en texto....que es a lo que nos vamos a orientar en Machine Learning
+
+**Clasificacion**
+* Le paso los datos de un cliente (ubicacion, edad, trabajo, etc..) me dice si es un potecial comprador o no
+* Clasificacion de imagenes suele relacionarse mas con lo que es Computer Vision. 
+* Clasificacion de productos para ver cuales tienen mas potencial de ventas
+* Clasificar para predecir si un cliente de un banco es un petencial deudor a ver si le damos un prestamo
+* Segementacion de clientes para marketing
+* Se utiliza mucho en los algoritmos de recomedacion de youtube, instagram, amazon, ...etc <<<
+
+**Regresion**
+* Estan relacionados con predecir un valor en una serie temporal a partir de cieras variables
+* Predecir el valor de una accion a futuro
+* Predecir cuanto tiempo va a pasar un usuario en una red socual
+* Predecir la eficiencia de combustible de un automóvil en el tiempo
+* Predecir el precio de una casa de acuerdo a metros cuadrados , números de habitaciones, etc
+
+**Deteccion de anomalias**
+* Detectar transacciones fraudulentas en un banco
+* Fraude con tarjetas de credigo
+* Detectar valores fuera de rango en sensores
+* Deteccion de intrusiones en la red
+---
+
+## 26-08-2025 - Clase 27
+
+- ### Clase de habilidades blandas
+  
+---
+
 ## 19-08-2025- Clase 25
 
 ### SQL Interactivo con Gradio
@@ -1945,6 +2015,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
