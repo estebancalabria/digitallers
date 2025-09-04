@@ -23,7 +23,7 @@ titanic.head()
 ```
 7. Determinar Features, Labels y Columnas que no Interesan
 
-````python
+```python
 conlumnas_que_no_interesan = ["PassengerId", "Name", "Ticket", "Cabin"]
 features = ["Pclass","Sex","Age","SibSp","Parch","Fare", "Embarked"]
 label = ["Survived"]
@@ -2152,6 +2152,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
