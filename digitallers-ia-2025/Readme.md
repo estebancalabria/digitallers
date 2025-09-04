@@ -29,7 +29,32 @@ features = ["Pclass","Sex","Age","SibSp","Parch","Fare", "Embarked"]
 label = ["Survived"]
 ```
 
-8. 
+8. Verificar si no hay campos nulos en algun feature (no debe haber campos nulos en los features). Vamos a recorrer la lista de features y determinar cuales tienen filas con valores nulos
+
+```python
+## Recorrer la lista de features y determinar cuales features tienen valores nulos : Otto
+for column in features:
+    if titanic[column].isnull().any():
+        print(f"La columna '{column}' tiene valores nulos.")
+
+## La manera que habia pensado el profe
+for column in features:
+    if not titanic[titanic[column].isnull()].empty:
+        print(f"La columna '{column}' tiene valores nulos.")
+
+# La forma de Dario
+for feature in features:
+    nulos = titanic[titanic[feature].isna()]
+    if nulos.shape[0] > 0:
+        print(f"La columna '{feature}' tiene {nulos.shape[0]} valores nulos")
+    else:
+        print(f"La columna '{feature}' no tiene valores nulos")
+
+##La forma de Juan Ignacio para contar cuantos nulos en cada columna
+print(titanic.isnull().sum())
+```
+
+9. 
 
 ### Aprendiendo  usar Pandas
 
@@ -45,8 +70,41 @@ titanic = pd.read_csv('https://raw.githubusercontent.com/datasciencedojo/dataset
 dataset.head()
 ```
 
-**Seleccionar Datos de un Dataset**
+**Seleccionar Datos de un Dataset**     
 EJ : Como seria en pandas "select Name, Age, Sex from titanic"
+```python
+select = titanic[["Name", "Age", "Sex"]]
+select.head()
+```
+
+**Seleccionar las filas donde Un campo sea nulo**     
+Ej : Select * from titanic where age is null
+```python
+nulos_age = titanic[titanic["Age"].isnull()]
+nulos_age.head()
+```
+
+**Saber si un dataset tiene esta vacio**
+```python
+dataset.empty
+```
+
+**Saber la cantidad de elementos en un dataset**
+```
+print(len(titanic))
+print("-----")
+print(titanic.count()) ##Aca se ven los campos nulos
+print("-----")
+print(titanic.shape) ##Devuelve una tupla (caantidad_registro, cantidad_columnas)
+```
+
+**Borrar columnas que tienen campos nulos**     
+Ej Delete from titatic where age is null or embarked is null
+```python
+titanic = titanic.dropna(subset=["Age", "Embarked"])
+titanic.head()
+```
+
 
 ## 02-09-2025 - Clase 29
 
@@ -2152,6 +2210,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
