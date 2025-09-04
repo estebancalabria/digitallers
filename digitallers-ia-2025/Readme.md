@@ -1,5 +1,16 @@
 # Bienvenidos Digitallers 2025
 
+## 04-09-2025 - Clase 30
+
+### Vamos con Machine Learning
+`
+1. Crearse un documento de Google Sheets Vacio
+2. Cargar un dataset en el docunento. Vamos elegir uno de Kaggle : https://www.kaggle.com/
+
+## 02-09-2025 - Clase 29
+
+> **Clase de habilidades Blandas**
+
 ## 28-08-2025 - Clase 28
 
 ### Novedades de IA
@@ -2100,6 +2111,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
