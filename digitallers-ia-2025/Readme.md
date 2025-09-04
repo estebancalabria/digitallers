@@ -5,7 +5,48 @@
 ### Vamos con Machine Learning
 `
 1. Crearse un documento de Google Sheets Vacio
+
 2. Cargar un dataset en el docunento. Vamos elegir uno de Kaggle : https://www.kaggle.com/
+
+3. Abrir el Google Colab...
+      * Este es el que estoy usando https://colab.research.google.com/drive/1hDz_rFrNUo4jHQVbRxkllxorit7epxog?usp=sharing
+
+5. URL donde estan los datos del titac en CSV : https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv
+
+6. Cargar los datos a un dataset de Pandas
+
+```python
+import pandas as pd
+
+titanic = pd.read_csv('https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv')
+titanic.head()
+```
+7. Determinar Features, Labels y Columnas que no Interesan
+
+````python
+conlumnas_que_no_interesan = ["PassengerId", "Name", "Ticket", "Cabin"]
+features = ["Pclass","Sex","Age","SibSp","Parch","Fare", "Embarked"]
+label = ["Survived"]
+```
+
+8. 
+
+### Aprendiendo  usar Pandas
+
+**Cargar un DataSet desde un CSV**
+```python
+import pandas as pd
+
+titanic = pd.read_csv('https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv')
+```
+
+**Mostrar las primeras filas de un DataSet**
+```python
+dataset.head()
+```
+
+**Seleccionar Datos de un Dataset**
+EJ : Como seria en pandas "select Name, Age, Sex from titanic"
 
 ## 02-09-2025 - Clase 29
 
@@ -2111,6 +2152,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
