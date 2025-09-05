@@ -2,8 +2,8 @@
 
 ## 04-09-2025 - Clase 30
 
-### Vamos con Machine Learning
-`
+### Vamos con Machine Learning    
+
 1. Crearse un documento de Google Sheets Vacio
 
 2. Cargar un dataset en el docunento. Vamos elegir uno de Kaggle : https://www.kaggle.com/
@@ -31,6 +31,7 @@ label = ["Survived"]
 
 8. Verificar si no hay campos nulos en algun feature (no debe haber campos nulos en los features). Vamos a recorrer la lista de features y determinar cuales tienen filas con valores nulos
 
+
 ```python
 ## Recorrer la lista de features y determinar cuales features tienen valores nulos : Otto
 for column in features:
@@ -54,7 +55,79 @@ for feature in features:
 print(titanic.isnull().sum())
 ```
 
-9. 
+9. Eliminar las filas que tienen features en nulo (Age y embarked segun lo que vimos)
+
+```python
+titanic = titanic.dropna(subset=["Age", "Embarked"])
+titanic.head()
+```
+
+10. Determinar un dataset para los features y otro para los labes
+> En Machine learning se llama X (mayuscula) al dataset de los features e y (minuscula) al dataset de los labels
+
+```python
+#Determinamos dataset de featues y labes
+X = titanic[features]  # En X se arma un dataset con las variables dependientes (features)
+y = titanic[label]     # En y se  un dataset con las variables independietes (labes )
+```
+
+11. La columna Sex y la columna Embarked no son numeros. Los algoritmos de Machine Learning trabajan mejor con datos numericos
+
+```python
+from sklearn.preprocessing import LabelEncoder
+
+#...
+
+encoder = LabelEncoder()
+titanic["Sex"] = encoder.fit_transform(titanic["Sex"])
+titanic["Embarked"] = encoder.fit_transform(titanic["Embarked"])
+```
+
+12. Separamos los datos de prueba y entrenamiento. Para hacerlo vamos a utilizar la siguiente convencion de nombres
+     * X_train
+     * X_test
+     * y_train
+     * y_tes
+
+```python
+from sklearn.model_selection import train_test_split
+
+#...
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+```
+
+13. Entrenar el modelo con los datos de entrenamiento (X_train e y_train)\\
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+```
+
+14. Evaluar el modelo. Se crea la variable y_ped donde se guarda la prediccion del modelo
+
+```python
+from sklearn.metrics import accuracy_score, classification_report
+
+#Evaluar el modelo
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy}")
+print(classification_report(y_test, y_pred))
+```
+
+15. Dio accuracy 0.77. Medio malardo. Probemos con otro algoritmo
+
+```python
+from sklearn.ensemble import GradientBoostingClassifier
+
+model = GradientBoostingClassifier(n_estimators=100, learning_rate=0.1, random_state=42)
+model.fit(X_train, y_train)
+
+```
+16. 
 
 ### Aprendiendo  usar Pandas
 
@@ -105,6 +178,15 @@ titanic = titanic.dropna(subset=["Age", "Embarked"])
 titanic.head()
 ```
 
+### Aprendiendo  usar Scikit-Learn (sklerarn)
+
+**Convertir una columna no numerica en una columna numerica**
+
+```python
+encoder = LabelEncoder()
+titanic["Sex"] = encoder.fit_transform(titanic["Sex"])
+titanic["Embarked"] = encoder.fit_transform(titanic["Embarked"])
+```
 
 ## 02-09-2025 - Clase 29
 
@@ -2210,6 +2292,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
