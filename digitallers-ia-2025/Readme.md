@@ -1,5 +1,92 @@
 # Bienvenidos Digitallers 2025
 
+## 09-09-2025 - Clase 31
+
+### API : Aplication Program Interfaces
+
+Caractacteristicas de la API rest
+* Generamente consumen y devuelven JSON
+* Las api Rest se consumen utilizando el protocolo HTTP
+     * https://www.instagram.com/p/DMMcfavuN58/?img_index=1
+     * Utilizamos las acciones HTTP para consumir una api REST
+          * GET : Obtener Informacion      (En base de datos es un SELECT)
+          * POST : Agregar informacion     (EN bd seria como un INSERT)
+          * PUT : Actualizar informacion   (Seria en SQL como un UPDATE)
+          * DELETE : Eliminar informacion  (En SQL es un...DELETE)
+* Se pueden programar en python, javascript con nodejs, en cualquier lenguaje
+* Las API permite comunicar Aplicaciones INDEPENDIENTEMENTE del lenguaje en el que fueron desarrolladas
+* Podemos decir que el programador de BACKEND desarrolla las API y el programador de FRONTEND desarrolla la aplicacion en HTML y obtiene los datos por medio de esas API
+
+Ejemplos de API conocidas
+* Los ejemplos los podemos ver aca : https://www.instagram.com/p/ChF6pu8u6cm/?img_index=5
+*  https://rickandmortyapi.com/
+     *  Ejemplo: https://rickandmortyapi.com/api/character/
+*  https://pokeapi.co/
+     *  Ejemplo : https://pokeapi.co/api/v2/pokemon/
+*  https://disneyapi.dev/
+     *  Ejemplo : https://api.disneyapi.dev/character
+*  https://spapi.dev/
+     *  Ejemplor : https://spapi.dev/api/characters
+
+- #### Generando nuestra primera api localmente
+
+Para crear APIS desde python se utiliza la libreria flask que debemos instalar en la terminal con el siguiente comando:
+
+```cmd
+pip install flask
+```
+Para crear nuestra primera API en flask vamos a generar un archivo llamado hello-api.py con el siguiente contenido"
+
+```python
+from flask import Flask, jsonify, request
+
+app = Flask("Mi primera APP con Flask")
+
+@app.route('/hello')
+def hello():
+    return jsonify(message=f'Hola mundo desde Flask!')
+
+app.run(debug=True)
+```
+Para ejecutarlo se hace
+```
+python hello-api.py
+```
+Y se accede al endopoint en nuestro navegador generalmente
+```
+http://127.0.0.1:5000/hello
+```
+
+Vamos a agregar otro metodo mas que maneje el querystring y reciba parametros
+```python
+@app.route('/saludar')
+def saludar():
+    #Para invocar este 
+    nombre = request.args.get('nombre', 'Invitado')
+    return jsonify(message=f'Hola, {nombre}!')
+```
+
+Vamos a agregar otro metodo mas que maneje el querystring y reciba parametros y sume...
+```python
+@app.route('/sumar')
+def sumar():
+    # Obtenemos los números de la URL, por ejemplo: /sumar?num1=5&num2=10
+    num1 = request.args.get('num1', 0)
+    num2 = request.args.get('num2', 0)
+    
+    try:
+        # Convertimos a enteros
+        suma = int(num1) + int(num2)
+        return jsonify(result=suma)
+    except ValueError:
+        return jsonify(error="Por favor envía números válidos."), 400
+```
+
+Este se invoca por ejemplo
+```
+http://127.0.0.1:5000/sumar?num1=10&num2=20
+```
+---
 ## 04-09-2025 - Clase 30
 
 ### Vamos con Machine Learning    
@@ -2292,6 +2379,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
