@@ -1,5 +1,83 @@
 # Bienvenidos Digitallers 2025
 
+## 09-09-2025 - Clase 32
+
+### Repaso machine Learning y Aplicaciones de escritorio
+
+- #### Creacion de entornos en python
+
+* Cuando hago pip install instalo las librerias para toda la maquina.
+* Pero hay excenarios donde quiero generar un entorno separado con sus propias librerias
+* Por ejemplo si no las quiero instalar para toda la maquina
+* Si quiero instalar una version especifica de la libreria para ese proyecto
+* Esto se llama crear un entorno asilado
+* Generamente cuando te bajas un programa en python desde internet conviene probarlo en un entorno aislado
+* Sino es un lio de liberias
+
+Para crear un entorno aislado hacemos
+```cmd
+python -m venv venv
+```
+PAra activar y pararnos en el entorno
+```cms
+.\venv\Scripts\activate
+```
+
+En general para documentar que librerias necesita nuesto codigo se suele crear un archivo que se llama por convencion (aunque se puede llamar de cualquier manera) requirements.txt. Por ejemplo nuestro archivo va a tener
+
+```txt
+scikit-learn
+```
+
+Para instala los paquetes mencionados en ese archivo se hacer
+
+```cmd
+pip install -r requirements.txt
+```
+
+- ### Vamos a programar un evaluador de vinos
+
+Resumen de Variables
+* X = (MAYUSCULA) Una tabla con los datos de los features (alchol, fenoles, gusto, etc)
+* y = (minuscula) Una tabla con los labels
+
+```python
+from sklearn.datasets import load_wine
+from sklearn.preprocessing import StandardScaler #lleva los datos a una escala comun
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+import pandas as pd
+
+print("Bienvenidos a mi evaluador de vinos")
+
+dataset = load_wine()
+#print(dataset.DESCR)
+#print(dataset)
+#print(dataset.feature_names)
+#print(dataset.target_names)
+
+#Esto para ver por pantalla los datos en formato tabla
+##df = pd.DataFrame(data=dataset.data, columns=dataset.feature_names)
+##df['target'] = dataset.target
+#print(df.head())
+
+X = dataset.data     # Features  - Los datos que hay aca son las caracteristicas de los vinos
+y = dataset.target   # Labels  - Los datos que hay aca la calidad del vino
+
+#Preproceso de datos
+scaler = StandardScaler()
+X = scaler.fit_transform(X)
+
+X_train, X_text, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42)
+
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+accuracy = model.score(X_text, y_test)
+
+print(f"El modelo tiene una precision de {accuracy*100:.2f}%")
+```
+---
+
 ## 09-09-2025 - Clase 31
 
 ### API : Aplication Program Interfaces
@@ -2379,6 +2457,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
