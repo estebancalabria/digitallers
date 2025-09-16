@@ -1,5 +1,101 @@
 # Bienvenidos Digitallers 2025
 
+## 16-09-2025 - Clase 33
+
+### Repaso de Machine Learning y APIS
+
+No olvidar repasar el protocolo HTTP (y de paso dejar MG) : https://www.instagram.com/p/DMMcfavuN58/?img_index=1
+
+- #### Programando nuestra API Localmente
+
+Vamos a utilizar Flask que es una libreria para programar APIS rest
+    
+PAsos.
+1. Creamos un entorno e instalamos la libreria flask
+     
+```cmd
+python -m venv entrono
+.\entrono\Scripts\activate
+>pip install flask 
+```
+    
+2. Nuestra primera API rest
+
+```
+from flask import Flask
+
+print("Creando mi primera API REST con Flask " + __name__)
+app = Flask(__name__)  ##Creo un objeto o instancia de Flas
+
+@app.route("/")  ##Decorador que indica la ruta de acceso
+def hola_mundo():
+    return "Hola Mundo!"  ##Retorna un string
+
+app.run(debug=True)  ##Ejecuta la aplicación en modo de depuración
+```
+
+3. Vamos a utilizar ahora el quetystring
+
+```python
+@app.route("/saludar")  ##Otra ruta de acceso
+def saludar():
+    nombre = request.args.get("nombre", "Desconcido")  ##Obtiene el parámetro 'nombre' de la URL, si no existe usa "Mundo"
+    return "Hola " + nombre + "!"  ##Retorna un string
+```
+
+4. Instalar la extension de Chrome Rapidapi y probar a API con la extension
+
+- ##### Programando una api de Personas
+
+Vamos a tener los siguientes endpoints
+* GET /personas  : Me devuelve una lista de personas con su id, nombre, apellido
+* GET /personas/{id} : Me devuelve la informacion de una persona especifica
+* POST /personas : Regustro una persona en el servidor
+
+El codigo queda
+
+```python
+from flask import Flask, request, jsonify
+
+print("Creando mi primera API REST con Flask " + __name__)
+app = Flask(__name__)  ##Creo un objeto o instancia de Flas
+
+personas = []
+
+@app.route("/personas", methods=["GET"])  ##Otra ruta de acceso
+def get_personas():
+    return jsonify(personas)
+
+##Obtengo persona por id
+@app.route("/personas/<int:id>", methods=["GET"])
+def get_persona(id):
+    persona = next((p for p in personas if p["id"] == id), None)
+    if persona:
+        return jsonify(persona)
+    return jsonify({"error": "Persona no encontrada"}), 404
+
+@app.route("/personas", methods=["POST"])  ##Otra ruta de acceso
+def add_persona():
+    data = request.get_json()  ##Obtiene el JSON del cuerpo de la solicitud
+
+    # Validar que tenga nombre y apellido
+    if "nombre" not in data or "apellido" not in data:
+        return jsonify({"error": "Falta nombre o apellido"}), 400  ##Retorna un error 400 (Solicitud incorrecta)
+
+    nueva_persona = {
+        "id": len(personas) + 1,
+        "nombre": data["nombre"],
+        "apellido": data["apellido"]
+    }
+
+    personas.append(nueva_persona)
+
+    return jsonify(nueva_persona), 201  ##Retorna el JSON de la nueva persona y un código de estado 201 (Creado)
+
+app.run(debug=True)  ##Ejecuta la aplicación en modo de depuración
+```
+- #### Programando nuestra API en Google Colab
+
 ## 09-09-2025 - Clase 32
 
 ### Repaso machine Learning y Aplicaciones de escritorio
@@ -2578,6 +2674,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
