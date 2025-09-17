@@ -96,6 +96,68 @@ app.run(debug=True)  ##Ejecuta la aplicación en modo de depuración
 ```
 - #### Programando nuestra API en Google Colab
 
+Primero ingresar en ngrok
+> https://ngrok.com/
+
+Me interesa sacar el authgoken
+
+En Google colab Hacemos
+Primero instalamos las librerias
+```python
+!pip install flask
+!pip install pyngrok
+```
+
+Luego ejecutamos...
+
+```python
+# Instalar pyngrok si no lo tenés
+
+
+from flask import Flask, request, jsonify
+from pyngrok import ngrok, conf
+
+app = Flask(__name__)
+
+auth_token = input("Ingrese su AuthToken de ngrok")
+conf.get_default().auth_token = auth_token
+
+# Levantar el túnel ngrok
+public_url = ngrok.connect(5000)
+print(" * ngrok tunnel URL:", public_url)
+
+personas = []
+
+@app.route("/personas", methods=["GET"])
+def get_personas():
+    return jsonify(personas)
+
+@app.route("/personas/<int:id>", methods=["GET"])
+def get_persona(id):
+    persona = next((p for p in personas if p["id"] == id), None)
+    if persona:
+        return jsonify(persona)
+    return jsonify({"error": "Persona no encontrada"}), 404
+
+@app.route("/personas", methods=["POST"])
+def add_persona():
+    data = request.get_json()
+    if "nombre" not in data or "apellido" not in data:
+        return jsonify({"error": "Falta nombre o apellido"}), 400
+
+    nueva_persona = {
+        "id": len(personas) + 1,
+        "nombre": data["nombre"],
+        "apellido": data["apellido"]
+    }
+    personas.append(nueva_persona)
+    return jsonify(nueva_persona), 201
+
+# Ejecutar Flask
+app.run(port=5000)
+
+```
+
 ## 09-09-2025 - Clase 32
 
 ### Repaso machine Learning y Aplicaciones de escritorio
@@ -2674,6 +2736,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
