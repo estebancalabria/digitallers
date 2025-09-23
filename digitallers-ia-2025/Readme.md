@@ -1,5 +1,12 @@
 # Bienvenidos Digitallers 2025
 
+## 23-09-2024 - Clase 35
+
+## 18-09-2024 - Clase 34
+
+No se grabo!
+Vimos APIS + Base de Datos Relacionales con SQLOTE
+
 ## 16-09-2025 - Clase 33
 
 ### Repaso de Machine Learning y APIS
@@ -2736,6 +2743,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
