@@ -2,6 +2,37 @@
 
 ## 23-09-2024 - Clase 35
 
+### Pandas
+
+Instalando la librerias
+```cmd
+pip install pandas
+```
+
+Importando libreria pandas
+```python
+import pandas as pd
+```
+
+Crear un dataframe )Como una tabla 2D)
+
+```python
+dataframe = pd.DataFrame({
+    "Nombre" : ["Ana", "Luis", "Carlos"],
+    "Edad" : [23, 34, 45],
+    "Ciudad" : ["Madrid", "Barcelona", "Valencia"]
+})
+print(dataframe)
+```
+
+Metodos de exploracion rapida de pandas:
+* head()
+* tail()
+* info()
+* describe()
+
+
+
 ## 18-09-2024 - Clase 34
 
 No se grabo!
@@ -2743,6 +2774,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
