@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>CRUD Automóviles</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, button { margin: 5px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f4f4f4; }
+  </style>
+</head>
+<body>
+  <h1>CRUD de Automóviles</h1>
+
+  <h2>Listar todos los automóviles</h2>
+  <button onclick="listarAutomoviles()">Listar</button>
+  <table id="tablaAutomoviles">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Año</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h2>Buscar automovil por ID</h2>
+  <input type="text" id="buscarId" placeholder="ID">
+  <button onclick="buscarAutomovil()">Buscar</button>
+  <pre id="resultadoBusqueda"></pre>
+
+  <h2>Crear Automóvil</h2>
+  <input type="text" id="crearMarca" placeholder="Marca">
+  <input type="text" id="crearModelo" placeholder="Modelo">
+  <input type="number" id="crearAnio" placeholder="Año">
+  <button onclick="crearAutomovil()">Crear</button>
+  <pre id="resultadoCrear"></pre>
+
+  <h2>Actualizar Automóvil</h2>
+  <input type="text" id="actualizarId" placeholder="ID">
+  <input type="text" id="actualizarMarca" placeholder="Marca">
+  <input type="text" id="actualizarModelo" placeholder="Modelo">
+  <input type="number" id="actualizarAnio" placeholder="Año">
+  <button onclick="actualizarAutomovil()">Actualizar</button>
+  <pre id="resultadoActualizar"></pre>
+
+  <h2>Eliminar Automóvil</h2>
+  <input type="text" id="eliminarId" placeholder="ID">
+  <button onclick="eliminarAutomovil()">Eliminar</button>
+  <pre id="resultadoEliminar"></pre>
+
+  <script>
+    const API_URL = 'http://127.0.0.1:5000/api/automoviles';
+
+    async function listarAutomoviles() {
+      const res = await fetch(API_URL);
+      const data = await res.json();
+      const tbody = document.querySelector('#tablaAutomoviles tbody');
+      tbody.innerHTML = '';
+      data.forEach(auto => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${auto.id}</td><td>${auto.marca}</td><td>${auto.modelo}</td><td>${auto.año}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function buscarAutomovil() {
+      const id = document.getElementById('buscarId').value;
+      const res = await fetch(`${API_URL}/${id}`);
+      const data = await res.json();
+      document.getElementById('resultadoBusqueda').textContent = JSON.stringify(data, null, 2);
+    }
+
+    async function crearAutomovil() {
+      const marca = document.getElementById('crearMarca').value;
+      const modelo = document.getElementById('crearModelo').value;
+      const año = parseInt(document.getElementById('crearAnio').value);
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ marca, modelo, año })
+      });
+      const data = await res.json();
+      document.getElementById('resultadoCrear').textContent = JSON.stringify(data, null, 2);
+      listarAutomoviles();
+    }
+
+    async function actualizarAutomovil() {
+      const id = document.getElementById('actualizarId').value;
+      const marca = document.getElementById('actualizarMarca').value;
+      const modelo = document.getElementById('actualizarModelo').value;
+      const año = parseInt(document.getElementById('actualizarAnio').value);
+      const res = await fetch(`${API_URL}/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ marca, modelo, año })
+      });
+      const data = await res.json();
+      document.getElementById('resultadoActualizar').textContent = JSON.stringify(data, null, 2);
+      listarAutomoviles();
+    }
+
+    async function eliminarAutomovil() {
+      const id = document.getElementById('eliminarId').value;
+      const res = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+      const data = await res.json();
+      document.getElementById('resultadoEliminar').textContent = JSON.stringify(data, null, 2);
+      listarAutomoviles();
+    }
+
+    // Listar automáticamente al cargar la página
+    listarAutomoviles();
+  </script>
+</body>
+</html>
