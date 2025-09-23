@@ -175,6 +175,35 @@ print("SQL : SELECT Ciudad, MAX(Ingreso) FROM df GROUP BY Ciudad")
 print(df.groupby("Ciudad")["Ingreso"].max())
 ```
 
+- #### Modificcion del DataFrame
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({
+    "Nombre" : ["Ana", "Luis", "Carlos", "Maria", "Juan", "Lucia", "Pedro", "Sofia", "Miguel", "Laura"],
+    "Apellido" : ["Garcia", "Martinez", "Lopez", None, "Rodriguez", "Fernandez", "Sanchez", "Perez", "Gomez", "Diaz"],
+    "Edad" : [23, 34, 45, None, 31, 27, 38, 22, 41, 30],
+    "Altura" : [1.65, 1.80, 1.75, 1.60, 1.70, 1.68, 1.82, 1.55, None, 1.66],
+    "Ciudad" : ["Madrid", "Barcelona", "Madrid", "Sevilla", "Barcelona", "Sevilla", "Madrid", "Barcelona", "Sevilla", "Cordoba"],
+    "Ingreso" : [2500, 3000, 4000, 2800, 3200, 2700, 3500, None, 4500, 2900]
+})
+
+##Manejo de nulos
+df.dropna(inplace=True) #elimina las filas con nulos
+
+## Renombrar columna Ciudad por City
+df.rename(columns={"Ciudad": "City"}, inplace=True)
+
+## Borraamos la columna Ingreso
+df.drop(columns=["Ingreso"], inplace=True)
+
+#Agregr Columnas
+df["Anio_Nacimiento"] = 2024 - df["Edad"]
+print("DataFrame con nueva columna Año de Nacimiento")  
+print(df.head())
+```
+
 ## 18-09-2024 - Clase 34
 
 No se grabo!
@@ -2916,6 +2945,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
