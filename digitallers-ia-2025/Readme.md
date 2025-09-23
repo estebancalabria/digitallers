@@ -25,13 +25,155 @@ dataframe = pd.DataFrame({
 print(dataframe)
 ```
 
-Metodos de exploracion rapida de pandas:
+- #### Metodos de exploracion rapida de pandas:
+
 * head()
 * tail()
 * info()
 * describe()
+* .shape   (Es una propiedad, no lleva () como un metodo)
+* .columns
+* .dtype
+* .values
 
+- #### Metodos para seleccion (Como si fuera Select campos....)
+  
+```python
+import pandas as pd
 
+#DataFrame con muchas filas nombre, apeliido, edad, altura, ciudad, ingreso
+df = pd.DataFrame({
+    "Nombre" : ["Ana", "Luis", "Carlos", "Maria", "Juan", "Lucia", "Pedro", "Sofia", "Miguel", "Laura"],
+    "Apellido" : ["Garcia", "Martinez", "Lopez", "Gonzalez", "Rodriguez", "Fernandez", "Sanchez", "Perez", "Gomez", "Diaz"],
+    "Edad" : [23, 34, 45, 29, 31, 27, 38, 22, 41, 30],
+    "Altura" : [1.65, 1.80, 1.75, 1.60, 1.70, 1.68, 1.82, 1.55, 1.78, 1.66],
+    "Ciudad" : ["Madrid", "Barcelona", "Valencia", "Sevilla", "Bilbao", "Granada", "Zaragoza", "Malaga", "Alicante", "Cordoba"],
+    "Ingreso" : [2500, 3000, 4000, 2800, 3200, 2700, 3500, 2600, 4500, 2900]
+})
+
+print("Seleccionar una columna  por su nombre")
+print("SQL : SELECT Nombre FROM df")
+dfPersonas = df["Nombre"] #devuelve un DataFrame nueva con la columna Nombre
+print(dfPersonas.head(2))
+
+print("Seleccionar las columnas nombre, apellido, ciudad")
+print("SQL : SELECT Nombre, Apellido, Ciudad FROM df")
+dfPersonas = df[["Nombre", "Apellido", "Ciudad"]] #devuelve un DataFrame nueva con las columnas Nombre, Apellido y Ciudad
+print(dfPersonas.head(2))
+
+print("Seleccionar las columnas 0, 1, 2")
+dfPersonas = df.iloc[:, [0, 1, 2]] #devuelve un DataFrame nueva con las columnas Nombre, Apellido y Edad
+print(dfPersonas.head(2))
+
+```
+
+- #### Metodos para Filtrado (el where de SQL)
+
+```python
+import pandas as pd
+
+#DataFrame con muchas filas nombre, apeliido, edad, altura, ciudad, ingreso
+df = pd.DataFrame({
+    "Nombre" : ["Ana", "Luis", "Carlos", "Maria", "Juan", "Lucia", "Pedro", "Sofia", "Miguel", "Laura"],
+    "Apellido" : ["Garcia", "Martinez", "Lopez", "Gonzalez", "Rodriguez", "Fernandez", "Sanchez", "Perez", "Gomez", "Diaz"],
+    "Edad" : [23, 34, 45, 29, 31, 27, 38, 22, 41, 30],
+    "Altura" : [1.65, 1.80, 1.75, 1.60, 1.70, 1.68, 1.82, 1.55, 1.78, 1.66],
+    "Ciudad" : ["Madrid", "Barcelona", "Valencia", "Sevilla", "Bilbao", "Granada", "Zaragoza", "Malaga", "Alicante", "Cordoba"],
+    "Ingreso" : [2500, 3000, 4000, 2800, 3200, 2700, 3500, 2600, 4500, 2900]
+})
+
+#Filtrar las personas mayores de 30 años
+print("Personas mayores de 30 años")
+print("SQL : SELECT * FROM df WHERE Edad > 30")
+viejos = df[df["Edad"] > 30]
+print(viejos.head)
+
+#Filtrar las personas que viven en Madrid de 30 años
+print("Personas que viven en Madrid y son mayores de 30 años")
+print("SQL : SELECT * FROM df WHERE Ciudad = 'Madrid' AND Edad > 30")
+madrid_viejos = df[( df["Ciudad"] == "Madrid") & (df["Edad"] > 30)]
+print(madrid_viejos.head(2))
+
+#Los que estan entre 20 y 30 años
+print("Personas entre 20 y 30 años")
+print("SQL : SELECT * FROM df WHERE Edad BETWEEN 20 AND 30")
+veinte_treinta = df[df["Edad"].between(20, 30)]
+print(veinte_treinta.head(2))
+
+#Los de madrid y sevilla con el in
+print("Personas que viven en Madrid o Sevilla")
+print("SQL : SELECT * FROM df WHERE Ciudad IN ('Madrid', 'Sevilla')")
+madrid_sevilla = df[df["Ciudad"].isin(["Madrid", "Sevilla"])]
+print(madrid_sevilla.head(2))
+
+#Los de las ciudades que empiezan por M
+print("Personas que viven en ciudades que empiezan por M")
+print("SQL : SELECT * FROM df WHERE Ciudad LIKE 'M%'")
+m_ciudad = df[df["Ciudad"].str.startswith("M")]
+print(m_ciudad.head(2))
+
+#Aquellos nombres que tienen una ia
+print("Personas cuyos nombres tienen 'ia'")
+print("SQL : SELECT * FROM df WHERE Nombre LIKE '%ia%'")
+nombre_ia = df[df["Nombre"].str.contains("ia")]
+print(nombre_ia.head(2))
+```
+
+- #### Ordenamiento con Pandas
+
+```python
+
+#DataFrame ordenado por edad ascendente
+print("DataFrame ordenado por edad ascendente")
+df_ordenado = df.sort_values(by="Edad")
+print(df_ordenado.head())
+
+#Ordenado por edad descendente
+print("DataFrame ordenado por edad descendente")
+df_ordenado_desc = df.sort_values(by="Edad", ascending=False)
+print(df_ordenado_desc.head())
+```
+
+- #### Funciones estadisticas por columnas
+
+```python
+print("Estadisticas de la edad")
+print("Media:", df["Edad"].mean())
+print("Mediana:", df["Edad"].median())
+print("Moda:", df["Edad"].mode()[0])
+print("Desviacion Estandar:", df["Edad"].std())
+print("Varianza:", df["Edad"].var())
+print("Minimo:", df["Edad"].min())
+print("Maximo:", df["Edad"].max())
+print("Cantidad de valores distintos:", df["Edad"].nunique())
+print("Suma de todas las edades:", df["Edad"].sum())
+print("Cantidad de valores no nulos:", df["Edad"].count())
+```
+
+- #### Funciones de Agrupamiento
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({
+    "Nombre" : ["Ana", "Luis", "Carlos", "Maria", "Juan", "Lucia", "Pedro", "Sofia", "Miguel", "Laura"],
+    "Apellido" : ["Garcia", "Martinez", "Lopez", "Gonzalez", "Rodriguez", "Fernandez", "Sanchez", "Perez", "Gomez", "Diaz"],
+    "Edad" : [23, 34, 45, 29, 31, 27, 38, 22, 41, 30],
+    "Altura" : [1.65, 1.80, 1.75, 1.60, 1.70, 1.68, 1.82, 1.55, 1.78, 1.66],
+    "Ciudad" : ["Madrid", "Barcelona", "Madrid", "Sevilla", "Barcelona", "Sevilla", "Madrid", "Barcelona", "Sevilla", "Cordoba"],
+    "Ingreso" : [2500, 3000, 4000, 2800, 3200, 2700, 3500, 2600, 4500, 2900]
+})
+
+#El promedio de edad por ciudad
+print("El promedio de edad por ciudad")
+print("SQL : SELECT Ciudad, AVG(Edad) FROM df GROUP BY Ciudad")
+print(df.groupby("Ciudad")["Edad"].mean())
+
+#El maximo ingreso por ciudad
+print("El maximo ingreso por ciudad")
+print("SQL : SELECT Ciudad, MAX(Ingreso) FROM df GROUP BY Ciudad")
+print(df.groupby("Ciudad")["Ingreso"].max())
+```
 
 ## 18-09-2024 - Clase 34
 
@@ -2774,6 +2916,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
