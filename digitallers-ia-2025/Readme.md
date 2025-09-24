@@ -204,6 +204,48 @@ print("DataFrame con nueva columna Año de Nacimiento")
 print(df.head())
 ```
 
+- #### Graficos en pandas con MAtPlotLib
+
+Instalamos
+```cmd
+pip install matplotlib
+```
+Y despues...
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#DataFrame con muchas filas nombre, apeliido, edad, altura, ciudad, ingreso
+df = pd.DataFrame({
+    "Nombre" : ["Ana", "Luis", "Carlos", "Maria", "Juan", "Lucia", "Pedro", "Sofia", "Miguel", "Laura"],
+    "Apellido" : ["Garcia", "Martinez", "Lopez", "Gonzalez", "Rodriguez", "Fernandez", "Sanchez", "Perez", "Gomez", "Diaz"],
+    "Edad" : [23, 34, 45, 29, 31, 27, 38, 22, 41, 30],
+    "Altura" : [1.65, 1.80, 1.75, 1.60, 1.70, 1.68, 1.82, 1.55, 1.78, 1.66],
+    "Ciudad" : ["Madrid", "Madrid", "Valencia", "Sevilla", "Bilbao", "Granada", "Zaragoza", "Malaga", "Alicante", "Cordoba"],
+    "Ingreso" : [2500, 3000, 4000, 2800, 3200, 2700, 3500, 2600, 4500, 2900]
+})
+
+#Grafico de barras`` ingreso por persona
+df.plot(x="Nombre", y="Ingreso", kind="bar", title="Ingreso por persona")
+plt.show()
+
+#Grafico de lineas edad vs ingreso
+df.plot(x="Edad", y="Ingreso", kind="line", title="Edad vs Ingreso")
+plt.show()
+
+#Grafico de pastel distribudion de cidudades
+df["Ciudad"].value_counts().plot.pie(title="Distribucion de ciudades", autopct='%1.1f%%')
+plt.show()
+
+#Grafico de dispersion edad vs ingreso
+df.plot.scatter(x="Edad", y="Ingreso", title="Edad vs Ingreso")
+plt.show()
+
+#Histograma de edades
+df["Edad"].plot.hist(bins=5, title="Histograma de edades")
+plt.show()
+```
+
 ## 18-09-2024 - Clase 34
 
 No se grabo!
@@ -2945,6 +2987,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
