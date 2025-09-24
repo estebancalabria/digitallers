@@ -246,6 +246,17 @@ df["Edad"].plot.hist(bins=5, title="Histograma de edades")
 plt.show()
 ```
 
+- #### Trabajar con Archivos
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#Cargo el archivo gold.csv
+df = pd.read_csv("gold.csv")
+```
+
+
 ## 18-09-2024 - Clase 34
 
 No se grabo!
@@ -2987,6 +2998,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
