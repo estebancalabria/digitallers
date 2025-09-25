@@ -1,5 +1,22 @@
 # Bienvenidos Digitallers 2025
 
+## 25-09-2024 - Clase 36
+
+### MatPlotLib
+
+Tipos de Graficos
+* Linea : plt.plot(x, y)
+* Dispersion : plt.scatter(x, y)
+
+### NumPy
+
+* No tiene cosas diferentes a Python sino como que optimiza
+* Esta programada en C
+* Para trabajo con vectores de forma eficiente
+
+Funciones
+* arange(ini, fin, delta) : crea un arreglo [ ini, ini+delta, ini+2delta, ... fin-delta]
+
 ## 23-09-2024 - Clase 35
 
 ### Pandas
@@ -2998,6 +3015,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
