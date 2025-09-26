@@ -7,6 +7,22 @@
 Tipos de Graficos
 * Linea : plt.plot(x, y)
 * Dispersion : plt.scatter(x, y)
+* Barras : plt.bar
+* Histogramas : plt.hist
+* BoxPlot : plt.boxplot
+* ViolinPlot  : plt.violinplot
+* HeatMap : plt.imshow(
+* Mas ejemplos en : https://matplotlib.org/stable/gallery/index.html
+
+
+##### Alternativa Javascript
+
+https://plotly.com/javascript/
+
+### Seaborn
+
+Libreria fundamental para que el data analyst muestre graficos
+> https://seaborn.pydata.org/
 
 ### NumPy
 
@@ -3015,6 +3031,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
