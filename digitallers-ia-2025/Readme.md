@@ -1,6 +1,39 @@
 # Bienvenidos Digitallers 2025
 
-## 25-09-2024 - Clase 36
+## 30-09-2025 - Clase 37
+
+### Machine Learning
+
+Casos de Uso que vimos
+* Clasificacion
+* Regresion (Para series de tiempo predecir valore futuros)
+* Deteccion de Anomalias
+
+Tipos de Machine Learning
+* Aprendizaje Supervisado
+      * Le das parte del dataset con respuesta correcta para que aprenda a resolver con datos nuevos)
+* Aprendizaje No Supervidado
+      * Les das datos a la IA sin saber la respuesta y que la IA haga su magia 
+
+#### Machine Learning : Aprendizaje No Supervisado : KMeans
+
+Sirve para difividir el conjunto de datos en grupos
+Ejemplo paso a paso en python : 
+> https://colab.research.google.com/drive/1yrsUd0lEWXLJu9jsKXdOYS5qVt-kWdMs?usp=sharing
+
+Ejemplo en 1D
+```txt
+Numeros = [1,3,5,7]
+Centroides = [1,7]
+Clusters (k=2) = [1,3] - [5,7]
+
+Nuevos Centroides = [2], [6]
+Clusters (k=2) = [1,3], [5,7]
+```
+
+
+
+## 25-09-2025 - Clase 36
 
 ### MatPlotLib
 
@@ -3031,6 +3064,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
