@@ -4,16 +4,20 @@
 
 ### Machine Learning
 
-Casos de Uso que vimos
-* Clasificacion
-* Regresion (Para series de tiempo predecir valore futuros)
-* Deteccion de Anomalias
-
-Tipos de Machine Learning
-* Aprendizaje Supervisado
-      * Le das parte del dataset con respuesta correcta para que aprenda a resolver con datos nuevos)
-* Aprendizaje No Supervidado
-      * Les das datos a la IA sin saber la respuesta y que la IA haga su magia 
+* Aprendizaje Supervisado : Le das parte del dataset con respuesta correcta para que aprenda a resolver con datos nuevos)
+     * Clasificacion
+          * SVM (Support Vector Machines)
+          * Gradient Boosted Tree
+          * Random Forrest
+          * Decision Tree
+     * Regresion (Para series de tiempo predecir valore futuros)
+          * Regresion Lineal
+     * Deteccion de Anomalias
+* Aprendizaje No Supervidado : Les das datos a la IA sin saber la respuesta y que la IA haga su magia
+     * Clustering (Las clases las determina el algoritmo)
+          * K-Means
+     * Representacion
+     * Deteccion de Anomalias
 
 #### Machine Learning : Aprendizaje No Supervisado : KMeans
 
@@ -3065,6 +3069,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
