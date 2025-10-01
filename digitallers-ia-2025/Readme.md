@@ -19,6 +19,26 @@
      * Representacion
      * Deteccion de Anomalias
 
+### Machine Learning : Conceptos 
+
+* Datasets Desbalanceados
+    * Cuando una clase tiene muchos mas ejemplos que otra
+        * Tecnicas de tratamiento
+            * Oversampling : Generar nuevas instancias de la clase minoritaria
+            * Undersampling : Eliminar instancias de la clase mayoritaria
+* Hiperparametros
+    * Parametros configurables que controlan el funcionamiento del aprendizaje en el modelo
+* Valida Cruzada (K-Fold Cross Validation)
+    * Tecnica que divide el dataset en K particiones para entrenar y evaluar el modelo una vez con cada particion
+* Varianza
+    * Mide cuanto varian las predicciones del modelo cuando se entrena con distinto conutnto de datos
+* Sesgo
+    * Errores que comete el modelo 
+* Tecnicas de Ensabmple
+    * Bagging
+    * Boosting
+
+
 #### Machine Learning : Aprendizaje No Supervisado : KMeans
 
 Sirve para difividir el conjunto de datos en grupos
@@ -3069,6 +3089,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
