@@ -31,6 +31,7 @@ Nuevos Centroides = [2], [6]
 Clusters (k=2) = [1,3], [5,7]
 ```
 
+### Machine Learning : Aprendizaje Supervisado : SV<
 
 
 ## 25-09-2025 - Clase 36
@@ -3064,6 +3065,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
