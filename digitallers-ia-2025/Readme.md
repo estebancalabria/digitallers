@@ -1,5 +1,96 @@
 # Bienvenidos Digitallers 2025
 
+## 30-09-2025 - Clase 38
+
+### Machine Learning. 
+
+#### Regresion Lineal
+
+Supongamos este caso
+
+```python
+X_train = [-1, 0, 1, 2, 3, 4]
+y_train = [-3, -1, 1, 3, 5, 7]
+```
+
+* Con regresion lineal supongo que hay una funcion lineal de tal modo que f(x) = y
+* En este caso se puede ver que la funcion lineal es... y = 2x -1
+* Una funcion lineal es de la forma y = m.x + b donde m y b son como los parametros de la funion lineal
+
+#Lo que hace la regresion lineal es estimar los valores de m y b tratando de minimizar el error
+
+**Funcionamiento Regresion Lineal**
+
+#Para estimar la funcion con regresion lineal
+1. Arranco con una funcion lienal cualquiera por ejemplo y=x
+2. Calculo cuando da con esa funcion, cuanto deberia dar y calculo los errores (La diferencia entre lo que dio y lo que deberia dar)
+3. Le doy el error y un hiperparametro a una funcion estimadora (funcion de costo) para que me devuelva un nuevo valor de m y b para probar
+4.  Vuelvo a probar con la nueva funcion (deberia haber bajado el error aunque a veces no)
+5.  Vuelvo a darle el nuevo error a la funcion estimadora para que me mejore el m y el b
+6. Asi hasta que el error sea lo sufiientemente chico o no pueda mejorarlo mas
+
+**Ejemplo**
+
+Si del vamos supongo que la funcion lineal es y=x (donde m =1 y b =0), como es el error de mi aproximaxion?
+
+* f(-1) =  -1 ===> Deberia haaber dado -3 ===> Le pifie por 2 ===> Error1 = 2
+* f(0) = 0    ===> Deberia haber dado -1 ====> Le pifie por 1 ===> Error2 = 1
+* F(1) = 1  ====> Deberia haber dado 1 ====> Acerte! =>>> Error3 = 0
+* f(2) = 2  ===> Deberia haber dado  3 ====> Le pifie por 1 ====> Error4 = 1
+* f(3) = 3  ===> Deberia haber dado 5 ====> Le pifie por 2 ====> Error5 = 2
+* f(4) = 4  ===> Deberia haber dado 7 ===> Le pidie por 3 =====> Error6 = 3
+
+> El error de mi estimacion es Error1 + Error2 + Error3 + Error4 + Error5 + Error6 = 2 + 1 + 0 + 1 + 2 + 3 = 9 
+
+Nota:
+> HAy un millon de formas de calcular los errores, aca la sumamos. Puede ser el promedio de los errores, puede ser la suma del cuadrado de los errores...
+
+
+Mi estimacion tiene un error de 9, deberia ajustar el m y el b para tener menos error
+
+En machine lerning hay una funcion que se llama estimadora, le paso el error, le paso un valor de ajuste y va modificando/ Hay varias funciones para estimar el m y el b, no vienen al caso
+
+*FuncionEstimadora(Error=9, HiperParametro es 1) -----> m = 1 y b = 1 
+* Tambien se llama funcion de costo...
+
+> La nueva funcion es y = x + 1
+
+Entonces ahora....
+  
+```python
+X_train = [-1, 0, 1, 2, 3, 4]
+y_train = [-3, -1, 1, 3, 5, 7]
+```
+* f(-1) = 0  ==> Deberia haaber dado -3 ===> Le pifie por 2  ===> Error1 = 2 
+* f(0) = 1    ===> Deberia haber dado -1 ====> Le pifie por 2  ===> Error2 = 2
+* F(1) = 2  ====> Deberia haber dado 1 ====> Le pifie por 1 =>>> Error3 = 1
+* f(2) = 3   ===> Deberia haber dado  3 ====> Acerte!  ====> Error4 = 0
+* f(3) = 4   ===> Deberia haber dado 5 ====> Le pifie por 1  ====> Error5 = 1
+* f(4) = 5   ===> Deberia haber dado 7 ===> Le pidie por 2  =====> Error6 = 2
+
+> El error de mi estimacion es Error1 + Error2 + Error3 + Error4 + Error5 + Error6 = 2 + 2 + 1 + 0 + 1 + 2 = 8
+> El error es 8, mejore mi estimacion en 1!!!! Vuelvo a intentar 
+
+---
+
+### Redes Neuronales
+
+Es un modelo computacional inspirado en el cerebro humano donde tenemos un conjunto de neuronas aritificiales que procesan informacion y sirven para aprender patrones y realizar predicciones
+
+(entrada) ====> Neurona ====> (salida)
+
+Definiciones
+
+* Una neurona : Es como una funcion matematica
+
+Tipos de Neuronas
+* Lineal : f (x) = x
+* Escalon , percerpton
+* Sigmoide
+* Tangente Hiperbolica
+* Relu
+* Softmax
+
 ## 30-09-2025 - Clase 37
 
 ### Machine Learning
@@ -3089,6 +3180,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
