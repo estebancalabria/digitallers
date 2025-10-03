@@ -138,6 +138,64 @@ Ejemplos de formulas para calcular errores:
 * MAE : Mean absolute error (Error absoluto medio)
 * .... lista infinita..
 
+Link al colab completo
+> https://colab.research.google.com/drive/1jkX8BbgpacmDblfg-zCy8vRSSE3OVi7p?usp=sharing
+
+Defnir una red neuronal con una sola neurona lineal con tensotflow
+```python
+    import numpy as np
+    import tensorflow as tf
+    
+    X_train = np.array([-1, 0, 1, 2, 3, 4])
+    y_train = np.array([-3, -1, 1, 3, 5, 7])
+    
+    # Esto definiria una red neuronal de la siguiente forma (entrada numerica)  => (neura con funcion de activacion lineal) => (salida numerica)
+    # La formula de la funcion de activacion lineal es f(x) = w * x + b donde 
+    # a w se le llama peso
+    # a b se le llama ajuste, bias o sesgo
+    model = tf.keras.Sequential([
+        tf.keras.layers.Dense(units=1, input_shape=[1])
+    ])
+    
+    #Antes de entrenar tengo que definir en mi modelo
+    # 1. Cual es el optimizador que voy a usar para que ajuste el w y el b de cada neurona (en este caso hay una sola)
+    # 2. Tengo que definir cual la formula que voy a usar para calcualar el eror
+    model.compile(optimizer='sgd', loss='mean_squared_error')
+    
+    #Ahora van a ver porque se necesita un maquion para entrenar una red neuronal... piensen que esto yiene 1 sola neurona....
+    model.fit(X_train, y_train, epochs=500)
+```
+Graficar como va bajando el error segun la epoca
+```python
+    import matplotlib.pyplot as plt
+    
+    history = model.fit(X_train, y_train, epochs=500, verbose=0)
+    
+    #Graficar el error (la perdida) por epoch
+    plt.plot(history.history['loss'])
+    plt.xlabel('Epoch')
+    plt.ylabel('Error')
+    plt.show()
+```
+
+Hacer una prediccion con el modelo entrenado
+```python
+# Vamos a hacer una prediccion
+X_predict = np.array([5, 6])
+y_predict = model.predict(X_predict)
+print("La prediccion es", y_predict)
+```
+
+Ver los valores de w (peso) y b (bias) que se determinaron
+```python
+w, b = model.layers[0].get_weights()
+print("Peso (w) =", w)
+print("Bias (b) =", b)
+print("Redondeado")
+print("Peso (w) =", np.round(w).astype(int))
+print("Bias (b) =", np.round(b).astype(int))
+```
+
 ## 30-09-2025 - Clase 37
 
 ### Machine Learning
@@ -3227,6 +3285,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
