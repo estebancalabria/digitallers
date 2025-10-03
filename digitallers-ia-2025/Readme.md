@@ -82,6 +82,8 @@ Es un modelo computacional inspirado en el cerebro humano donde tenemos un conju
 Definiciones
 
 * Una neurona : Es como una funcion matematica
+* Deep Learning : Redes Neuronales de varias capas.
+* Funcion de Activacion : Es la funcion que pones dentro de la neurona
 
 Tipos de Neuronas
 * Lineal : f (x) = x
@@ -90,6 +92,51 @@ Tipos de Neuronas
 * Tangente Hiperbolica
 * Relu
 * Softmax
+
+- #### Recursos para aprender Redes Neuronales
+
+> https://playground.tensorflow.org/
+
+#### Red Neuronal : 1 Neurona Lineal
+
+Esto definiria una red neuronal de la siguiente forma 
+> (entrada numerica)  => (neurona con funcion de activacion lineal) => (salida numerica)
+
+La formula de la funcion de activacion lineal es 
+* f(x) = w * x + b
+    * w se le llama peso
+    * b se le llama ajuste, bias o sesgo
+
+> El proceso de entrenamiento de la neurona toma los datos de entrada X y ajusta el w (pesos) y el b (sesgo) para minimizar el error entre el valor predecido (y_predict) y el valor que deberia dar (y_train)
+
+* Es lo mismo que hicimos antes con la regresion lineal pero cambia la tecnica que vamos a usar para ajustar el w y el b"
+
+- ##### **Proceso de entrenamiento**
+En redes neuronales existe algo que se llama Entrenamiento
+1. Se arranca con un w y b aleatorio
+2. Se calcula el erro que da utilizando ese w y ese b
+3. Se ajusta ese w y ese b con una funciion de ajuste (optimizador)
+4. Se prueba con el nuevo valor de w y b obtenido por el otimizador
+5. Se vuelve a calcular el error
+6. Se vuelve a optimizar el w y el b
+7. Asi una cantidad fija de iteraciones o hasta un error determinado o hasta que el error no mejore
+        *. La cantidad fija de iteracciones se llama epochs o epocas
+
+Antes de entrenar tengo que definir en mi modelo
+1. Cual es el optimizador que voy a usar para que ajuste el w y el b de cada neurona (en este caso hay una sola)
+2. Tengo que definir cual la formula que voy a usar para calcualar el eror
+
+Ejemplos de Optimizadores:
+* SDG (Stochastic Gradiente Descent o Descenso del gradiente) : El mas utilizado
+* Adam
+* Adam
+* AdaDelta
+* ...lista infinita
+
+Ejemplos de formulas para calcular errores:
+* MSE : Mean Square Error (El promedio del cuadrado de los errores)
+* MAE : Mean absolute error (Error absoluto medio)
+* .... lista infinita..
 
 ## 30-09-2025 - Clase 37
 
@@ -3180,6 +3227,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
