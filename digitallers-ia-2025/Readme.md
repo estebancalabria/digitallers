@@ -12,8 +12,8 @@
         * Entrada : Puede ser un numero o un vector
         * Salida  : Puede ser un numero o un vector
         * Funcion : Su resultado se ajusta con dos valores
-              * Peso (w) : weight
-              * Bias (b) : bias
+           * Peso (w) : weight
+           * Bias (b) : bias
           
       
 
@@ -3304,6 +3304,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
