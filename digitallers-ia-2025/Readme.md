@@ -8,12 +8,31 @@
     * Paralelismo, similitud o trara de emular el funcionamiento de una neurona en el cerebro
     * Una neurona recibe datos, los procesa mediante una fórmula matemática y envía una salida (resultado) a otras neuronas.
     * Hay varios tipos de neuronas, depende la neurona cambia la formula matematica que tiene dentro
+       * Neuronas Lineales : Sirven para predecir relaciones lineales entre variables
+       * Sigmoide : Converitr los datos de entrada en una salida 0 y 1 (probabilidad)
     * Tiene
         * Entrada : Puede ser un numero o un vector
         * Salida  : Puede ser un numero o un vector
         * Funcion : Su resultado se ajusta con dos valores
            * Peso (w) : weight
            * Bias (b) : bias
+* Red Neuronal : Tiene varias neuronas conectadas entre si mediante capas
+* Entrenamiento : Es un proceso que lleva varias etapas que busca ajustar los pesos y los bias de toda la red neuronal para minimizar el error. Arranca con valores de pesos y bias aleatorios que luego ajustado.
+   * Error : Mide con una formula la diferencia entre lo que deberia haber dado y lo que dio. Hay varias formulas
+      *  Mean Square Error
+      *  Resta Directa
+      *  ...todas las que se te ocurran...
+   *  Optimizador : Es el algotirmo que actualiza los pesos
+      *  SGD : Stochastic Gradient Descent
+      *  Adam
+      *  ...todos los que se te ocurran...\
+      *  Segun el optimizador que elija puede tener parametros (Ej: Tasa de aprendizaje)
+*  Tipos de Redes Neuronales
+   *  FNN : Las que van para adelante -> Las capas se conectan secuencialmente
+   *  CNN : Redes neuronales convolucionales -> Se usan para procesar imagenes
+   *  RNN : Red Recurrentes -> Las capas pueden retroalumentar capas anteriores
+   *  GAN : Redes que compiten entre si
+     
           
       
 
@@ -3304,6 +3323,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
