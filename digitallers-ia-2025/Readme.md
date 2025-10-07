@@ -1,5 +1,24 @@
 # Bienvenidos Digitallers 2025
 
+## 30-09-2025 - Clase 39
+
+### Redes Neuronales : Definiciones
+
+* Neurona
+    * Paralelismo, similitud o trara de emular el funcionamiento de una neurona en el cerebro
+    * Una neurona recibe datos, los procesa mediante una fórmula matemática y envía una salida (resultado) a otras neuronas.
+    * Hay varios tipos de neuronas, depende la neurona cambia la formula matematica que tiene dentro
+    * Tiene
+        * Entrada : Puede ser un numero o un vector
+        * Salida  : Puede ser un numero o un vector
+        * Funcion : Su resultado se ajusta con dos valores
+              * Peso (w) : weight
+              * Bias (b) : bias
+          
+      
+
+
+
 ## 30-09-2025 - Clase 38
 
 ### Machine Learning. 
@@ -3285,6 +3304,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
