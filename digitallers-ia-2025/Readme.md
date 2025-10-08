@@ -8,14 +8,18 @@
     * Paralelismo, similitud o trara de emular el funcionamiento de una neurona en el cerebro
     * Una neurona recibe datos, los procesa mediante una fórmula matemática y envía una salida (resultado) a otras neuronas.
     * Hay varios tipos de neuronas, depende la neurona cambia la formula matematica que tiene dentro
-       * Neuronas Lineales : Sirven para predecir relaciones lineales entre variables
-       * RELU (Rectified Linear Unit) : Devuelve salidas positivas 0 y X  
-             * Es como una funcion lineal pero sin valores negativos
-       * Sigmoide : Converitr los datos de entrada en una salida 0 y 1 (probabilidad)
-             * Problemas de Clasificacion Binaria....
-       * Step (Salto) Devuelve 0 o 1  (un if)
-       * SoftMax : Devuelve 0 o 1 como la simoide peeeero.... todas las neuronas de la misma capa suman 1
-             * Problemas multiclase
+       * Capas Internas o Salida
+          * Neuronas Lineales : Sirven para predecir relaciones lineales entre variables
+          * RELU (Rectified Linear Unit) : Devuelve salidas positivas 0 y X  
+                * Es como una funcion lineal pero sin valores negativos
+       * Capa de Salida Solamente
+          * Sigmoide : Converitr los datos de entrada en una salida 0 y 1 (probabilidad)
+                * Problemas de Clasificacion Binaria....
+           * SoftMax : Devuelve 0 o 1 como la simoide peeeero.... todas las neuronas de la misma capa suman 1
+                * Problemas multiclase
+       * Caso especial perceptron
+          * Step (Salto) Devuelve 0 o 1  (un if)
+       
     * Tiene
         * Entrada : Puede ser un numero o un vector
         * Salida  : Puede ser un numero o un vector
@@ -38,8 +42,33 @@
    *  CNN : Redes neuronales convolucionales -> Se usan para procesar imagenes
    *  RNN : Red Recurrentes -> Las capas pueden retroalumentar capas anteriores
    *  GAN : Redes que compiten entre si
-     
-          
+
+## Armado de Redes Neuronales
+
+Cuando uno arma una red neuronal le pone capas.
+Cada capa tiene n neruonas del mismo tipo de neurona
+
+Ej
+* [Entrada] => [Capa Lineal] => [Capa Relu] => [Capa Sigmoide] => [Salida[
+
+La ultima capa es la capa de salida que es importante porque la elegimos dependiendo del problema que estamos resolviendo
+
+Tipo de Problema
+* Clasificacion Binaria
+   * V o F
+   * La probabilidad de que un suceso ocurra
+   * Ejemplo : Titanic : Sobrevive si o no.
+   * Ejemplo : Datase de la diabetes : Si tiene o diabetes
+      * Salida 1 neurona Sigmoide (La probabilidad de si no)
+* Clasificacion Multiclase Excluyente
+   * Es una clase u otra
+   * Determinar el tipo de una flor
+   * Ejemplo : Dataset Iris
+   * Ejemplo : Segementar el tipo de cliente
+      * Salida 1 neurona Softmax por clae (todas las de la capa van a sumar 1)
+* Regresion
+   * Predecir valores futuros
+   * Salida : Capa Lineal o Relu por ejemplo
       
 
 
@@ -3329,6 +3358,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
