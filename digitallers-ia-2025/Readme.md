@@ -9,7 +9,13 @@
     * Una neurona recibe datos, los procesa mediante una fórmula matemática y envía una salida (resultado) a otras neuronas.
     * Hay varios tipos de neuronas, depende la neurona cambia la formula matematica que tiene dentro
        * Neuronas Lineales : Sirven para predecir relaciones lineales entre variables
+       * RELU (Rectified Linear Unit) : Devuelve salidas positivas 0 y X  
+             * Es como una funcion lineal pero sin valores negativos
        * Sigmoide : Converitr los datos de entrada en una salida 0 y 1 (probabilidad)
+             * Problemas de Clasificacion Binaria....
+       * Step (Salto) Devuelve 0 o 1  (un if)
+       * SoftMax : Devuelve 0 o 1 como la simoide peeeero.... todas las neuronas de la misma capa suman 1
+             * Problemas multiclase
     * Tiene
         * Entrada : Puede ser un numero o un vector
         * Salida  : Puede ser un numero o un vector
@@ -3323,6 +3329,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
