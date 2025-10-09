@@ -1,6 +1,97 @@
 # Bienvenidos Digitallers 2025
 
-## 30-09-2025 - Clase 39
+## 08-10-2025 - Clase 40
+
+### Procesamiento de lenguaje natural
+
+Para entender como funciona un modelo de lenguaje primero vamos tener que entender un poco de probabilidad
+
+-#### Ejemplo numerico
+
+* Probabilidades directas (Eventos independientes)
+   * P(Sacar un 6 en un dado) = 1/6
+   * P(Sacar cara en una moneda) = 1/2
+   * P(Sacar un rojo en la ruleta) = 1/2 - 1/36 = 18/36 - 1/36 = 17/36 (porque esta un verse )
+   * P(Sacar el ancho de espadas) = 1/40  (Baraja espaniola jugando al truco)
+* Probabilidades condicionales (lo que pasa depende de lo que paso antes)
+   * P(Sacar el ancho de espadas / Saque una carta antes y era un 4) = 1/39
+
+- #### Ejemplo intuitivo con palabrias
+
+VOCABULARIO = [START,"Hola", "que", "tal", END]
+SET DE ENTRANMIENTO = [ ["Hola"],  ["Hola que tal"],  ["Hola que tal"],  ["que tal"] ]
+
+Probabilidades a ojo de buen cubero mirando los datos
+
+* P(de decir "hola" / ante no dije nada y voy a hablar) = alta
+* P(de decir "hola" / ante no dije nada y voy a hablar) = alta
+* P(de decir "que" / ante no dije nada y voy a hablar) = media
+* P(de decir "tal"  / ante no dije nada y voy a hablar) = baja / nula (0 para este set de entrenamiento)
+* P("de decir hola" / antes dije "hola") =  baja / nula (0 para este set de entrenamiento)
+* P("de decir que" / antes dije "hola") =  alta
+* P("de decir tal" / antes dije "hola") =  0
+* P(de decir hola / antes dije que) = 0
+* P(de decir que / antes dije que) = 0
+* P(de decir tal / antes dije que) = 1
+
+---
+
+P(Terminar / antes dije "hola") = media
+P(Terminar / "tal") = ALTA
+
+- #### Emulador Modelo de lenguaje sin redes neuronales
+
+```python
+vocabulario = ["START", "hola", "que", "tal", "END"]
+X_train = [
+    ["START", "hola", "que", "tal", "END"],
+    ["START", "hola", "que", "tal", "END"],
+    ["START", "hola", "que", "END"],
+    ["START", "hola", "END"],
+    ["START", "que", "tal", "END"]
+]
+
+#LA DETERMINAMOS A OJO pueden tener alguna falla
+#Aca metemos a los GPU de nvidia para que me calcule todo esto...
+probabilidades_modelo = {
+    "START" : { "hola" : 4.0/5.0, "que" : 1.0/5, "tal" : 0.0, "END" : 0.0 }, 
+    "hola" :  { "hola" : 0.0, "que" : 3.0/4.0, "tal" : 0.0, "END" :1.0/4.0 },  
+    "que" :  { "hola" : 0.0, "que" : 0.0, "tal" : 1.0, "END" : 0.0 },  
+    "tal" :  { "hola" : 0.0, "que" : 0.0, "tal" : 0.0, "END" : 1.0 },
+}
+#PAra calcular las probabilidades a mano podes decir que lo que hicimos fue "Entrenar el modelo"
+#Aca las probabilidades las tengo armads e un diccionario pero supongamos en un acto de imaginacio que tambien las podemos tener en una red neuronal
+    
+def predecir_proxima_palabra(probabilidades_modelo, palabra_actual):
+    candidatas_proxima_palabra = probabilidades_modelo[palabra_actual];
+    
+    #Forma traidicional
+    #for clave in candidatas_proxima_palabra:
+    #    if candidatas_proxima_palabra[clave] == max(candidatas_proxima_palabra.values()):
+    #         palabra_mas_probable = clave
+
+    #forma mas fachera one liner
+    palabra_mas_probable = max(candidatas_proxima_palabra, key=candidatas_proxima_palabra.get)
+    return palabra_mas_probable
+    
+
+#Emular la generacion de texto
+frase = []
+ultima_palabra = "START"
+while ultima_palabra != "END":
+    proxima = predecir_proxima_palabra(probabilidades_modelo, ultima_palabra)  #Cada vez que hacemos esta llamada estamos invando una vez al modelo de IA
+    frase.append(proxima)
+    ultima_palabra = proxima
+
+#Tenemos una sola respuesta pero a la vez tenemos varias llamadas al modelo 
+print(frase)
+
+```
+
+
+
+
+## 07-10-2025 - Clase 39
 
 ### Redes Neuronales : Definiciones
 
@@ -3358,6 +3449,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
