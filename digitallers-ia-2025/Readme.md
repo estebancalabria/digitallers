@@ -6,7 +6,7 @@
 
 Para entender como funciona un modelo de lenguaje primero vamos tener que entender un poco de probabilidad
 
--#### Ejemplo numerico
+- #### Ejemplo numerico
 
 * Probabilidades directas (Eventos independientes)
    * P(Sacar un 6 en un dado) = 1/6
@@ -88,7 +88,57 @@ print(frase)
 
 ```
 
+### Probando una red SOFTMAX
 
+* Las redes softmax (la salida de modelos como ChatGPT) suman todas 1 que es un valor de probablilidad
+* Estamos haciendo un ejemplo donde [1,0] es si tiene fiebre [0,1] no tiene fiebre
+* Si bien para una clasificacion binaria como en este caso podemos usar una neurona sigmoidea el objetivo es entender las neurona softmax
+1) Probamos solamente una salida SOFTMAX => Muy mala precision
+2) Le agregamos antes una capa lineal RELU para que reaprenda relacion entre los datos de entrada  => Muy mala precision
+3) Probamos normalizar los datos de entrda para llevalos a la escala [0-1]
+
+**Entrenamiento**
+```python
+# Ejemplo con red neuronal softmax
+import tensorflow as tf
+import numpy as np
+
+
+X_train = np.array([[36.5], [37.0], [37.5], [38.0], [39.0], [36.8], [37.2]], dtype=np.float32)
+
+# Salidas: [1,0] = fiebre, [0,1] = no fiebre
+y_train = np.array([
+    [0,1],  # 36.5 -> no fiebre
+    [0,1],  # 37.0 -> no fiebre
+    [1,0],  # 37.5 -> fiebre
+    [1,0],  # 38.0 -> fiebre
+    [1,0],  # 39.0 -> fiebre
+    [0,1],  # 36.8 -> no fiebre
+    [1,0],  # 37.2 -> fiebre
+], dtype=np.float32)
+
+normalizer = tf.keras.layers.Normalization(axis=-1)
+normalizer.adapt(X_train)
+
+modelo = tf.keras.Sequential([
+    normalizer,
+    tf.keras.layers.Dense(units=5, input_shape=[1], activation="relu"),
+    tf.keras.layers.Dense(units=2, activation="softmax"),
+])
+
+modelo.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"])
+modelo.fit(X_train, y_train, epochs=1000, verbose=1)
+```
+prediccion
+```
+prediccion = modelo.predict(np.array([37.5]))
+print(prediccion)
+if (np.argmax(prediccion)==0 ):
+    print("fiebre")
+else:
+    print("No Fiebre")
+
+```
 
 
 ## 07-10-2025 - Clase 39
@@ -3449,6 +3499,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
