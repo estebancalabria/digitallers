@@ -6,6 +6,9 @@
 
 * En la libreria sklearn.datasets tenemos datasets para aprender ML y Redes Neuronales
 
+Hicimos ejemplo con Convoluciones:
+> https://colab.research.google.com/drive/1nwHxylOp9ZpIb_QaDoGugSk256shxwJe?usp=sharing
+
 ## 08-10-2025 - Clase 40
 
 ### Procesamiento de lenguaje natural
@@ -3505,6 +3508,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
