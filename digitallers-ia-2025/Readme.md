@@ -1,5 +1,11 @@
 # Bienvenidos Digitallers 2025
 
+## 14-10-2025 - Clase 41
+
+### Datasets para machine learning
+
+* En la libreria sklearn.datasets tenemos datasets para aprender ML y Redes Neuronales
+
 ## 08-10-2025 - Clase 40
 
 ### Procesamiento de lenguaje natural
@@ -3499,6 +3505,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
