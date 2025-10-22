@@ -13,7 +13,7 @@ Conceptos
 * Perfil del Item
 * Perfil del Usuario
 
-#### Filtro Colaborativo
+- ##### Filtro Colaborativo
 
 El filtro colaborativo usa una descomposicion de Matrices que se llama NMF (Non negative matrix Factorization). La matriz original tiene valores positivos y muchos 0. Los 0 se interpretan como valores desconocidos. Se busca dos matrices tal que
 
@@ -22,7 +22,18 @@ El filtro colaborativo usa una descomposicion de Matrices que se llama NMF (Non 
 * La matriz original R tiene muchos valores faltantes
 * Se busca una aproximacion que no tenga los valores faltantes (incognita) y respete las proporciones de los valores que si se saben
 * Los valores faltantes se determinan en funcion de los que vieros los otros usuarios y las similitices (factores latentes)
-* 
+
+
+### Reduccion de la dimensionalidad
+
+SVD dice que cualquier matris M
+
+M = U . E . VT
+
+> Netflix usa una variacion de este algoritmo que se llama SVD++
+
+* Como lo usa Netflix : https://pantelis.github.io/cs301/docs/common/lectures/recommenders/netflix/
+* Premio de Netflix : https://github.com/tlemenestrel/netflix_prize
 
 ## 14-10-2025 - Clase 42
 
@@ -3536,6 +3547,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
