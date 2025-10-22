@@ -1,5 +1,33 @@
 # Bienvenidos Digitallers 2025
 
+## 21-10-2025 - Clase 43
+
+### Sistemas de Recomendaciones
+
+Tipos de Sistemas de Recomendacion
+* Filtro por Contenido
+* Filtro Colaborativo
+
+Conceptos
+* Matriz de Utilidad
+* Perfil del Item
+* Perfil del Usuario
+
+#### Filtro Colaborativo
+
+El filtro colaborativo usa una descomposicion de Matrices que se llama NMF (Non negative matrix Factorization). La matriz original tiene valores positivos y muchos 0. Los 0 se interpretan como valores desconocidos. Se busca dos matrices tal que
+
+>  U x V ~= R
+
+* La matriz original R tiene muchos valores faltantes
+* Se busca una aproximacion que no tenga los valores faltantes (incognita) y respete las proporciones de los valores que si se saben
+* Los valores faltantes se determinan en funcion de los que vieros los otros usuarios y las similitices (factores latentes)
+* 
+
+## 14-10-2025 - Clase 42
+
+El profe no estuvo!
+
 ## 14-10-2025 - Clase 41
 
 ### Datasets para machine learning
@@ -3508,6 +3536,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
