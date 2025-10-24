@@ -1,4 +1,201 @@
-# Bienvenidos Digitallers 2025
+## 23-10-2025 - Clase 44 - ULTIMA CLASE
+
+**Hoy es la despedida**
+
+### Repaso de Redes Neuronales
+
+* Tipos De Probleman
+    * Clasificacion
+        * Clasificacion Binaria
+        * Clasificacion Multi Clase
+    * Regresion
+    * Deteccion de Anomalias
+
+* Tipos de Neurona
+  * Funcion de Activacion STEP
+  * Lineales
+  * Relu         (Pensar)
+  * Sigmoideas   (Salida para Clasificacion Binaria)
+  * SoftMax      (Salida para multi clase)
+
+* Tipo de Redes Neuronales
+  * Perceptron
+      * Ver Ejemplo
+  * Fully Connected
+      * Tipos de Problema
+          * Clasificacion Binaria
+                * Ejemplos Titanic
+                * Arquitectura Red :  (entrada) -> [(Relu) * N ] -> (Sigmmoidea) -> (salida)
+                * Calculo loss : 'binary_crossentropy
+          * Clasificacion Multi Clase
+                * Ejemplo El dataset de los vinos
+                * Arquitectura Red :  (entrada) -> [(Relu) * N ] -> (SoftMax) -> (salida)
+                * Calculo loss : sparse_categorical_crossentropy
+          * Regresion
+                * Ejemplo Predecir valores de propiedades
+                * Arquitectura Red :  (entrada) -> [(Relu) * N ] -> (Lineal) -> (salida)
+                * Calculo loss : 'mean_squared_error'
+                  
+  * Redes Neuronales Convolucionales (CNN Convolutional Neural Network)
+  * GAN
+  * Transformer
+      * https://bbycroft.net/llm
+
+###  Ejemplo Perceptron 
+
+```python
+class Perceptron:
+  def __init__(self, dimensiones):
+    self.weights = [0] * dimensiones
+    self.bias = 0
+    #Formula 
+  
+  def fit(self, X, y, epochs=100, learning_rate=0.01):
+
+    for epoch in range(epochs):
+      print(f"Entrena miento Epoch {epoch}")
+
+
+      for i in range(len(X)):
+        Xi = X[i]
+        y_expected = y[i]
+        y_predicted = self.predict(Xi)
+        error = y_expected - y_predicted
+
+        print(f"Procesando muestra {Xi} que deberia dar {y_expected} y dio {y_predicted}. Error {error}. Pesos ({self.weights}). Bias {self.bias}")
+
+        if (error != 0):
+          print("Se ha producido un error Ajustando los pesos")
+          for j in range(len(Xi)):
+            self.weights[j] = self.weights[j] + learning_rate * error * Xi[j]
+
+          self.bias = self.bias + learning_rate * error
+
+    
+
+  def predict(self, X):
+    suma = 0;
+
+    for i in range(len(X)):
+      Xi = X[i]
+      Wi = self.weights[i]
+      suma = suma + Xi * Wi
+
+    res = self.bias + suma
+    return 1 if res > 0 else 0
+
+X = [ [0, 0], [0, 1], [1, 0], [1, 1] ]   #And
+y = [0, 0, 0, 1]
+
+perceptron = Perceptron(dimensiones=2)
+perceptron.fit(X, y, epochs=10, learning_rate=0.01)
+
+
+print(f"Pesos {perceptron.weights}")
+print(f"Pesos {perceptron.bias}")
+print(f"Prediccion con entrada [0,0] {perceptron.predict([0,0])}")
+print(f"Prediccion con entrada [1,1] {perceptron.predict([1,1])}")
+
+```
+
+### Ejemplo Clasificacion Binaria
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_breast_cancer
+from sklearn.preprocessing import StandardScaler
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Input
+
+dataset = load_breast_cancer();
+X = dataset.data
+y = dataset.target
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+#Normalizamos los valores para redes Neuronales
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+model = Sequential()
+model.add(Input(shape=(30,)))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(32, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+model.fit(X_train, y_train, epochs=100, verbose=1)
+
+test_loss, test_acc = model.evaluate(X_test, y_test)
+print(f'Test accuracy: {test_acc}')
+```
+
+### Ejemplo Clasificacion Multi Clase
+
+```python
+from sklearn.datasets import load_wine
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Input
+
+dataset = load_wine()
+X,y = dataset.data, dataset.target
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+#Normalizamos los valores para redes Neuronales
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+model = Sequential()
+model.add(Input(shape=(X_train.shape[1],)))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(32, activation='relu'))
+model.add(Dense(3, activation='softmax'))
+
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
+model.fit(X_train, y_train, epochs=100, verbose=1)
+
+test_loss, test_acc = model.evaluate(X_test, y_test)
+
+print(f"Accuracy {test_acc}")
+```
+
+### Ejemplo Regresion
+
+```python
+from sklearn.datasets import fetch_california_housing
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Input
+
+dataset = fetch_california_housing()
+X, y = dataset.data, dataset.target
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+model = Sequential()
+model.add(Input(shape=(8,)))
+model.add(Dense(128, activation='relu'))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(32, activation='relu'))
+model.add(Dense(1, activation='linear'))
+
+model.compile(optimizer='adam', loss='mse')
+model.fit(X_train, y_train, epochs=50)
+
+test_loss = model.evaluate(X_test, y_test)
+print('Test loss:', test_loss)
+```
 
 ## 21-10-2025 - Clase 43
 
@@ -3547,6 +3744,7 @@ Repasamos Huggin Face y Jugamos con algunos Spaces :https://huggingface.co/
      
 ### Definciones 
 * Modelo Multimodal : Procesa tanto texto como imagenes  
+
 
 
 
